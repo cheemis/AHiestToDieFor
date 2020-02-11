@@ -19,9 +19,8 @@ public class GuardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector3.Distance(transform.position,patrolPoints[currentPoint]) < .1)
+        if(Vector3.Distance(transform.position, patrolPoints[currentPoint % patrolPoints.Length]) < .1)
         {
-            Debug.Log(currentPoint);
             FindNewPoint();
         }
     }
