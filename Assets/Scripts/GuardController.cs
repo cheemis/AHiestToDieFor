@@ -8,8 +8,6 @@ public class GuardController : MonoBehaviour
 {
     //nav mesh stuff
     public NavMeshAgent agent;
-    // public Vector3[] patrolPoints;
-    // private int currentPoint = 0;
 
     //references
     public GameObject player;
@@ -84,10 +82,12 @@ public class GuardController : MonoBehaviour
 
     public void Chase()
     {
+        //stop whatever else guard was doing
         StopCoroutine("Reloading");
         StopCoroutine("idle");
         waitCoOn = false;
 
+        //create raycast hit
         RaycastHit hit;
 
         //if can directly see player, attack case
@@ -96,12 +96,15 @@ public class GuardController : MonoBehaviour
            hit.transform.CompareTag("Player") &&
            Vector3.Distance(player.transform.position, transform.position) < viewDistance)
         {
+            //switch to attack mode in update
             action = "attack";
         }
+        //else, hunt down the last known location of the player
         else if(Vector3.Distance(lastPointSeen, transform.position) > .1)
         {
             agent.SetDestination(lastPointSeen);
         }
+        //if can't find player at last location, go back to idling
         else
         {
             action = "idle";
@@ -111,8 +114,10 @@ public class GuardController : MonoBehaviour
 
     public void Attack()
     {
+        //stop moving
         agent.SetDestination(transform.position);
 
+        //see if facing the player
         if(Quaternion.Angle(Quaternion.LookRotation(player.transform.position - transform.position), transform.rotation) > 5 &&
            Vector3.Distance(player.transform.position, transform.position) < viewDistance)
         {
@@ -127,6 +132,7 @@ public class GuardController : MonoBehaviour
             //shoot at player
             if (!waitCoOn)
             {
+                //call IEnumerator Reloading()
                 Co = StartCoroutine("Reloading");
             }
             Debug.Log("shooting at player");
@@ -134,14 +140,17 @@ public class GuardController : MonoBehaviour
         //can't see player or facing player
         else
         {
+            //chase last known location of player in update
             action = "chase";
         }
 
+        //set the last known location of the player
         lastPointSeen = player.transform.position;
     }
 
     public void Idle()
     {
+        //if not already waiting or reloading
         if (!waitCoOn)
         {
             Co = StartCoroutine("Waiting");
@@ -150,6 +159,7 @@ public class GuardController : MonoBehaviour
 
     IEnumerator Waiting()
     {
+        //wait in place
         waitCoOn = true;
         agent.SetDestination(transform.position);
         yield return new WaitForSeconds(waitingTime);
@@ -159,6 +169,7 @@ public class GuardController : MonoBehaviour
 
     IEnumerator Reloading()
     {
+        //wait to shoot bullets every half second
         waitCoOn = true;
         yield return new WaitForSeconds(.5f);
         Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
@@ -167,11 +178,14 @@ public class GuardController : MonoBehaviour
 
     public void SetAction(string newAction)
     {
+        //used in subclasses to set action for cases
         action = newAction;
     }
 
+    //used in sub classes to get action string for cases
     public string GetAction() {return action;}
 
+    //used in sub classes to turn on/off waiting/reloading
     public void SetWaitCoOn(bool value) {waitCoOn = value;}
 
 }

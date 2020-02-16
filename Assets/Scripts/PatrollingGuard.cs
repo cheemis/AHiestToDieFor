@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//this is a sub class of Guard Controller
+
 [System.Serializable] 
 public class PatrollingGuard : GuardController
 {
     public Vector3[] patrolPoints;
     private int currentPoint = 0;
     public float rotation = 10;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +26,8 @@ public class PatrollingGuard : GuardController
         switch (GetAction())
         {
             case "idle":
-                findPlayer();
                 //stand and wait
+                findPlayer();
                 Idle();
                 break;
 
@@ -34,12 +37,13 @@ public class PatrollingGuard : GuardController
                 break;
 
             case "guard":
-                findPlayer();
                 //walk to next destination point
+                findPlayer();
                 Guard();
                 break;
             
             case "chase":
+                //Chase the player
                 Chase();
                 break;
 
