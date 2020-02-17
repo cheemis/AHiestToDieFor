@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //uses the p button to pause and unpause the game
+        //uses the ESC button to pause and unpause the game
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Time.timeScale == 1)
