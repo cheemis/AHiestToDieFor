@@ -293,12 +293,13 @@ MonoBehaviour:
   agent: {fileID: 4941656147289730882}
   player: {fileID: 0}
   viewPoint: {fileID: 4941656145704361127}
-  viewDistance: 20
-  fov: 60
+  viewDistance: 6
+  fov: 120
   bullet: {fileID: 8713152422425978879, guid: 19bfe792421c54cccad1a4231cfbf549, type: 3}
   gunPoint: {fileID: 4941656146088661097}
   waitingTime: 5
-  viewDirections: []
+  numRotations: 4
+  views: []
 --- !u!1001 &4941656145748375356
 PrefabInstance:
   m_ObjectHideFlags: 0

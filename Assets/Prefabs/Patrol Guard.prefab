@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8859566286901179208}
   - component: {fileID: 3376627165451170453}
   m_Layer: 0
-  m_Name: Guard
+  m_Name: Patrol Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -137,12 +137,13 @@ MonoBehaviour:
   agent: {fileID: 0}
   player: {fileID: 0}
   viewPoint: {fileID: 0}
-  viewDistance: 20
-  fov: 60
+  viewDistance: 6
+  fov: 120
   bullet: {fileID: 0}
   gunPoint: {fileID: 0}
   waitingTime: 5
   patrolPoints: []
+  rotation: 10
 --- !u!1 &8859566288099118179
 GameObject:
   m_ObjectHideFlags: 0
