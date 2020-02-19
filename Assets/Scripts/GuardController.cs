@@ -40,9 +40,6 @@ public class GuardController : MonoBehaviour
         //get components
         agent = GetComponent<NavMeshAgent>();
         agent.SetDestination(transform.position);
-
-        //instantiate world
-        player = GameObject.FindWithTag("Player");
     } 
 
     // Update is called once per frame
@@ -53,29 +50,38 @@ public class GuardController : MonoBehaviour
 
     public void findPlayer()
     {
-        player = GameObject.FindWithTag("Player");
+        player = null;
+        //player = GameObject.FindWithTag("Player");
 
-        //if the player is within viewing distance of teh guard
-        if(Vector3.Distance(player.transform.position, transform.position) < viewDistance)
+        //Create Raycast
+        //RaycastHit hit;
+        RaycastHit[] hits = Physics.SphereCastAll(viewPoint.transform.position, viewDistance, Vector3.forward);
+        
+        foreach(RaycastHit hit in hits)
         {
-            //if the player is in front of the guard
-            if(Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(player.transform.position)) < fov/ 2f)
+            if (hit.transform.gameObject.CompareTag("Player"))
             {
-                //Create Raycast
-                RaycastHit hit;
-                Ray ray = new Ray(viewPoint.transform.position, player.transform.position);
+                player = hit.transform.gameObject;
+                break;
+            }
+        }
+        //see if the raycast hits something
+        //if the object is tagged the player
+        if (player != null)
+        {
+            //if the player is within viewing distance of teh guard
+            //if the player is in front of the guard
+            //Create Raycast
+            RaycastHit hit2;
+            //Ray ray = new Ray(viewPoint.transform.position, player.transform.position);
 
-                //see if the raycast hits something
-                if(Physics.Raycast(viewPoint.transform.position, (player.transform.position - viewPoint.transform.position), out hit) && hit.transform.CompareTag("Player"))
-                {
-                    //if the object is tagged the player
-                    if(hit.transform.gameObject.tag == "Player")
-                    {
-                        //replace with chase the player
-                        Debug.Log("found player");
-                        action = "attack";
-                    }
-                }
+            //see if the raycast hits something
+            if (Physics.Raycast(viewPoint.transform.position, (player.transform.position - viewPoint.transform.position), out hit2) && hit2.transform.CompareTag("Player"))
+            {
+                //if the object is tagged the player
+                //replace with chase the player
+                Debug.Log("found player");
+                action = "attack";
             }
         }
     }
@@ -94,7 +100,7 @@ public class GuardController : MonoBehaviour
         if(player &&
            Physics.Raycast(viewPoint.transform.position, (player.transform.position - viewPoint.transform.position), out hit) &&
            hit.transform.CompareTag("Player") &&
-           Vector3.Distance(player.transform.position, transform.position) < viewDistance)
+           Vector3.Distance(hit.transform.position, transform.position) < viewDistance)
         {
             //switch to attack mode in update
             action = "attack";

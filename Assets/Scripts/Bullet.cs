@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Bullet : MonoBehaviour
 {
+    private GlobalEventManager gem;
+
     public float speed = 20f;
     private bool collided = false;
 
@@ -13,9 +16,19 @@ public class Bullet : MonoBehaviour
 
     private float startTime;
     public float lifeTime = 1f;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
+    {
+        List<MonoBehaviour> deps = new List<MonoBehaviour>
+        {
+            (gem = FindObjectOfType(typeof(GlobalEventManager)) as GlobalEventManager),
+        };
+        if (deps.Contains(null))
+        {
+            throw new Exception("Could not find dependency");
+        }
+    }
+        // Start is called before the first frame update
+        void Start()
     {
         startTime = Time.time;
         rb = GetComponent<Rigidbody>();
@@ -39,8 +52,12 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        print("hit something");
-        collided = true;
+        if (other.transform.CompareTag("Player"))
+        {
+            print("hit something");
+            collided = true;
+            gem.TriggerEvent("Shot", other.gameObject);
+        }
     }
 
     void FixedUpdate()

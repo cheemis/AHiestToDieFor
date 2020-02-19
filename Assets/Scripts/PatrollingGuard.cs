@@ -21,7 +21,7 @@ public class PatrollingGuard : GuardController
     void Update()
     {
         //Visualize raycast in Scene play. Doesn't affect gameplay
-        Debug.DrawRay(viewPoint.transform.position,(GameObject.FindWithTag("Player").transform.position - viewPoint.transform.position), Color.white, 0.0f, true);
+        //Debug.DrawRay(viewPoint.transform.position,(GameObject.FindWithTag("Player").transform.position - viewPoint.transform.position), Color.white, 0.0f, true);
 
         switch (GetAction())
         {
