@@ -3,64 +3,195 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[System.Serializable]
 public class GuardController : MonoBehaviour
 {
-    private NavMeshAgent agent;
-    public Vector3[] patrolPoints;
+    //nav mesh stuff
+    public NavMeshAgent agent;
+
+    //references
     public GameObject player;
     public GameObject viewPoint;
-    private int currentPoint = 0;
+
+    //guard view info
+    public float viewDistance = 20;
+    public float fov = 60;
+    private Vector3 lastPointSeen;
+
+    //guard mode info
+    private string action = "idle";
+
+    //Gun stuff
+    public GameObject bullet;
+    public GameObject gunPoint;
+
+    //coroutine stuff
+    private bool waitCoOn = false;
+    private Coroutine Co;
+    public int waitingTime = 5;
+
     // Start is called before the first frame update
     void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        FindNewPoint();
+    {   
     }
+
+    public void ParentStart()
+    {
+        //get components
+        agent = GetComponent<NavMeshAgent>();
+        agent.SetDestination(transform.position);
+    } 
 
     // Update is called once per frame
     void Update()
     {
-        //Look for the player, otherwise, patrol
-        findPlayer();
-        if(Vector3.Distance(transform.position, patrolPoints[currentPoint % patrolPoints.Length]) < .1)
-        {
-            FindNewPoint();
-        }
-    }
-
-    private void FindNewPoint()
-    {
-        //This function sets a new destination fot the guard
-        currentPoint ++;
-        agent.SetDestination(patrolPoints[currentPoint % (patrolPoints.Length - 1)]);
-    }
-
-    private bool findPlayer()
-    {
-        //Create Raycast
-        RaycastHit hit;
-        Ray ray = new Ray(viewPoint.transform.position, player.transform.position);
         
-        //Visualize raycast in Scene play. Doesn't effect gameplay
-        Debug.DrawRay(viewPoint.transform.position,(player.transform.position - viewPoint.transform.position), Color.white, 0.0f, true);
+    }
 
-        //see if the raycast hits something
-        if(Physics.Raycast(viewPoint.transform.position, (player.transform.position - viewPoint.transform.position), out hit))
+    public void findPlayer()
+    {
+        player = null;
+        //player = GameObject.FindWithTag("Player");
+
+        //Create Raycast
+        //RaycastHit hit;
+        RaycastHit[] hits = Physics.SphereCastAll(viewPoint.transform.position, viewDistance, Vector3.forward);
+        
+        foreach(RaycastHit hit in hits)
         {
-            //if the object is tagged the player
-            if(hit.transform.gameObject.tag == "Player")
+            if (hit.transform.gameObject.CompareTag("Player"))
             {
+                player = hit.transform.gameObject;
+                break;
+            }
+        }
+        //see if the raycast hits something
+        //if the object is tagged the player
+        if (player != null)
+        {
+            //if the player is within viewing distance of teh guard
+            //if the player is in front of the guard
+            //Create Raycast
+            RaycastHit hit2;
+            //Ray ray = new Ray(viewPoint.transform.position, player.transform.position);
+
+            //see if the raycast hits something
+            if (Physics.Raycast(viewPoint.transform.position, (player.transform.position - viewPoint.transform.position), out hit2) && hit2.transform.CompareTag("Player"))
+            {
+                //if the object is tagged the player
                 //replace with chase the player
                 Debug.Log("found player");
-                return true;
-            }
-            else
-            {
-                //replace with can't find player
-                Debug.Log("can't find player: " + hit.transform.gameObject);
+                action = "attack";
             }
         }
-        Debug.Log(hit);
-        return false;
     }
+
+    public void Chase()
+    {
+        //stop whatever else guard was doing
+        StopCoroutine("Reloading");
+        StopCoroutine("idle");
+        waitCoOn = false;
+
+        //create raycast hit
+        RaycastHit hit;
+
+        //if can directly see player, attack case
+        if(player &&
+           Physics.Raycast(viewPoint.transform.position, (player.transform.position - viewPoint.transform.position), out hit) &&
+           hit.transform.CompareTag("Player") &&
+           Vector3.Distance(hit.transform.position, transform.position) < viewDistance)
+        {
+            //switch to attack mode in update
+            action = "attack";
+        }
+        //else, hunt down the last known location of the player
+        else if(Vector3.Distance(lastPointSeen, transform.position) > .1)
+        {
+            agent.SetDestination(lastPointSeen);
+        }
+        //if can't find player at last location, go back to idling
+        else
+        {
+            action = "idle";
+            player = null;
+        }
+    }
+
+    public void Attack()
+    {
+        //stop moving
+        agent.SetDestination(transform.position);
+
+        //see if facing the player
+        if(Quaternion.Angle(Quaternion.LookRotation(player.transform.position - transform.position), transform.rotation) > 5 &&
+           Vector3.Distance(player.transform.position, transform.position) < viewDistance)
+        {
+            //look towards player
+            Quaternion targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
+            float strength = Mathf.Min(10 * Time.deltaTime, 1);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, strength);
+        }
+        //attack player
+        else if(Vector3.Distance(player.transform.position, transform.position) < viewDistance)
+        {
+            //shoot at player
+            if (!waitCoOn)
+            {
+                //call IEnumerator Reloading()
+                Co = StartCoroutine("Reloading");
+            }
+            Debug.Log("shooting at player");
+        }
+        //can't see player or facing player
+        else
+        {
+            //chase last known location of player in update
+            action = "chase";
+        }
+
+        //set the last known location of the player
+        lastPointSeen = player.transform.position;
+    }
+
+    public void Idle()
+    {
+        //if not already waiting or reloading
+        if (!waitCoOn)
+        {
+            Co = StartCoroutine("Waiting");
+        }
+    }
+
+    IEnumerator Waiting()
+    {
+        //wait in place
+        waitCoOn = true;
+        agent.SetDestination(transform.position);
+        yield return new WaitForSeconds(waitingTime);
+        action = "guard";
+        waitCoOn = false;
+    }
+
+    IEnumerator Reloading()
+    {
+        //wait to shoot bullets every half second
+        waitCoOn = true;
+        yield return new WaitForSeconds(.5f);
+        Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
+        waitCoOn = false;
+    }
+
+    public void SetAction(string newAction)
+    {
+        //used in subclasses to set action for cases
+        action = newAction;
+    }
+
+    //used in sub classes to get action string for cases
+    public string GetAction() {return action;}
+
+    //used in sub classes to turn on/off waiting/reloading
+    public void SetWaitCoOn(bool value) {waitCoOn = value;}
+
 }
