@@ -25,15 +25,23 @@ public class SelectedManager : MonoBehaviour
     }
     private void Start()
     {
+        gem.StartListening("Death", UpdateRobberList);
         gem.StartListening("RightClick", MoveSelectedRobbers);
         gem.StartListening("LeftClick", SelectRobbers);
         gem.StartListening("Space", SwitchRobber);
     }
     private void OnDestroy()
     {
+        gem.StopListening("Death", UpdateRobberList);
         gem.StopListening("RightClick", MoveSelectedRobbers);
         gem.StopListening("LeftClick", SelectRobbers);
         gem.StopListening("Space", SwitchRobber);
+    }
+    private void UpdateRobberList(GameObject target, List<object> parameters)
+    {
+        Debug.Log("Updating list...");
+        presetRobbers = presetRobbers.Where(go => go != target).ToList();
+        selectedRobbers = selectedRobbers.Where(sel => sel.go != target).ToList();
     }
     private void MoveSelectedRobbers(GameObject target, List<object> parameters)
     {

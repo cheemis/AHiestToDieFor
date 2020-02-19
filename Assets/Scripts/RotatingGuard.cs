@@ -16,9 +16,11 @@ public class RotatingGuard : GuardController
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         //instantiate Guard Controller and set original start point
         ParentStart();
         origin = transform.position;
+        SetAction("guard");
     }
 
     // Update is called once per frame
@@ -26,6 +28,8 @@ public class RotatingGuard : GuardController
     {
         //Visualize raycast in Scene play. Doesn't affect gameplay
         //Debug.DrawRay(viewPoint.transform.position,(GameObject.FindWithTag("Player").transform.position - viewPoint.transform.position), Color.white, 0.0f, true);
+
+        print(GetAction());
 
         switch (GetAction())
         {

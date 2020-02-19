@@ -42,7 +42,6 @@ public class Bullet : MonoBehaviour
         {
             collided = true;
         }
-        print(Time.time - startTime);
 
         if(collided)
         {
@@ -54,7 +53,6 @@ public class Bullet : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
-            print("hit something");
             collided = true;
             gem.TriggerEvent("Shot", other.gameObject);
         }

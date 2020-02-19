@@ -44,6 +44,7 @@ public class Health : MonoBehaviour
         health -= 1;
         if (health <= 0)
         {
+            gem.TriggerEvent("Death", gameObject);
             Destroy(gameObject);
         }
     }

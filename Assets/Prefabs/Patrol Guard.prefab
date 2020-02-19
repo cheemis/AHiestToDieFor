@@ -134,13 +134,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6605d9dc3824faaad3aa1202ec7f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 8859566286901179208}
   player: {fileID: 0}
-  viewPoint: {fileID: 0}
+  viewPoint: {fileID: 8859566288486564013}
   viewDistance: 6
-  fov: 120
-  bullet: {fileID: 0}
-  gunPoint: {fileID: 0}
+  fov: 60
+  bullet: {fileID: 8713152422425978879, guid: 19bfe792421c54cccad1a4231cfbf549, type: 3}
+  gunPoint: {fileID: 8859566288099118179}
   waitingTime: 5
   patrolPoints: []
   rotation: 10
