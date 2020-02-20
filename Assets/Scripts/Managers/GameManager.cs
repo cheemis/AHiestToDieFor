@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     }
     private void WinGame(GameObject target, List<object> parameters)
     {
-        if (robberToStolenMap[target] == "Vault")
+        if (robberToStolenMap.ContainsKey(target) && robberToStolenMap[target] == "Vault")
         {
             SceneManager.LoadScene("WinScreen");
         }
