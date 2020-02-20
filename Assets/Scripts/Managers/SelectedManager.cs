@@ -23,6 +23,10 @@ public class SelectedManager : MonoBehaviour
         }
         selectedRobbers = new List<Selected>();
     }
+    private void Update()
+    {
+
+    }
     private void Start()
     {
         gem.StartListening("Death", UpdateRobberList);
@@ -39,7 +43,6 @@ public class SelectedManager : MonoBehaviour
     }
     private void UpdateRobberList(GameObject target, List<object> parameters)
     {
-        Debug.Log("Updating list...");
         presetRobbers = presetRobbers.Where(go => go != target).ToList();
         selectedRobbers = selectedRobbers.Where(sel => sel.go != target).ToList();
     }
@@ -103,6 +106,10 @@ public class SelectedManager : MonoBehaviour
         foreach(Selected robber in selectedRobbers)
         {
             robber.ApplyHighlight();
+        }
+        if (selectedRobbers.Count != 0)
+        {
+            gem.TriggerEvent("UpdateCamera", robbers[0]);
         }
     }
 
