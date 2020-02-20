@@ -62,12 +62,10 @@ public class GuardController : MonoBehaviour
 
     public void CheckIfTargetIsDead(GameObject target, List<object> parameters)
     {
-        Debug.Log("Someone died!");
         if (player != target)
         {
             return;
         }
-        Debug.Log("The target died!");
         player = null;
         SetAction("idle");
     }
@@ -105,7 +103,6 @@ public class GuardController : MonoBehaviour
             {
                 //if the object is tagged the player
                 //replace with chase the player
-                Debug.Log("found player");
                 action = "attack";
             }
         }
@@ -166,7 +163,6 @@ public class GuardController : MonoBehaviour
                 //call IEnumerator Reloading()
                 Co = StartCoroutine("Reloading");
             }
-            Debug.Log("shooting at player");
         }
         //can't see player or facing player
         else
