@@ -1561,7 +1561,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightArm: {fileID: 1322436584}
   leftArm: {fileID: 635829741}
-  vault: {fileID: 2111054008}
+  vault: {fileID: 0}
 --- !u!1 &962275962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,6 +1764,7 @@ GameObject:
   - component: {fileID: 1015553899}
   - component: {fileID: 1015553898}
   - component: {fileID: 1015553902}
+  - component: {fileID: 1015553903}
   m_Layer: 0
   m_Name: Door
   m_TagString: Door
@@ -1858,9 +1859,23 @@ NavMeshObstacle:
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
   m_MoveThreshold: 0.1
   m_Carve: 1
-  m_CarveOnlyStationary: 1
+  m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &1015553903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015553897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd994057ba5f4e618a7004ccfa89fe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPushed: 0
+  opened: {x: 17.5, y: 1, z: 6.5}
 --- !u!1 &1072392180
 GameObject:
   m_ObjectHideFlags: 0
@@ -2497,6 +2512,7 @@ MonoBehaviour:
   doorDistanceX: 0
   doorDistanceY: 0
   doorDistanceZ: 6.5
+  isMoving: 0
 --- !u!1 &1582345768 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1351998621824102338, guid: 6a64da11299b1604ea522ab50edadfac,
@@ -3806,12 +3822,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107606713}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2111054008 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 139983626901174301, guid: 39858caeaed235e4ab7df5b91bbc865b,
-    type: 3}
-  m_PrefabInstance: {fileID: 825411649}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &207095932204923569
 PrefabInstance:
   m_ObjectHideFlags: 0
