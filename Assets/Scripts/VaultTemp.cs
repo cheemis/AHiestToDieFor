@@ -1,27 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class VaultTemp : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private GlobalEventManager gem;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        List<MonoBehaviour> deps = new List<MonoBehaviour>
+        {
+            (gem = FindObjectOfType(typeof(GlobalEventManager)) as GlobalEventManager),
+        };
+        if (deps.Contains(null))
+        {
+            throw new Exception("Could not find dependency");
+        }
     }
 
     void OnCollisionStay(Collision other)
 
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            gem.TriggerEvent("StoleVault", other.gameObject);
+            //Destroy(gameObject);
         }
     }
 }
