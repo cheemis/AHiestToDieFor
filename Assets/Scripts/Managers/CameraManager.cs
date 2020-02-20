@@ -42,6 +42,11 @@ public class CameraManager : MonoBehaviour
         gem.StartListening("UpdateCamera", UpdateCamera);
         gem.StartListening("RobberEnteredRoom", UpdateRobberLocation);
     }
+    private void OnDestroy()
+    {
+        gem.StopListening("UpdateCamera", UpdateCamera);
+        gem.StopListening("RobberEnteredRoom", UpdateRobberLocation);
+    }
 
     public void UpdateCamera(GameObject target, List<object> parameters)
     {
@@ -72,7 +77,6 @@ public class CameraManager : MonoBehaviour
         }
         GameObject robber = (GameObject)parameters[0];
         robberToRoomMap[robber] = target;
-        UpdateCamera(robber, null);
-        //UpdateCamera(GameObject target, List<object> parameters)
+        gem.TriggerEvent("NotifyLocationChanged", robber);
     }
 }

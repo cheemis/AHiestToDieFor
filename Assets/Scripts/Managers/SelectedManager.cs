@@ -30,6 +30,7 @@ public class SelectedManager : MonoBehaviour
     private void Start()
     {
         gem.StartListening("Death", UpdateRobberList);
+        gem.StartListening("NotifyLocationChanged", CheckIfCameraNeedsToUpdate);
         gem.StartListening("RightClick", MoveSelectedRobbers);
         gem.StartListening("LeftClick", SelectRobbers);
         gem.StartListening("Space", SwitchRobber);
@@ -40,6 +41,13 @@ public class SelectedManager : MonoBehaviour
         gem.StopListening("RightClick", MoveSelectedRobbers);
         gem.StopListening("LeftClick", SelectRobbers);
         gem.StopListening("Space", SwitchRobber);
+    }
+    private void CheckIfCameraNeedsToUpdate(GameObject target, List<object> parameters)
+    {
+        if (selectedRobbers.Any(sel => sel.go == target))
+        {
+            gem.TriggerEvent("UpdateCamera", target);
+        }
     }
     private void UpdateRobberList(GameObject target, List<object> parameters)
     {
