@@ -23,12 +23,7 @@ public class CrackVault : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        openRotation = new Quaternion(transform.rotation.x,
-                                      transform.rotation.y - Mathf.PI/2,
-                                      transform.rotation.z,
-                                      transform.rotation.w);
-        
+    {   
         finalRotation = transform.rotation.y - 90f;
     }
 
@@ -52,6 +47,7 @@ public class CrackVault : MonoBehaviour
             }
             case "opened":
             {
+                Destroy(gameObject);
                 break;
             }
             default:
@@ -111,13 +107,6 @@ public class CrackVault : MonoBehaviour
 
     public void OnCollisionExit(Collision other)
     {
-        /*
-            if other is player
-                make navMeshAgent null
-                make images null
-                destroy timer
-        */
-
         navMeshAgent = null;
         isCracking = false;
     }

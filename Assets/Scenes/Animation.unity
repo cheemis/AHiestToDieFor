@@ -7888,6 +7888,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vault Door
       objectReference: {fileID: 0}
+    - target: {fileID: 1745233714710311667, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
+        type: 3}
+      propertyPath: loadSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1745233714710311669, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
         type: 3}
       propertyPath: m_Controller
