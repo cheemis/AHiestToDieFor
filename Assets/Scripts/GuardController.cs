@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 [System.Serializable]
 public class GuardController : MonoBehaviour
 {
+    private GlobalEventManager gem;
     //nav mesh stuff
     public NavMeshAgent agent;
 
@@ -30,9 +32,19 @@ public class GuardController : MonoBehaviour
     private Coroutine Co;
     public int waitingTime = 5;
 
-    // Start is called before the first frame update
-    void Start()
-    {   
+
+    private void Awake()
+    {
+        gem = FindObjectOfType(typeof(GlobalEventManager)) as GlobalEventManager;
+    }
+        // Start is called before the first frame update
+    protected void Start()
+    {
+        gem.StartListening("Death", CheckIfTargetIsDead);
+    }
+    protected void OnDestroy()
+    {
+        gem.StopListening("Death", CheckIfTargetIsDead);
     }
 
     public void ParentStart()
@@ -46,6 +58,16 @@ public class GuardController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void CheckIfTargetIsDead(GameObject target, List<object> parameters)
+    {
+        if (player != target)
+        {
+            return;
+        }
+        player = null;
+        SetAction("idle");
     }
 
     public void findPlayer()
@@ -67,8 +89,9 @@ public class GuardController : MonoBehaviour
         }
         //see if the raycast hits something
         //if the object is tagged the player
-        if (player != null)
+        if (player != null && Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(player.transform.position)) < fov / 2f)
         {
+
             //if the player is within viewing distance of teh guard
             //if the player is in front of the guard
             //Create Raycast
@@ -80,7 +103,6 @@ public class GuardController : MonoBehaviour
             {
                 //if the object is tagged the player
                 //replace with chase the player
-                Debug.Log("found player");
                 action = "attack";
             }
         }
@@ -141,7 +163,6 @@ public class GuardController : MonoBehaviour
                 //call IEnumerator Reloading()
                 Co = StartCoroutine("Reloading");
             }
-            Debug.Log("shooting at player");
         }
         //can't see player or facing player
         else

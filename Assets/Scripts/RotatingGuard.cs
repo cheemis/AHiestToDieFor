@@ -16,9 +16,11 @@ public class RotatingGuard : GuardController
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         //instantiate Guard Controller and set original start point
         ParentStart();
         origin = transform.position;
+        SetAction("guard");
     }
 
     // Update is called once per frame
@@ -84,6 +86,7 @@ public class RotatingGuard : GuardController
             currentView ++;
             if(currentView % views.Length == 0) {currentView = 0;}
             SetAction("idle");
+            print("de");
         }
     }
 
