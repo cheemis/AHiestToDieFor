@@ -34,6 +34,7 @@ public class SelectedManager : MonoBehaviour
         gem.StartListening("RightClick", MoveSelectedRobbers);
         gem.StartListening("LeftClick", SelectRobbers);
         gem.StartListening("Space", SwitchRobber);
+        gem.StartListening("E", AttemptUnlock);
     }
     private void OnDestroy()
     {
@@ -41,6 +42,7 @@ public class SelectedManager : MonoBehaviour
         gem.StopListening("RightClick", MoveSelectedRobbers);
         gem.StopListening("LeftClick", SelectRobbers);
         gem.StopListening("Space", SwitchRobber);
+        gem.StopListening("E", AttemptUnlock);
     }
     private void CheckIfCameraNeedsToUpdate(GameObject target, List<object> parameters)
     {
@@ -100,6 +102,14 @@ public class SelectedManager : MonoBehaviour
                 Select(new List<GameObject> { presetRobbers[(i + 1) % presetRobbers.Count] });
                 break;
             }
+        }
+    }
+    private void AttemptUnlock(GameObject target, List<object> parameters)
+    {
+        foreach(Selected robber in selectedRobbers)
+        {
+            gem.TriggerEvent("Unlock", robber.go);
+            Debug.Log("gem.TriggerEvent(\"Unlock\", robber.go);");
         }
     }
     private void Select(List<GameObject> robbers)
