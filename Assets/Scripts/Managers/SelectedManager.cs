@@ -11,6 +11,10 @@ public class SelectedManager : MonoBehaviour
     private List<Selected> selectedRobbers;
 
     public List<GameObject> presetRobbers;
+
+    public List<GameObject> availableRobbers;
+
+    private Vector3 respawnPosition = new Vector3(-34, 1, 6);
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -53,6 +57,7 @@ public class SelectedManager : MonoBehaviour
     {
         presetRobbers = presetRobbers.Where(go => go != target).ToList();
         selectedRobbers = selectedRobbers.Where(sel => sel.go != target).ToList();
+        RespawnRobber(availableRobbers);
     }
     private void MoveSelectedRobbers(GameObject target, List<object> parameters)
     {
@@ -118,6 +123,16 @@ public class SelectedManager : MonoBehaviour
         if (selectedRobbers.Count != 0)
         {
             gem.TriggerEvent("UpdateCamera", robbers[0]);
+        }
+    }
+
+    private void RespawnRobber(List<GameObject> robbers)
+    {
+        if (robbers.Count > 0)
+        {
+            robbers[0].transform.position = respawnPosition;
+            presetRobbers.Add(robbers[0]);
+            robbers.RemoveAt(0);
         }
     }
 
