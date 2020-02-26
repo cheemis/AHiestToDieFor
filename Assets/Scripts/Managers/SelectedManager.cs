@@ -15,6 +15,7 @@ public class SelectedManager : MonoBehaviour
     public List<GameObject> availableRobbers;
 
     private Vector3 respawnPosition = new Vector3(-34, 1, 6);
+
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -128,7 +129,7 @@ public class SelectedManager : MonoBehaviour
 
     private void RespawnRobber(List<GameObject> robbers)
     {
-        if (robbers.Count > 0)
+        if(robbers.Count > 0)
         {
             robbers[0].transform.position = respawnPosition;
             presetRobbers.Add(robbers[0]);
