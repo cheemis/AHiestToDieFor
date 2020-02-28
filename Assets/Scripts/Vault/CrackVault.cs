@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class CrackVault : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class CrackVault : MonoBehaviour
     private Image unloaded;
     private Image loaded;
     private bool isCracking = false;
+    public List<GameObject> nearbyPlayers;
     private string status = "closed";
     private float loading = 0f;
 
@@ -21,10 +23,30 @@ public class CrackVault : MonoBehaviour
 
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
 
+    private GlobalEventManager gem;
+
+    private void Awake()
+    {
+        List<MonoBehaviour> deps = new List<MonoBehaviour>
+        {
+            (gem = FindObjectOfType(typeof(GlobalEventManager)) as GlobalEventManager),
+        };
+        if (deps.Contains(null))
+        {
+            throw new Exception("Could not find dependency");
+        }
+    }
     // Start is called before the first frame update
     void Start()
-    {   
+    {
+        gem.StartListening("BeginUnlocking", BeginCracking);
+        gem.StartListening("StopUnlocking", StopCracking);
         finalRotation = transform.rotation.y - 90f;
+    }
+    public void OnDestroy()
+    {
+        gem.StopListening("BeginUnlocking", BeginCracking);
+        gem.StopListening("StopUnlocking", StopCracking);
     }
 
     // Update is called once per frame
@@ -89,11 +111,39 @@ public class CrackVault : MonoBehaviour
         }
     }
 
+    public void BeginCracking(GameObject invoker, List<object> parameters)
+    {
+        if (!nearbyPlayers.Contains(invoker))
+        {
+            return;
+        }
+        if (parameters.Count == 0)
+        {
+            throw new Exception("Missing parameter: Could not find unlocking speed parameter");
+        }
+        if (parameters[0].GetType() != typeof(float))
+        {
+            throw new Exception("Illegal argument: parameter wrong type");
+        }
+
+        isCracking = true;
+        loadSpeed = (float)parameters[0];
+    }
+    public void StopCracking(GameObject invoker, List<object> parameters)
+    {
+        if (!nearbyPlayers.Contains(invoker))
+        {
+            return;
+        }
+
+        isCracking = false;
+    }
+
     public void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.tag == "Player" && unloaded == null)
         {
-            isCracking = true;
+            nearbyPlayers.Add(other.gameObject);
             navMeshAgent = other.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
             unloaded = Instantiate(loadingPrefab, FindObjectOfType<Canvas>().transform).GetComponent<Image>();
             loaded = new List<Image>(unloaded.GetComponentsInChildren<Image>()).Find(img => img != unloaded);
@@ -101,12 +151,13 @@ public class CrackVault : MonoBehaviour
         else if(other.gameObject.tag == "Player")
         {
             navMeshAgent = other.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>();
-            isCracking = true;
+            nearbyPlayers.Add(other.gameObject);
         }
     }
 
     public void OnCollisionExit(Collision other)
     {
+        nearbyPlayers.Remove(other.gameObject);
         navMeshAgent = null;
         isCracking = false;
     }
