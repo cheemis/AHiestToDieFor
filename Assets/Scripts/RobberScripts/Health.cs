@@ -6,7 +6,7 @@ using System;
 public class Health : MonoBehaviour
 {
     private GlobalEventManager gem;
-
+    private Animator animator;
     public int maxHealth;
     private int health;
 
@@ -27,6 +27,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         gem.StartListening("Shot", TakeDamage);
+        animator = GetComponent<Animator>();
     }
 
     public void OnDestroy()
@@ -44,8 +45,15 @@ public class Health : MonoBehaviour
         health -= 1;
         if (health <= 0)
         {
-            gem.TriggerEvent("Death", gameObject);
-            Destroy(gameObject);
+            StartCoroutine("FallingOver");
         }
+    }
+
+    private IEnumerator FallingOver()
+    {
+        animator.SetBool("isDead",true);
+        yield return new WaitForSeconds(3);
+        gem.TriggerEvent("Death", gameObject);
+        Destroy(gameObject);
     }
 }

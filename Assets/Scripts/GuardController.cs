@@ -32,7 +32,6 @@ public class GuardController : MonoBehaviour
     private Coroutine Co;
     public int waitingTime = 5;
 
-
     private void Awake()
     {
         gem = FindObjectOfType(typeof(GlobalEventManager)) as GlobalEventManager;
@@ -92,7 +91,7 @@ public class GuardController : MonoBehaviour
         if (player != null && Vector3.Angle(Vector3.forward, transform.InverseTransformPoint(player.transform.position)) < fov / 2f)
         {
 
-            //if the player is within viewing distance of teh guard
+            //if the player is within viewing distance of the guard
             //if the player is in front of the guard
             //Create Raycast
             RaycastHit hit2;
@@ -146,7 +145,7 @@ public class GuardController : MonoBehaviour
         agent.SetDestination(transform.position);
 
         //see if facing the player
-        if(Quaternion.Angle(Quaternion.LookRotation(player.transform.position - transform.position), transform.rotation) > 5 &&
+        if(Quaternion.Angle(Quaternion.LookRotation(player.transform.position - transform.position), transform.rotation) > 8 &&
            Vector3.Distance(player.transform.position, transform.position) < viewDistance)
         {
             //look towards player

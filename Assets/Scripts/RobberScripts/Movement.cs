@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
 {
     private GlobalEventManager gem;
     private NavMeshAgent agent;
-
+    private Animator animator;
     public float speed;
     private void Awake()
     {
@@ -24,9 +24,16 @@ public class Movement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
+    void Update()
+    {
+        animator.SetFloat("velocity", agent.velocity.magnitude * agent.speed);
+    }
+
     private void Start()
     {
         gem.StartListening("Move", Move);
+        animator = GetComponent<Animator>();
+        //animator.speed = agent.speed/2f;
     }
     private void OnDestroy()
     {

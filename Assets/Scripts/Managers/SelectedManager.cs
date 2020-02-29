@@ -116,14 +116,14 @@ public class SelectedManager : MonoBehaviour
     {
         foreach(Selected robber in selectedRobbers)
         {
-            robber.Reset();
+            //robber.Reset();
         }
         selectedRobbers = robbers
             .Select(robber => new Selected(robber))
             .ToList();
         foreach(Selected robber in selectedRobbers)
         {
-            robber.ApplyHighlight();
+            //obber.ApplyHighlight();
         }
         if (selectedRobbers.Count != 0)
         {
@@ -138,11 +138,11 @@ public class SelectedManager : MonoBehaviour
 
         public Selected(GameObject go)
         {
-            if (go.GetComponent<MeshRenderer>() == null)
-            {
-                throw new Exception("Missing component: gameobject did not have MeshRenderer");
-            }
-            original = go.GetComponent<MeshRenderer>().material.color;
+            // if (go.GetComponent<MeshRenderer>() == null)
+            // {
+            //     throw new Exception("Missing component: gameobject did not have MeshRenderer");
+            // }
+            // original = go.GetComponent<MeshRenderer>().material.color;
             this.go = go;
         }
 
