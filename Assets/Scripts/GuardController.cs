@@ -10,6 +10,7 @@ public class GuardController : MonoBehaviour
     private GlobalEventManager gem;
     //nav mesh stuff
     public NavMeshAgent agent;
+    public Animator animator;
 
     //references
     public GameObject player;
@@ -40,6 +41,7 @@ public class GuardController : MonoBehaviour
     protected void Start()
     {
         gem.StartListening("Death", CheckIfTargetIsDead);
+        animator = GetComponent<Animator>();
     }
     protected void OnDestroy()
     {
@@ -75,7 +77,6 @@ public class GuardController : MonoBehaviour
         //player = GameObject.FindWithTag("Player");
 
         //Create Raycast
-        //RaycastHit hit;
         RaycastHit[] hits = Physics.SphereCastAll(viewPoint.transform.position, viewDistance, Vector3.forward);
         
         foreach(RaycastHit hit in hits)
@@ -146,7 +147,7 @@ public class GuardController : MonoBehaviour
 
         //see if facing the player
         if(Quaternion.Angle(Quaternion.LookRotation(player.transform.position - transform.position), transform.rotation) > 8 &&
-           Vector3.Distance(player.transform.position, transform.position) < viewDistance)
+           Vector3.Distance(player.transform.position, transform.position) < viewDistance + 5)
         {
             //look towards player
             Quaternion targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
@@ -154,7 +155,7 @@ public class GuardController : MonoBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, strength);
         }
         //attack player
-        else if(Vector3.Distance(player.transform.position, transform.position) < viewDistance)
+        else if(Vector3.Distance(player.transform.position, transform.position) < viewDistance + 5)
         {
             //shoot at player
             if (!waitCoOn)

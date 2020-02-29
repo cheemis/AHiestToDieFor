@@ -26,6 +26,7 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        //normalize vector
         animator.SetFloat("velocity", agent.velocity.magnitude * agent.speed);
     }
 
@@ -59,5 +60,25 @@ public class Movement : MonoBehaviour
 
         agent.SetDestination(location);
         agent.speed = speed;
+    }
+
+    void OnCollisionStay(Collision other)
+    {
+        if(other.gameObject.tag == "Vault" )
+        {
+            if(animator.GetFloat("velocity") < .1)
+            {
+                animator.SetBool("isCracking", true);
+            }
+            else
+            {
+                animator.SetBool("isCracking", false);
+            }
+        }
+    }
+
+    void OnCollisionExit(Collision other)
+    {
+        animator.SetBool("isCracking", false);
     }
 }
