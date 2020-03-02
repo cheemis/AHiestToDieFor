@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\RobberScripts\Health.cs" />
     <Compile Include="Assets\Scripts\RobberScripts\HoldingMoney.cs" />
     <Compile Include="Assets\Scripts\RobberScripts\Movement.cs" />
+    <Compile Include="Assets\Scripts\RobberScripts\Unlocking.cs" />
     <Compile Include="Assets\Scripts\RotatingGuard.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\Unused\CameraChange.cs" />
