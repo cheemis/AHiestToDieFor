@@ -11,6 +11,10 @@ public class HoldingMoney : MonoBehaviour
     public GameObject leftArm;
     public GameObject vault;
 
+    //Sound
+    public AudioClip stoleMoney;
+    private AudioSource playerAudio;
+
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -25,6 +29,7 @@ public class HoldingMoney : MonoBehaviour
 
     private void Start()
     {
+        playerAudio = GetComponent<AudioSource>();
         gem.StartListening("StoleVault", VaultStolen);
     }
     private void OnDestroy()
@@ -38,6 +43,7 @@ public class HoldingMoney : MonoBehaviour
         {
             return;
         }
+        playerAudio.PlayOneShot(stoleMoney, 0.005f);
         rightArm.SetActive(true);
         leftArm.SetActive(true);
         vault.SetActive(true);

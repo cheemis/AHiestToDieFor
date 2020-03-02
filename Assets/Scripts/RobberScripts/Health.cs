@@ -10,6 +10,10 @@ public class Health : MonoBehaviour
     public int maxHealth;
     private int health;
 
+    //Sounds
+    public AudioClip gotShot;
+    private AudioSource playerAudio;
+
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -26,6 +30,7 @@ public class Health : MonoBehaviour
 
     void Start()
     {
+        playerAudio = GetComponent<AudioSource>();
         gem.StartListening("Shot", TakeDamage);
     }
 
@@ -40,7 +45,7 @@ public class Health : MonoBehaviour
         {
             return;
         }
-
+        playerAudio.PlayOneShot(gotShot, 0.25f);
         health -= 1;
         if (health <= 0)
         {
