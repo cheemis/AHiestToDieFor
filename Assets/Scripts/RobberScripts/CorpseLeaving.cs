@@ -9,10 +9,6 @@ public class CorpseLeaving : MonoBehaviour
 
     public GameObject corpse;
 
-    //Sounds
-    public AudioClip gotShot;
-    private AudioSource playerAudio;
-
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -26,7 +22,6 @@ public class CorpseLeaving : MonoBehaviour
     }
     private void Start()
     {
-        playerAudio = GetComponent<AudioSource>();
         gem.StartListening("Death", LeaveCorpseBehind);
     }
     private void OnDestroy()
@@ -42,8 +37,9 @@ public class CorpseLeaving : MonoBehaviour
         }
 
         //To be added, add CorpseManager tracking number of dead robbers and handling any further logic surrounding corpses.
-        //playerAudio.PlayOneShot(gotShot, 0.25f);
+
         Instantiate(corpse, transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 }

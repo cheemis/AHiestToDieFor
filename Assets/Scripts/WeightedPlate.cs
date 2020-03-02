@@ -14,15 +14,10 @@ public class WeightedPlate : MonoBehaviour
 
     private Vector3 movePlate;
     private Vector3 moveDoor;
-
-    //Sound
-    public AudioClip OnPlate;
-    private AudioSource plateAudio;
-
     // Start is called before the first frame update
     void Start()
     {
-        plateAudio = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -45,7 +40,7 @@ public class WeightedPlate : MonoBehaviour
     {
         movePlate = new Vector3(0, -distanceDown, 0);
         moveDoor = new Vector3(-doorDistanceX, -doorDistanceY, -doorDistanceZ);
-        plateAudio.PlayOneShot(OnPlate, 0.25f);
+
         this.gameObject.transform.Translate(movePlate);
         door.transform.Translate(moveDoor);
     }
