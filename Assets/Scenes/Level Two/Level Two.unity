@@ -1328,7 +1328,7 @@ PrefabInstance:
     - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -58.15
+      value: -59.28
       objectReference: {fileID: 0}
     - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
         type: 3}
@@ -1338,7 +1338,7 @@ PrefabInstance:
     - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.4
+      value: -7.1
       objectReference: {fileID: 0}
     - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
         type: 3}
@@ -1380,8 +1380,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1745233714710311669, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4, type: 3}
 --- !u!1 &137981597
 GameObject:

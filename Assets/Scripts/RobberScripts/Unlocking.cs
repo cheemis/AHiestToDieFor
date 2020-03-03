@@ -54,6 +54,6 @@ public class Unlocking : MonoBehaviour
             return;
         }
 
-        gem.TriggerEvent("StopUnlocking", gameObject);
+        //gem.TriggerEvent("StopUnlocking", gameObject);
     }
 }

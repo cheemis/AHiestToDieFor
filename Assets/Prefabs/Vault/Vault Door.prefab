@@ -93,7 +93,6 @@ GameObject:
   - component: {fileID: 1745233714710311665}
   - component: {fileID: 1745233714710311666}
   - component: {fileID: 1745233714710311667}
-  - component: {fileID: 1745233714710311669}
   m_Layer: 0
   m_Name: Vault Door
   m_TagString: Untagged
@@ -211,25 +210,6 @@ MonoBehaviour:
   safeHeight: 3
   openSpeed: 1
   nearbyPlayers: []
---- !u!95 &1745233714710311669
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745233714710311628}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3170790386875773905
 GameObject:
   m_ObjectHideFlags: 0
