@@ -14607,7 +14607,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab36ed8b4386187409a6a0aea587781c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robbers: []
+  robbers:
+  - {fileID: 1738066080}
+  - {fileID: 889125792}
+  - {fileID: 1259587703}
 --- !u!1 &1019828342
 GameObject:
   m_ObjectHideFlags: 0
