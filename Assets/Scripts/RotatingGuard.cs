@@ -29,6 +29,8 @@ public class RotatingGuard : GuardController
         //Visualize raycast in Scene play. Doesn't affect gameplay
         //Debug.DrawRay(viewPoint.transform.position,(GameObject.FindWithTag("Player").transform.position - viewPoint.transform.position), Color.white, 0.0f, true);
 
+        animator.SetFloat("velocity", agent.velocity.magnitude * agent.speed);
+
         switch (GetAction())
         {
             case "idle":
@@ -93,7 +95,7 @@ public class RotatingGuard : GuardController
     private void Return()
     {
         //if not at the original patrol area, go to it
-        if(transform.position != origin)
+        if(Vector3.Distance(transform.position, origin) > .1f)
         {
             agent.SetDestination(origin);
         }
