@@ -24,6 +24,11 @@ public class InputManager : MonoBehaviour
         {
             gem.TriggerEvent("Space", gameObject);
         }
+        if (Input.GetKeyDown("e"))
+        {
+            gem.TriggerEvent("E", gameObject);
+            Debug.Log("gem.TriggerEvent(\"E\", gameObject);");
+        }
         if (Input.GetMouseButtonDown(0))
         {
             //getting mouse location in space

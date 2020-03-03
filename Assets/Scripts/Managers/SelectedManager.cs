@@ -34,6 +34,7 @@ public class SelectedManager : MonoBehaviour
         gem.StartListening("RightClick", MoveSelectedRobbers);
         gem.StartListening("LeftClick", SelectRobbers);
         gem.StartListening("Space", SwitchRobber);
+        gem.StartListening("E", AttemptUnlock);
     }
     private void OnDestroy()
     {
@@ -41,6 +42,7 @@ public class SelectedManager : MonoBehaviour
         gem.StopListening("RightClick", MoveSelectedRobbers);
         gem.StopListening("LeftClick", SelectRobbers);
         gem.StopListening("Space", SwitchRobber);
+        gem.StopListening("E", AttemptUnlock);
     }
     private void CheckIfCameraNeedsToUpdate(GameObject target, List<object> parameters)
     {
@@ -102,18 +104,26 @@ public class SelectedManager : MonoBehaviour
             }
         }
     }
+    private void AttemptUnlock(GameObject target, List<object> parameters)
+    {
+        foreach(Selected robber in selectedRobbers)
+        {
+            gem.TriggerEvent("Unlock", robber.go);
+            Debug.Log("gem.TriggerEvent(\"Unlock\", robber.go);");
+        }
+    }
     private void Select(List<GameObject> robbers)
     {
         foreach(Selected robber in selectedRobbers)
         {
-            robber.Reset();
+            //robber.Reset();
         }
         selectedRobbers = robbers
             .Select(robber => new Selected(robber))
             .ToList();
         foreach(Selected robber in selectedRobbers)
         {
-            robber.ApplyHighlight();
+            //obber.ApplyHighlight();
         }
         if (selectedRobbers.Count != 0)
         {
@@ -128,11 +138,11 @@ public class SelectedManager : MonoBehaviour
 
         public Selected(GameObject go)
         {
-            if (go.GetComponent<MeshRenderer>() == null)
-            {
-                throw new Exception("Missing component: gameobject did not have MeshRenderer");
-            }
-            original = go.GetComponent<MeshRenderer>().material.color;
+            // if (go.GetComponent<MeshRenderer>() == null)
+            // {
+            //     throw new Exception("Missing component: gameobject did not have MeshRenderer");
+            // }
+            // original = go.GetComponent<MeshRenderer>().material.color;
             this.go = go;
         }
 

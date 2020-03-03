@@ -9,6 +9,7 @@ TagManager:
   - Plate
   - Lever
   - Bullet
+  - Vault
   layers:
   - Default
   - TransparentFX

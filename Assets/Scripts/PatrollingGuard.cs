@@ -24,6 +24,8 @@ public class PatrollingGuard : GuardController
         //Visualize raycast in Scene play. Doesn't affect gameplay
         //Debug.DrawRay(viewPoint.transform.position,(GameObject.FindWithTag("Player").transform.position - viewPoint.transform.position), Color.white, 0.0f, true);
 
+        animator.SetFloat("velocity", agent.velocity.magnitude * agent.speed);
+
         switch (GetAction())
         {
             case "idle":
@@ -58,7 +60,7 @@ public class PatrollingGuard : GuardController
     private void Guard()
     {
         //This function sets a new destination fot the guard
-        if(Vector3.Distance(transform.position, patrolPoints[currentPoint % patrolPoints.Length]) < .1)
+        if(Vector3.Distance(transform.position, patrolPoints[currentPoint % patrolPoints.Length]) < .2)
         {
             currentPoint ++;
             if(currentPoint % patrolPoints.Length == 0) {currentPoint = 0;}
