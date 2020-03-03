@@ -12,8 +12,6 @@ public class CameraManager : MonoBehaviour
 
     public List<GameObject> rooms;
     public List<Camera> cameras;
-
-    public float speed;
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -50,51 +48,22 @@ public class CameraManager : MonoBehaviour
         gem.StopListening("RobberEnteredRoom", UpdateRobberLocation);
     }
 
-    private Camera GetActiveCamera()
+    public void UpdateCamera(GameObject target, List<object> parameters)
     {
-        return Camera.main;
-    }
-
-    private Vector3 previousPos;
-    private Camera current;
-    private Camera target;
-    private Coroutine transitioning;
-    public void UpdateCamera(GameObject robber, List<object> parameters)
-    {
-        if (robber == null)
+        if (target == null)
         {
             throw new Exception("Invalid parameter: Cannot update camera with null");
         }
-        GameObject room = robberToRoomMap[robber];
+        GameObject room = robberToRoomMap[target];
         if (room == null)
         {
             throw new Exception("Invalid parameter: Could not find the room attached to the robber");
         }
-        current = GetActiveCamera();
-        previousPos = current.transform.position;
-        target = roomToCameraMap[room];
-
-        if (transitioning != null)
+        foreach (Camera camera in cameras)
         {
-            StopCoroutine(transitioning);
+            camera.enabled = false;
         }
-        transitioning = StartCoroutine(MoveToTarget());
-
-        //foreach (Camera camera in cameras)
-        //{
-        //    camera.enabled = false;
-        //}
-        //roomToCameraMap[room].enabled = true;
-    }
-    private IEnumerator MoveToTarget()
-    {
-        float interp = 0;
-        while (Vector3.Distance(current.transform.position, target.transform.position) > 0.1)
-        {
-            yield return new WaitForEndOfFrame();
-            interp += speed * Time.deltaTime;
-            current.transform.position = Vector3.Slerp(current.transform.position, target.transform.position, interp);
-        }
+        roomToCameraMap[room].enabled = true;
     }
     public void UpdateRobberLocation(GameObject target, List<object> parameters)
     {
