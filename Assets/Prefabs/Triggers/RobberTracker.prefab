@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7077112247238850980}
   - component: {fileID: 7077112247238851035}
   - component: {fileID: 7077112247238851034}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RobberTracker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7077112247238851033}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.88, y: 1.27, z: -20.17}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 21.077019, y: 2.6692, z: 14.643122}
   m_Children: []
   m_Father: {fileID: 0}

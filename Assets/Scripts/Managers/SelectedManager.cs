@@ -124,11 +124,10 @@ public class SelectedManager : MonoBehaviour
     }
     private void AttemptUnlock(GameObject target, List<object> parameters)
     {
-        foreach(Selected robber in selectedRobbers)
-        {
-            gem.TriggerEvent("Unlock", robber.go);
-            Debug.Log("gem.TriggerEvent(\"Unlock\", robber.go);");
-        }
+        //foreach(Selected robber in selectedRobbers)
+        //{
+        //    gem.TriggerEvent("Unlock", robber.go);
+        //}
     }
     private void Select(List<GameObject> robbers)
     {
