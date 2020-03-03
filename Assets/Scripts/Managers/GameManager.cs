@@ -10,9 +10,7 @@ public class GameManager : MonoBehaviour
 {
     private GlobalEventManager gem;
 
-    private Dictionary<GameObject, string> robberToStolenMap;
-    private bool vaultStolen;
-    public List<GameObject> robbers;
+    private List<GameObject> robbers;
 
     public TextMeshProUGUI moneyText;
     private void Awake()
@@ -25,24 +23,40 @@ public class GameManager : MonoBehaviour
         {
             throw new Exception("Could not find dependency");
         }
-        robberToStolenMap = new Dictionary<GameObject, string>();
+        robbers = new List<GameObject>();
     }
 
     private void Start()
     {
-        gem.StartListening("StoleVault", VaultStolen);
-        gem.StartListening("UpdateRobbers", UpdateRobbers);
         gem.StartListening("UpdateMoney", UpdateMoney);
-        gem.StartListening("Exit", WinGame);
+        gem.StartListening("EscapeWithMoney", Escape);
+        gem.StartListening("RobberEnteredSpawnArea", TrackRobber);
+        gem.StartListening("Death", RemoveRobber);
     }
     private void OnDestroy()
     {
-        gem.StopListening("StoleVault", VaultStolen);
-        gem.StopListening("UpdateRobbers", UpdateRobbers);
         gem.StopListening("UpdateMoney", UpdateMoney);
-        gem.StopListening("Exit", WinGame);
+        gem.StopListening("EscapeWithMoney", Escape);
+        gem.StopListening("RobberEnteredSpawnArea", TrackRobber);
+        gem.StopListening("Death", RemoveRobber);
     }
 
+    private void TrackRobber(GameObject target, List<object> parameters)
+    {
+        if (robbers.Contains(target))
+        {
+            return;
+        }
+        robbers.Add(target);
+    }
+    private void RemoveRobber(GameObject target, List<object> parameters)
+    {
+        if (!robbers.Contains(target))
+        {
+            throw new Exception("Missing robber: Tried to remove robber that didn't exist");
+        }
+        robbers.Remove(target);
+    }
     private float GetAccumulatedStolenMoney()
     {
         robbers = robbers.Where(robber => robber != null).ToList();
@@ -52,21 +66,28 @@ public class GameManager : MonoBehaviour
     {
         moneyText.text = string.Format("Stolen money: ${0}", GetAccumulatedStolenMoney());
     }
-    private void UpdateRobbers(GameObject target, List<object> parameters)
+    private void Escape(GameObject target, List<object> parameters)
     {
-        robbers = parameters
-            .Select(robber => (GameObject)robber)
-            .ToList();
-    }
-    private void VaultStolen(GameObject target, List<object> parameters)
-    {
-        robberToStolenMap[target] = "Vault";
-    }
-    private void WinGame(GameObject target, List<object> parameters)
-    {
-        if (robberToStolenMap.ContainsKey(target) && robberToStolenMap[target] == "Vault")
+        if (parameters.Count == 0)
         {
-            SceneManager.LoadScene("WinScreen");
+            throw new Exception("Missing parameter: Could not find list of robbers parameter");
+        }
+        foreach(object robber in parameters)
+        {
+            if (robber.GetType() != typeof(GameObject))
+            {
+                throw new Exception("Illegal argument: parameter wrong type");
+            }
+        }
+        List<GameObject> robbersCloseToEscapeVan = parameters.Select(robber => (GameObject)robber).ToList();
+        Debug.Log(robbers.Count);
+        Debug.Log(robbersCloseToEscapeVan.Count);
+        if (robbers.All(robbersCloseToEscapeVan.Contains))
+        {
+            if (GetAccumulatedStolenMoney() >= 15000)
+            {
+                SceneManager.LoadScene("WinScreen");
+            }
         }
     }
 }

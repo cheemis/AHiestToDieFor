@@ -10,7 +10,7 @@ public class SelectedManager : MonoBehaviour
 
     private List<Selected> selectedRobbers;
 
-    public List<GameObject> robbers;
+    private List<GameObject> robbers;
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -21,6 +21,7 @@ public class SelectedManager : MonoBehaviour
         {
             throw new Exception("Could not find dependency");
         }
+        robbers = new List<GameObject>();
         selectedRobbers = new List<Selected>();
     }
     private void Update()
@@ -29,27 +30,42 @@ public class SelectedManager : MonoBehaviour
     }
     private void Start()
     {
-        gem.StartListening("Death", UpdateRobberList);
         gem.StartListening("NotifyLocationChanged", CheckIfCameraNeedsToUpdate);
         gem.StartListening("RightClick", MoveSelectedRobbers);
         gem.StartListening("LeftClick", SelectRobbers);
         gem.StartListening("Space", SwitchRobber);
         gem.StartListening("E", AttemptUnlock);
+
+        gem.StartListening("RobberEnteredSpawnArea", TrackRobber);
+        gem.StartListening("Death", RemoveRobber);
     }
     private void OnDestroy()
     {
-        gem.StopListening("Death", UpdateRobberList);
         gem.StopListening("RightClick", MoveSelectedRobbers);
         gem.StopListening("LeftClick", SelectRobbers);
         gem.StopListening("Space", SwitchRobber);
         gem.StopListening("E", AttemptUnlock);
+
+        gem.StopListening("RobberEnteredSpawnArea", TrackRobber);
+        gem.StopListening("Death", RemoveRobber);
     }
 
-    private void UpdateRobbers(GameObject target, List<object> parameters)
+    private void TrackRobber(GameObject target, List<object> parameters)
     {
-        robbers = parameters
-            .Select(robber => (GameObject)robber)
-            .ToList();
+        if (robbers.Contains(target))
+        {
+            return;
+        }
+        robbers.Add(target);
+    }
+    private void RemoveRobber(GameObject target, List<object> parameters)
+    {
+        if (!robbers.Contains(target))
+        {
+            throw new Exception("Missing robber: Tried to remove robber that didn't exist");
+        }
+        robbers.Remove(target);
+        selectedRobbers = selectedRobbers.Where(sel => sel.go != target).ToList();
     }
     private void CheckIfCameraNeedsToUpdate(GameObject target, List<object> parameters)
     {
@@ -57,11 +73,6 @@ public class SelectedManager : MonoBehaviour
         {
             gem.TriggerEvent("UpdateCamera", target);
         }
-    }
-    private void UpdateRobberList(GameObject target, List<object> parameters)
-    {
-        robbers = robbers.Where(go => go != target).ToList();
-        selectedRobbers = selectedRobbers.Where(sel => sel.go != target).ToList();
     }
     private void MoveSelectedRobbers(GameObject target, List<object> parameters)
     {
