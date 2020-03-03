@@ -80,13 +80,11 @@ public class GameManager : MonoBehaviour
             }
         }
         List<GameObject> robbersCloseToEscapeVan = parameters.Select(robber => (GameObject)robber).ToList();
-        Debug.Log(robbers.Count);
-        Debug.Log(robbersCloseToEscapeVan.Count);
         if (robbers.All(robbersCloseToEscapeVan.Contains))
         {
             if (GetAccumulatedStolenMoney() >= 15000)
             {
-                SceneManager.LoadScene("WinScreen");
+                SceneManager.LoadScene("LevelSelect");
             }
         }
     }
