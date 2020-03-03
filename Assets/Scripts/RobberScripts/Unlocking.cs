@@ -21,6 +21,11 @@ public class Unlocking : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        BeginUnlocking(gameObject, new List<object>());
+    }
+
     void Start()
     {
         gem.StartListening("Unlock", BeginUnlocking);
