@@ -6,7 +6,7 @@ using System;
 public class Health : MonoBehaviour
 {
     private GlobalEventManager gem;
-
+    private Animator animator;
     public int maxHealth;
     private int health;
 
@@ -20,7 +20,7 @@ public class Health : MonoBehaviour
         {
             throw new Exception("Could not find dependency");
         }
-
+        animator = GetComponent<Animator>();
         this.health = maxHealth;
     }
 
@@ -42,10 +42,11 @@ public class Health : MonoBehaviour
         }
 
         health -= 1;
-        if (health <= 0)
+        if (health == 0)
         {
+            animator.SetBool("isDead", true);
+            gameObject.tag = "Corpse";
             gem.TriggerEvent("Death", gameObject);
-            Destroy(gameObject);
         }
     }
 }

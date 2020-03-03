@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
 {
     private GlobalEventManager gem;
     private NavMeshAgent agent;
-
+    private Animator animator;
     public float speed;
     private void Awake()
     {
@@ -24,15 +24,32 @@ public class Movement : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
+    void Update()
+    {
+        //normalize vector
+        animator.SetFloat("velocity", agent.velocity.magnitude * agent.speed);
+    }
+
     private void Start()
     {
         gem.StartListening("Move", Move);
+        gem.StartListening("Death", PreventFurtherMovement);
+        animator = GetComponent<Animator>();
     }
     private void OnDestroy()
     {
         gem.StopListening("Move", Move);
-    }
+        gem.StopListening("Death", PreventFurtherMovement);
 
+    }
+    private void PreventFurtherMovement(GameObject target, List<object> parameters)
+    {
+        if (target != gameObject)
+        {
+            return;
+        }
+        Destroy(this);
+    }
     private void Move(GameObject target, List<object> parameters)
     {
         if (target != gameObject)
@@ -52,5 +69,25 @@ public class Movement : MonoBehaviour
 
         agent.SetDestination(location);
         agent.speed = speed;
+    }
+
+    void OnCollisionStay(Collision other)
+    {
+        if(other.gameObject.tag == "Vault" )
+        {
+            if(animator.GetFloat("velocity") < .1)
+            {
+                animator.SetBool("isCracking", true);
+            }
+            else
+            {
+                animator.SetBool("isCracking", false);
+            }
+        }
+    }
+
+    void OnCollisionExit(Collision other)
+    {
+        animator.SetBool("isCracking", false);
     }
 }

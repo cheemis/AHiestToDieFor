@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 using System;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     private GlobalEventManager gem;
 
-    private Dictionary<GameObject, string> robberToStolenMap;
-    private bool vaultStolen;
+    private List<GameObject> robbers;
 
+    public TextMeshProUGUI moneyText;
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -21,29 +23,69 @@ public class GameManager : MonoBehaviour
         {
             throw new Exception("Could not find dependency");
         }
-        robberToStolenMap = new Dictionary<GameObject, string>();
+        robbers = new List<GameObject>();
     }
 
     private void Start()
     {
-        gem.StartListening("StoleVault", VaultStolen);
-        gem.StartListening("Exit", WinGame);
+        gem.StartListening("UpdateMoney", UpdateMoney);
+        gem.StartListening("EscapeWithMoney", Escape);
+        gem.StartListening("RobberEnteredSpawnArea", TrackRobber);
+        gem.StartListening("Death", RemoveRobber);
     }
     private void OnDestroy()
     {
-        gem.StopListening("StoleVault", VaultStolen);
-        gem.StopListening("Exit", WinGame);
+        gem.StopListening("UpdateMoney", UpdateMoney);
+        gem.StopListening("EscapeWithMoney", Escape);
+        gem.StopListening("RobberEnteredSpawnArea", TrackRobber);
+        gem.StopListening("Death", RemoveRobber);
     }
 
-    private void VaultStolen(GameObject target, List<object> parameters)
+    private void TrackRobber(GameObject target, List<object> parameters)
     {
-        robberToStolenMap[target] = "Vault";
-    }
-    private void WinGame(GameObject target, List<object> parameters)
-    {
-        if (robberToStolenMap.ContainsKey(target) && robberToStolenMap[target] == "Vault")
+        if (robbers.Contains(target))
         {
-            SceneManager.LoadScene("WinScreen");
+            return;
+        }
+        robbers.Add(target);
+    }
+    private void RemoveRobber(GameObject target, List<object> parameters)
+    {
+        if (!robbers.Contains(target))
+        {
+            throw new Exception("Missing robber: Tried to remove robber that didn't exist");
+        }
+        robbers.Remove(target);
+    }
+    private float GetAccumulatedStolenMoney()
+    {
+        robbers = robbers.Where(robber => robber != null).ToList();
+        return robbers.Select(robber => robber.GetComponent<MoneyBag>().money).Sum();
+    }
+    private void UpdateMoney(GameObject target, List<object> parameters)
+    {
+        moneyText.text = string.Format("Stolen money: ${0}", GetAccumulatedStolenMoney());
+    }
+    private void Escape(GameObject target, List<object> parameters)
+    {
+        if (parameters.Count == 0)
+        {
+            throw new Exception("Missing parameter: Could not find list of robbers parameter");
+        }
+        foreach(object robber in parameters)
+        {
+            if (robber.GetType() != typeof(GameObject))
+            {
+                throw new Exception("Illegal argument: parameter wrong type");
+            }
+        }
+        List<GameObject> robbersCloseToEscapeVan = parameters.Select(robber => (GameObject)robber).ToList();
+        if (robbers.All(robbersCloseToEscapeVan.Contains))
+        {
+            if (GetAccumulatedStolenMoney() >= 15000)
+            {
+                SceneManager.LoadScene("LevelSelect");
+            }
         }
     }
 }

@@ -10,7 +10,7 @@ public class SelectedManager : MonoBehaviour
 
     private List<Selected> selectedRobbers;
 
-    public List<GameObject> presetRobbers;
+    private List<GameObject> robbers;
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -21,6 +21,7 @@ public class SelectedManager : MonoBehaviour
         {
             throw new Exception("Could not find dependency");
         }
+        robbers = new List<GameObject>();
         selectedRobbers = new List<Selected>();
     }
     private void Update()
@@ -29,18 +30,42 @@ public class SelectedManager : MonoBehaviour
     }
     private void Start()
     {
-        gem.StartListening("Death", UpdateRobberList);
         gem.StartListening("NotifyLocationChanged", CheckIfCameraNeedsToUpdate);
         gem.StartListening("RightClick", MoveSelectedRobbers);
         gem.StartListening("LeftClick", SelectRobbers);
         gem.StartListening("Space", SwitchRobber);
+        gem.StartListening("E", AttemptUnlock);
+
+        gem.StartListening("RobberEnteredSpawnArea", TrackRobber);
+        gem.StartListening("Death", RemoveRobber);
     }
     private void OnDestroy()
     {
-        gem.StopListening("Death", UpdateRobberList);
         gem.StopListening("RightClick", MoveSelectedRobbers);
         gem.StopListening("LeftClick", SelectRobbers);
         gem.StopListening("Space", SwitchRobber);
+        gem.StopListening("E", AttemptUnlock);
+
+        gem.StopListening("RobberEnteredSpawnArea", TrackRobber);
+        gem.StopListening("Death", RemoveRobber);
+    }
+
+    private void TrackRobber(GameObject target, List<object> parameters)
+    {
+        if (robbers.Contains(target))
+        {
+            return;
+        }
+        robbers.Add(target);
+    }
+    private void RemoveRobber(GameObject target, List<object> parameters)
+    {
+        if (!robbers.Contains(target))
+        {
+            throw new Exception("Missing robber: Tried to remove robber that didn't exist");
+        }
+        robbers.Remove(target);
+        selectedRobbers = selectedRobbers.Where(sel => sel.go != target).ToList();
     }
     private void CheckIfCameraNeedsToUpdate(GameObject target, List<object> parameters)
     {
@@ -48,11 +73,6 @@ public class SelectedManager : MonoBehaviour
         {
             gem.TriggerEvent("UpdateCamera", target);
         }
-    }
-    private void UpdateRobberList(GameObject target, List<object> parameters)
-    {
-        presetRobbers = presetRobbers.Where(go => go != target).ToList();
-        selectedRobbers = selectedRobbers.Where(sel => sel.go != target).ToList();
     }
     private void MoveSelectedRobbers(GameObject target, List<object> parameters)
     {
@@ -85,35 +105,43 @@ public class SelectedManager : MonoBehaviour
     {
         if (selectedRobbers.Count == 0)
         {
-            Select(new List<GameObject> { presetRobbers[0] });
+            Select(new List<GameObject> { robbers[0] });
             return;
         }
         else if (selectedRobbers.Count > 1)
         {
-            Select(new List<GameObject> { presetRobbers[0] });
+            Select(new List<GameObject> { robbers[0] });
             return;
         }
-        for (int i = 0; i < presetRobbers.Count; i++)
+        for (int i = 0; i < robbers.Count; i++)
         {
-            if (presetRobbers[i] == selectedRobbers[0].go)
+            if (robbers[i] == selectedRobbers[0].go)
             {
-                Select(new List<GameObject> { presetRobbers[(i + 1) % presetRobbers.Count] });
+                Select(new List<GameObject> { robbers[(i + 1) % robbers.Count] });
                 break;
             }
+        }
+    }
+    private void AttemptUnlock(GameObject target, List<object> parameters)
+    {
+        foreach(Selected robber in selectedRobbers)
+        {
+            gem.TriggerEvent("Unlock", robber.go);
+            Debug.Log("gem.TriggerEvent(\"Unlock\", robber.go);");
         }
     }
     private void Select(List<GameObject> robbers)
     {
         foreach(Selected robber in selectedRobbers)
         {
-            robber.Reset();
+            //robber.Reset();
         }
         selectedRobbers = robbers
             .Select(robber => new Selected(robber))
             .ToList();
         foreach(Selected robber in selectedRobbers)
         {
-            robber.ApplyHighlight();
+            //obber.ApplyHighlight();
         }
         if (selectedRobbers.Count != 0)
         {
@@ -128,11 +156,11 @@ public class SelectedManager : MonoBehaviour
 
         public Selected(GameObject go)
         {
-            if (go.GetComponent<MeshRenderer>() == null)
-            {
-                throw new Exception("Missing component: gameobject did not have MeshRenderer");
-            }
-            original = go.GetComponent<MeshRenderer>().material.color;
+            // if (go.GetComponent<MeshRenderer>() == null)
+            // {
+            //     throw new Exception("Missing component: gameobject did not have MeshRenderer");
+            // }
+            // original = go.GetComponent<MeshRenderer>().material.color;
             this.go = go;
         }
 
