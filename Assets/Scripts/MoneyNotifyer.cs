@@ -20,12 +20,12 @@ public class MoneyNotifyer : MonoBehaviour
             throw new Exception("Could not find dependency");
         }
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.transform.CompareTag("Player"))
+        if (collision.transform.CompareTag("Player"))
         {
-            Debug.Log("Touched money!: " + other.transform.name);
-            gem.TriggerEvent("AddMoneyToRobber", other.gameObject, new List<object> { amount });
+            Debug.Log("Touched money!: " + collision.transform.name);
+            gem.TriggerEvent("AddMoneyToRobber", collision.gameObject, new List<object> { amount });
             Destroy(gameObject);
         }
     }

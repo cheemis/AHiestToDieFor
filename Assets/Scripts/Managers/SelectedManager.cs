@@ -10,7 +10,7 @@ public class SelectedManager : MonoBehaviour
 
     private List<Selected> selectedRobbers;
 
-    public List<GameObject> presetRobbers;
+    public List<GameObject> robbers;
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -44,6 +44,13 @@ public class SelectedManager : MonoBehaviour
         gem.StopListening("Space", SwitchRobber);
         gem.StopListening("E", AttemptUnlock);
     }
+
+    private void UpdateRobbers(GameObject target, List<object> parameters)
+    {
+        robbers = parameters
+            .Select(robber => (GameObject)robber)
+            .ToList();
+    }
     private void CheckIfCameraNeedsToUpdate(GameObject target, List<object> parameters)
     {
         if (selectedRobbers.Any(sel => sel.go == target))
@@ -53,7 +60,7 @@ public class SelectedManager : MonoBehaviour
     }
     private void UpdateRobberList(GameObject target, List<object> parameters)
     {
-        presetRobbers = presetRobbers.Where(go => go != target).ToList();
+        robbers = robbers.Where(go => go != target).ToList();
         selectedRobbers = selectedRobbers.Where(sel => sel.go != target).ToList();
     }
     private void MoveSelectedRobbers(GameObject target, List<object> parameters)
@@ -87,19 +94,19 @@ public class SelectedManager : MonoBehaviour
     {
         if (selectedRobbers.Count == 0)
         {
-            Select(new List<GameObject> { presetRobbers[0] });
+            Select(new List<GameObject> { robbers[0] });
             return;
         }
         else if (selectedRobbers.Count > 1)
         {
-            Select(new List<GameObject> { presetRobbers[0] });
+            Select(new List<GameObject> { robbers[0] });
             return;
         }
-        for (int i = 0; i < presetRobbers.Count; i++)
+        for (int i = 0; i < robbers.Count; i++)
         {
-            if (presetRobbers[i] == selectedRobbers[0].go)
+            if (robbers[i] == selectedRobbers[0].go)
             {
-                Select(new List<GameObject> { presetRobbers[(i + 1) % presetRobbers.Count] });
+                Select(new List<GameObject> { robbers[(i + 1) % robbers.Count] });
                 break;
             }
         }
