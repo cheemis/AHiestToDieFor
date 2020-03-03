@@ -88,7 +88,6 @@ public class RotatingGuard : GuardController
             currentView ++;
             if(currentView % views.Length == 0) {currentView = 0;}
             SetAction("idle");
-            print("de");
         }
     }
 
