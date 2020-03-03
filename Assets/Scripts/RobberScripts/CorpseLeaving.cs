@@ -36,10 +36,13 @@ public class CorpseLeaving : MonoBehaviour
             return;
         }
 
-        //To be added, add CorpseManager tracking number of dead robbers and handling any further logic surrounding corpses.
+        StartCoroutine(SpawnPussDelay());
+    }
+    private IEnumerator SpawnPussDelay()
+    {
+        yield return new WaitForSeconds(3);
 
         Instantiate(corpse, spawnLocation.transform.position, Quaternion.identity);
-
         Destroy(gameObject);
     }
 }

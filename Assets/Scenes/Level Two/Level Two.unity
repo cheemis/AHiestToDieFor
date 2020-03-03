@@ -1451,6 +1451,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 584889959}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &158823704
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 705773111}
+    m_Modifications:
+    - target: {fileID: 1351998621824102338, guid: 39858caeaed235e4ab7df5b91bbc865b,
+        type: 3}
+      propertyPath: m_Name
+      value: FastRobber
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351998621824102351, guid: 39858caeaed235e4ab7df5b91bbc865b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.582776
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351998621824102351, guid: 39858caeaed235e4ab7df5b91bbc865b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8302418
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351998621824102351, guid: 39858caeaed235e4ab7df5b91bbc865b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.03779
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351998621824102351, guid: 39858caeaed235e4ab7df5b91bbc865b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351998621824102351, guid: 39858caeaed235e4ab7df5b91bbc865b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351998621824102351, guid: 39858caeaed235e4ab7df5b91bbc865b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351998621824102351, guid: 39858caeaed235e4ab7df5b91bbc865b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351998621824102351, guid: 39858caeaed235e4ab7df5b91bbc865b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351998621824102351, guid: 39858caeaed235e4ab7df5b91bbc865b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351998621824102351, guid: 39858caeaed235e4ab7df5b91bbc865b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351998621824102351, guid: 39858caeaed235e4ab7df5b91bbc865b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 39858caeaed235e4ab7df5b91bbc865b, type: 3}
 --- !u!1 &161684347
 GameObject:
   m_ObjectHideFlags: 0
@@ -8363,6 +8432,7 @@ GameObject:
   - component: {fileID: 506796171}
   - component: {fileID: 506796170}
   - component: {fileID: 506796169}
+  - component: {fileID: 506796172}
   m_Layer: 0
   m_Name: Valult_wall
   m_TagString: Untagged
@@ -8444,6 +8514,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 506796167}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &506796172
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 506796167}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &508239832
 GameObject:
   m_ObjectHideFlags: 0
@@ -9879,7 +9965,6 @@ GameObject:
   m_Component:
   - component: {fileID: 680889703}
   - component: {fileID: 680889705}
-  - component: {fileID: 680889704}
   m_Layer: 0
   m_Name: Area 1 Camera
   m_TagString: Untagged
@@ -9901,14 +9986,6 @@ Transform:
   m_Father: {fileID: 1839927769}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
---- !u!81 &680889704
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 680889702}
-  m_Enabled: 1
 --- !u!20 &680889705
 Camera:
   m_ObjectHideFlags: 0
@@ -10802,6 +10879,7 @@ Transform:
   - {fileID: 2104247736}
   - {fileID: 1738066089}
   - {fileID: 889125800}
+  - {fileID: 1259587704}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12864,7 +12942,6 @@ GameObject:
   m_Component:
   - component: {fileID: 914807241}
   - component: {fileID: 914807243}
-  - component: {fileID: 914807242}
   m_Layer: 0
   m_Name: Area Three Camera
   m_TagString: Untagged
@@ -12886,14 +12963,6 @@ Transform:
   m_Father: {fileID: 1624044300}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
---- !u!81 &914807242
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 914807240}
-  m_Enabled: 1
 --- !u!20 &914807243
 Camera:
   m_ObjectHideFlags: 0
@@ -14538,9 +14607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab36ed8b4386187409a6a0aea587781c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  presetRobbers:
-  - {fileID: 1738066080}
-  - {fileID: 889125792}
+  robbers: []
 --- !u!1 &1019828342
 GameObject:
   m_ObjectHideFlags: 0
@@ -17548,6 +17615,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1243756996}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1259587703 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1351998621824102338, guid: 39858caeaed235e4ab7df5b91bbc865b,
+    type: 3}
+  m_PrefabInstance: {fileID: 158823704}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1259587704 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1351998621824102351, guid: 39858caeaed235e4ab7df5b91bbc865b,
+    type: 3}
+  m_PrefabInstance: {fileID: 158823704}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1281702836
 GameObject:
   m_ObjectHideFlags: 0
@@ -17558,7 +17637,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1281702837}
   - component: {fileID: 1281702839}
-  - component: {fileID: 1281702838}
   m_Layer: 0
   m_Name: Room Two (Left) Camera
   m_TagString: Untagged
@@ -17580,14 +17658,6 @@ Transform:
   m_Father: {fileID: 794258804}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
---- !u!81 &1281702838
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1281702836}
-  m_Enabled: 1
 --- !u!20 &1281702839
 Camera:
   m_ObjectHideFlags: 0
@@ -21395,6 +21465,7 @@ GameObject:
   - component: {fileID: 1477484285}
   - component: {fileID: 1477484284}
   - component: {fileID: 1477484283}
+  - component: {fileID: 1477484286}
   m_Layer: 0
   m_Name: Valult_wall (1)
   m_TagString: Untagged
@@ -21476,6 +21547,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477484281}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &1477484286
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477484281}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1492207510
 GameObject:
   m_ObjectHideFlags: 0
@@ -22281,7 +22368,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1503606676}
   - component: {fileID: 1503606678}
-  - component: {fileID: 1503606677}
   m_Layer: 0
   m_Name: Area Four Camera
   m_TagString: Untagged
@@ -22303,14 +22389,6 @@ Transform:
   m_Father: {fileID: 747603839}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 45, z: 0}
---- !u!81 &1503606677
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503606675}
-  m_Enabled: 1
 --- !u!20 &1503606678
 Camera:
   m_ObjectHideFlags: 0
@@ -23166,7 +23244,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1548858178}
   - component: {fileID: 1548858177}
-  - component: {fileID: 1548858176}
   m_Layer: 0
   m_Name: Room Two (Right) Camera
   m_TagString: Untagged
@@ -23174,14 +23251,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1548858176
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548858175}
-  m_Enabled: 1
 --- !u!20 &1548858177
 Camera:
   m_ObjectHideFlags: 0
@@ -25326,6 +25395,7 @@ GameObject:
   - component: {fileID: 1739787275}
   - component: {fileID: 1739787274}
   - component: {fileID: 1739787273}
+  - component: {fileID: 1739787276}
   m_Layer: 0
   m_Name: Valult_wall (2)
   m_TagString: Untagged
@@ -25407,6 +25477,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739787271}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!208 &1739787276
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739787271}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1741145892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28927,6 +29013,7 @@ MonoBehaviour:
   robbers:
   - {fileID: 1738066080}
   - {fileID: 889125792}
+  - {fileID: 1259587703}
   moneyText: {fileID: 567944964}
 --- !u!1 &1925272965
 GameObject:

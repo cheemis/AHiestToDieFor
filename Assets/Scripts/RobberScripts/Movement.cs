@@ -33,14 +33,23 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         gem.StartListening("Move", Move);
+        gem.StartListening("Death", PreventFurtherMovement);
         animator = GetComponent<Animator>();
-        //animator.speed = agent.speed/2f;
     }
     private void OnDestroy()
     {
         gem.StopListening("Move", Move);
-    }
+        gem.StopListening("Death", PreventFurtherMovement);
 
+    }
+    private void PreventFurtherMovement(GameObject target, List<object> parameters)
+    {
+        if (target != gameObject)
+        {
+            return;
+        }
+        Destroy(this);
+    }
     private void Move(GameObject target, List<object> parameters)
     {
         if (target != gameObject)

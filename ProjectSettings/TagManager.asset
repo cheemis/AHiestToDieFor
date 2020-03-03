@@ -10,6 +10,7 @@ TagManager:
   - Lever
   - Bullet
   - Vault
+  - Corpse
   layers:
   - Default
   - TransparentFX

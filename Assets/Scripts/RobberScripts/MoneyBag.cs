@@ -9,6 +9,9 @@ public class MoneyBag : MonoBehaviour
 
     public float money;
     public GameObject keyCard;
+
+    public GameObject backpack;
+    public GameObject backpackPrefab;
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -35,16 +38,20 @@ public class MoneyBag : MonoBehaviour
         gem.StopListening("Death", DropMoney);
     }
 
-    private void Update()
-    {
-        Debug.Log(money);
-    }
     private void DropMoney(GameObject target, List<object> parameters)
     {
         if (target != gameObject)
         {
             return;
         }
+        backpack.SetActive(false);
+        GameObject clone = Instantiate(backpackPrefab, backpack.transform.position, backpack.transform.rotation);
+        MoneyNotifyer script = clone.GetComponent<MoneyNotifyer>();
+        if (script == null)
+        {
+            throw new Exception("Did not find MoneyNotifyer on backpack prefab");
+        }
+        script.amount = money;
         money = 0;
         gem.TriggerEvent("UpdateMoney", gameObject);
     }

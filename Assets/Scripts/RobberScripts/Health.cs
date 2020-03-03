@@ -10,12 +10,6 @@ public class Health : MonoBehaviour
     public int maxHealth;
     private int health;
 
-    [SerializeField]
-    private GameObject backpack;
-
-    public GameObject backpackPrefab;
-    private bool dropped = false;
-
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -26,14 +20,13 @@ public class Health : MonoBehaviour
         {
             throw new Exception("Could not find dependency");
         }
-
+        animator = GetComponent<Animator>();
         this.health = maxHealth;
     }
 
     void Start()
     {
         gem.StartListening("Shot", TakeDamage);
-        animator = GetComponent<Animator>();
     }
 
     public void OnDestroy()
@@ -49,27 +42,11 @@ public class Health : MonoBehaviour
         }
 
         health -= 1;
-        if (health <= 0)
+        if (health == 0)
         {
-            //instantiate bag of money
-            StartCoroutine("FallingOver");
+            animator.SetBool("isDead", true);
+            gameObject.tag = "Corpse";
+            gem.TriggerEvent("Death", gameObject);
         }
-    }
-
-    private IEnumerator FallingOver()
-    {
-        animator.SetBool("isDead",true);
-
-        backpack.SetActive(false);
-        if(!dropped)
-        {
-            Instantiate(backpackPrefab,backpack.transform.position, backpack.transform.rotation);
-            dropped = true;
-        }
-
-        yield return new WaitForSeconds(3);
-
-        gem.TriggerEvent("Death", gameObject);
-        Destroy(gameObject);
     }
 }
