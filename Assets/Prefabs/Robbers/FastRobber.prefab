@@ -1346,7 +1346,7 @@ GameObject:
   - component: {fileID: 991822920840093372}
   - component: {fileID: 6554631332922905043}
   - component: {fileID: 104576864736935975}
-  - component: {fileID: 6472588407542773999}
+  - component: {fileID: -8216382080377530886}
   m_Layer: 0
   m_Name: FastRobber
   m_TagString: Player
@@ -1479,9 +1479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a253155eb808284f86db91575d09495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnLocation: {fileID: 657325981}
-  corpse: {fileID: 8067361889173963718, guid: b6dee7aeb5d2b459a829b20b32b479ce, type: 3}
---- !u!114 &6472588407542773999
+  corpse: {fileID: 6008352444300752906, guid: 38556a2dce0c2234e866dc2adb509784, type: 3}
+--- !u!114 &-8216382080377530886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1490,12 +1489,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1351998621824102338}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0d813c7ebad594488c270db06c6786f, type: 3}
+  m_Script: {fileID: 11500000, guid: efe374e0093759c41ae4eb65e3d9b7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockingSpeed: 0.5
---- !u!1001 &521716709
-PrefabInstance:
+  money: 0
+  keyCard: {fileID: 0}
+--- !u!1 &1351998622286902333
+GameObject:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
@@ -1767,8 +1767,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 90695b05b50bf43e99c8c52ba76bed30, type: 3}
---- !u!4 &2778809437918095934 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: f61e2c06933fe5145a42eccb1e13acc7, type: 3}
+--- !u!4 &6817563142504899373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 90695b05b50bf43e99c8c52ba76bed30,
     type: 3}
