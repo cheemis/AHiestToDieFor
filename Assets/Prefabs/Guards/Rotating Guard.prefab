@@ -453,7 +453,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -414921334540547795, guid: 86f0b68861e12473ba088405a4452577, type: 3}
+  - {fileID: 2100000, guid: d99372c1091a14c5f882279657edb1bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1040,11 +1040,11 @@ MonoBehaviour:
   agent: {fileID: 4941656147289730882}
   animator: {fileID: 0}
   player: {fileID: 0}
-  viewPoint: {fileID: 0}
+  viewPoint: {fileID: 1619115613}
   viewDistance: 5
   fov: 120
   bullet: {fileID: 8713152422425978879, guid: 19bfe792421c54cccad1a4231cfbf549, type: 3}
-  gunPoint: {fileID: 0}
+  gunPoint: {fileID: 8107595442645694354}
   waitingTime: 1
   numRotations: 2
   views:
@@ -1413,6 +1413,36 @@ Transform:
   m_Father: {fileID: 5244131476487615037}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8107595442645694354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4580282465430966754}
+  m_Layer: 0
+  m_Name: Gun Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4580282465430966754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8107595442645694354}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -147, y: 156, z: -17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2788712604710358966}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1 &8334963242332766047
 GameObject:
   m_ObjectHideFlags: 0

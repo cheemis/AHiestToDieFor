@@ -10,6 +10,12 @@ public class Health : MonoBehaviour
     public int maxHealth;
     private int health;
 
+    [SerializeField]
+    private GameObject backpack;
+
+    public GameObject backpackPrefab;
+    private bool dropped = false;
+
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -53,7 +59,16 @@ public class Health : MonoBehaviour
     private IEnumerator FallingOver()
     {
         animator.SetBool("isDead",true);
+
+        backpack.SetActive(false);
+        if(!dropped)
+        {
+            Instantiate(backpackPrefab,backpack.transform.position, backpack.transform.rotation);
+            dropped = true;
+        }
+
         yield return new WaitForSeconds(3);
+
         gem.TriggerEvent("Death", gameObject);
         Destroy(gameObject);
     }
