@@ -6680,6 +6680,7 @@ MonoBehaviour:
   - {fileID: 963194227}
   - {fileID: 875969178}
   - {fileID: 1785478457}
+  speed: 1
 --- !u!1 &1785478455
 GameObject:
   m_ObjectHideFlags: 0
