@@ -1277,7 +1277,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.9999999, z: 1}
   m_Children:
   - {fileID: 7098009868947168192}
-  - {fileID: 6679357083370217456}
+  - {fileID: 2665792406495371473}
   m_Father: {fileID: 4390927755920605240}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1583,11 +1583,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Baseball Cap
       objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: df621d53fda574a53bff65ded0574ed7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df621d53fda574a53bff65ded0574ed7, type: 3}
 --- !u!4 &6480044575033305270 stripped
@@ -1596,17 +1591,13 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2060127431155975084}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &6679357083370079600
+--- !u!1001 &7026874219313925067
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 9162265261638956202}
     m_Modifications:
-    - target: {fileID: 400000, guid: f61e2c06933fe5145a42eccb1e13acc7, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 206b51bcdd8fb4a12b350e1040108cf7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1664,12 +1655,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 206b51bcdd8fb4a12b350e1040108cf7,
         type: 3}
-      propertyPath: m_LocalScale.y
+      propertyPath: m_LocalScale.x
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 206b51bcdd8fb4a12b350e1040108cf7,
         type: 3}
-      propertyPath: m_LocalScale.x
+      propertyPath: m_LocalScale.y
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 206b51bcdd8fb4a12b350e1040108cf7,
@@ -1680,13 +1671,13 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 206b51bcdd8fb4a12b350e1040108cf7,
         type: 3}
       propertyPath: m_Name
-      value: Backack
+      value: Backpack
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f61e2c06933fe5145a42eccb1e13acc7, type: 3}
---- !u!4 &6679357083370217456 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 206b51bcdd8fb4a12b350e1040108cf7, type: 3}
+--- !u!4 &2665792406495371473 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: f61e2c06933fe5145a42eccb1e13acc7,
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 206b51bcdd8fb4a12b350e1040108cf7,
     type: 3}
-  m_PrefabInstance: {fileID: 6679357083370079600}
+  m_PrefabInstance: {fileID: 7026874219313925067}
   m_PrefabAsset: {fileID: 0}
