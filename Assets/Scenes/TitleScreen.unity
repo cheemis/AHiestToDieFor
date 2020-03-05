@@ -357,6 +357,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7440247494830562520, guid: cd35c95d565564505855cee8a7a8aefb,
+        type: 3}
+      propertyPath: m_text
+      value: 'A Game By Cheemis (and me alone)
+
+
+        [PLACE HOLDER]
+
+        [PLACE
+        HOLDER]
+
+
+        [PLACE HOLDER]
+
+        [PLACE HOLDER]
+
+
+        [PLACE
+        HOLDER]
+
+        [PLACE HOLDER]
+
+
+        [PLACE HOLDER]
+
+        [PLACE
+        HOLDER]
+
+
+        [PLACE HOLDER]
+
+        [PLACE HOLDER]
+
+
+        [PLACE
+        HOLDER]
+
+        [PLACE HOLDER]
+
+
+        [PLACE HOLDER]
+
+        [PLACE
+        HOLDER]
+
+
+        [PLACE HOLDER]
+
+        [PLACE HOLDER]'
+      objectReference: {fileID: 0}
     - target: {fileID: 7440247495607106894, guid: cd35c95d565564505855cee8a7a8aefb,
         type: 3}
       propertyPath: m_IsActive
@@ -477,6 +527,11 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 310873876}
+    - target: {fileID: 7440247495645810897, guid: cd35c95d565564505855cee8a7a8aefb,
+        type: 3}
+      propertyPath: creditsTime
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 7440247495970095053, guid: cd35c95d565564505855cee8a7a8aefb,
         type: 3}
       propertyPath: m_IsActive

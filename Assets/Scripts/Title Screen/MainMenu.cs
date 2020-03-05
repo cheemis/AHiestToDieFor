@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public int creditsTime;
     public GameObject mainMenuItems;
     public GameObject howToPlayItems;
     public GameObject creditItems;
@@ -42,8 +43,12 @@ public class MainMenu : MonoBehaviour
         camAnim.SetBool("MainMenu", true);
 
         howToPlayItems.SetActive(false);
-        creditItems.SetActive(false);
         mainMenuItems.SetActive(true);
+
+        creditItems.SetActive(false);
+        StopCoroutine("CreditsRoll");
+
+        
 
         rules.SetActive(true);
         ControlsAndGoals.SetActive(false);
@@ -56,6 +61,8 @@ public class MainMenu : MonoBehaviour
 
         mainMenuItems.SetActive(false);
         creditItems.SetActive(true);
+
+        StartCoroutine("CreditsRoll");
     }
 
     public void Continue()
@@ -63,5 +70,11 @@ public class MainMenu : MonoBehaviour
         //hides the "how to play" and shows the "movement" and "goals"
         rules.SetActive(false);
         ControlsAndGoals.SetActive(true);
+    }
+
+    IEnumerator CreditsRoll()
+    {
+        yield return new WaitForSeconds(creditsTime);
+        BackToMenu();
     }
 }
