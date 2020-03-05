@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1745233714531078312}
   - component: {fileID: 1745233714531078313}
   - component: {fileID: 1745233714531078314}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1745233714710311666}
   - component: {fileID: 1745233714710311667}
   - component: {fileID: 8782492695761703644}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Vault Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 7934089261992223677}
   - component: {fileID: 480310122838210108}
   - component: {fileID: 4576617115984294146}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
