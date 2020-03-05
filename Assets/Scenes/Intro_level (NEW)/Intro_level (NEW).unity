@@ -7165,9 +7165,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceDown: 0.5
   door: {fileID: 443737140}
-  doorDistanceX: 0
-  doorDistanceY: 0
-  doorDistanceZ: 6.5
+  doorScript: {fileID: 0}
+  OnPlate: {fileID: 0}
 --- !u!65 &571706828
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18848,9 +18847,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceDown: 0.5
   door: {fileID: 443737140}
-  doorDistanceX: 0
-  doorDistanceY: 0
-  doorDistanceZ: 6.5
+  doorScript: {fileID: 0}
+  OnPlate: {fileID: 0}
 --- !u!65 &1555509580
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25291,9 +25289,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distanceDown: 0.5
   door: {fileID: 443737140}
-  doorDistanceX: 0
-  doorDistanceY: 0
-  doorDistanceZ: 6.5
+  doorScript: {fileID: 0}
+  OnPlate: {fileID: 0}
 --- !u!65 &2043986635
 BoxCollider:
   m_ObjectHideFlags: 0

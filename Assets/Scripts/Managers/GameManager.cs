@@ -84,7 +84,11 @@ public class GameManager : MonoBehaviour
         {
             if (GetAccumulatedStolenMoney() >= 15000)
             {
-                SceneManager.LoadScene("LevelSelect");
+                LoadNewScene.scene = SceneManager.GetActiveScene().buildIndex + 1;
+
+                //load next scene unless no more levels, then load title screen
+                if(LoadNewScene.scene <= 2) {SceneManager.LoadScene(LoadNewScene.scene);}
+                else {SceneManager.LoadScene(0);}
             }
         }
     }
