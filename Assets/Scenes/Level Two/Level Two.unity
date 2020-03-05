@@ -30718,6 +30718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 567944964}
+  winAmount: 15000
 --- !u!1 &1925272965
 GameObject:
   m_ObjectHideFlags: 0

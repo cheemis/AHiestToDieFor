@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     private List<GameObject> robbers;
 
     public TextMeshProUGUI moneyText;
+
+    public float winAmount;
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -82,7 +84,7 @@ public class GameManager : MonoBehaviour
         List<GameObject> robbersCloseToEscapeVan = parameters.Select(robber => (GameObject)robber).ToList();
         if (robbers.All(robbersCloseToEscapeVan.Contains))
         {
-            if (GetAccumulatedStolenMoney() >= 15000)
+            if (GetAccumulatedStolenMoney() >= winAmount)
             {
                 LoadNewScene.scene = SceneManager.GetActiveScene().buildIndex + 1;
 
