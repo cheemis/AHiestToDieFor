@@ -3991,6 +3991,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6708796315009862043, guid: 6a64da11299b1604ea522ab50edadfac,
+        type: 3}
+      propertyPath: spawnLocation
+      value: 
+      objectReference: {fileID: 1173253478}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a64da11299b1604ea522ab50edadfac, type: 3}
 --- !u!1 &267593824
@@ -11915,7 +11920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceDown: 0.5
-  door: {fileID: 1492207510}
+  door: {fileID: 1994720784}
   doorScript: {fileID: 0}
   OnPlate: {fileID: 8300000, guid: ae3c3ae9b442f0149b0fd0ed40732968, type: 3}
 --- !u!65 &756754339
@@ -18478,6 +18483,12 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1173253478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1343644755258626754, guid: 6a64da11299b1604ea522ab50edadfac,
+    type: 3}
+  m_PrefabInstance: {fileID: 256023852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1213952075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31734,13 +31745,14 @@ GameObject:
   - component: {fileID: 1994720788}
   - component: {fileID: 1994720787}
   - component: {fileID: 1994720786}
+  - component: {fileID: 1994720790}
   m_Layer: 0
   m_Name: Door (2)
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1994720785
 Transform:
   m_ObjectHideFlags: 0
@@ -31831,6 +31843,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994720784}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1994720790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994720784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc727e661be65b644bc3cc7642def506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorDistanceX: 10
+  doorDistanceY: 0
+  doorDistanceZ: 0
+  translationTime: 3
 --- !u!1001 &1995314275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33999,6 +34027,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7077112247238850980, guid: 9d68d77e7ffc8f24dadba2b89fbbcc63,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7077112247238850982, guid: 9d68d77e7ffc8f24dadba2b89fbbcc63,
         type: 3}
       propertyPath: m_LocalPosition.x
