@@ -33,6 +33,10 @@ public class GuardController : MonoBehaviour
     private Coroutine Co;
     public int waitingTime = 5;
 
+    //Sounds
+    public AudioClip sawPlayer;
+    public AudioClip gunshots;
+    private AudioSource guardAudio;
     private void Awake()
     {
         gem = FindObjectOfType(typeof(GlobalEventManager)) as GlobalEventManager;
@@ -40,6 +44,7 @@ public class GuardController : MonoBehaviour
         // Start is called before the first frame update
     protected void Start()
     {
+        guardAudio = GetComponent<AudioSource>();
         gem.StartListening("Death", CheckIfTargetIsDead);
         animator = GetComponent<Animator>();
     }
@@ -101,6 +106,7 @@ public class GuardController : MonoBehaviour
             //see if the raycast hits something
             if (Physics.Raycast(viewPoint.transform.position, (player.transform.position - viewPoint.transform.position), out hit2) && hit2.transform.CompareTag("Player"))
             {
+                guardAudio.PlayOneShot(sawPlayer, 0.5f);
                 //if the object is tagged the player
                 //replace with chase the player
                 action = "attack";
@@ -124,6 +130,7 @@ public class GuardController : MonoBehaviour
            hit.transform.CompareTag("Player") &&
            Vector3.Distance(hit.transform.position, transform.position) < viewDistance)
         {
+            guardAudio.PlayOneShot(sawPlayer, 0.5f);
             //switch to attack mode in update
             action = "attack";
         }
@@ -200,6 +207,7 @@ public class GuardController : MonoBehaviour
         waitCoOn = true;
         yield return new WaitForSeconds(.5f);
         Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
+        guardAudio.PlayOneShot(gunshots, 0.5f);
         waitCoOn = false;
     }
 

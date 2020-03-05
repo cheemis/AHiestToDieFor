@@ -11,6 +11,11 @@ public class SelectedManager : MonoBehaviour
     private List<Selected> selectedRobbers;
 
     private List<GameObject> robbers;
+
+    //Sounds
+    public AudioClip dying;
+    private AudioSource deathAudio;
+
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -30,6 +35,7 @@ public class SelectedManager : MonoBehaviour
     }
     private void Start()
     {
+        deathAudio = GetComponent<AudioSource>();
         gem.StartListening("NotifyLocationChanged", CheckIfCameraNeedsToUpdate);
         gem.StartListening("RightClick", MoveSelectedRobbers);
         gem.StartListening("LeftClick", SelectRobbers);
@@ -64,6 +70,7 @@ public class SelectedManager : MonoBehaviour
         {
             throw new Exception("Missing robber: Tried to remove robber that didn't exist");
         }
+        deathAudio.PlayOneShot(dying, 0.5f);
         robbers.Remove(target);
         selectedRobbers = selectedRobbers.Where(sel => sel.go != target).ToList();
     }
