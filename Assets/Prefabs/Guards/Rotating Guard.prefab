@@ -1042,7 +1042,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   player: {fileID: 0}
   viewPoint: {fileID: 1619115613}
-  viewDistance: 5
+  viewDistance: 2.5
   fov: 120
   bullet: {fileID: 8713152422425978879, guid: 19bfe792421c54cccad1a4231cfbf549, type: 3}
   gunPoint: {fileID: 8107595442645694354}
@@ -1052,7 +1052,7 @@ MonoBehaviour:
   numRotations: 2
   views:
   - {x: 1, y: 0, z: 0}
-  - {x: 0, y: 0, z: -1}
+  - {x: 0, y: 0, z: 1}
 --- !u!95 &2545908303305138046
 Animator:
   serializedVersion: 3
