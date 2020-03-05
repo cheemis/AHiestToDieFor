@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a253155eb808284f86db91575d09495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnLocation: {fileID: 0}
+  spawnLocation: {fileID: 1343644755258626754}
   corpse: {fileID: 8067361889173963718, guid: b6dee7aeb5d2b459a829b20b32b479ce, type: 3}
 --- !u!114 &7258621861079642310
 MonoBehaviour:
@@ -339,7 +339,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockingSpeed: 0.5
-  unlockVault: {fileID: 8300000, guid: e1fec80ab904ca645a7b5d9f10cdb22e, type: 3}
 --- !u!82 &-2087862230181788325
 AudioSource:
   m_ObjectHideFlags: 0
