@@ -33,6 +33,10 @@ public class GuardController : MonoBehaviour
     private Coroutine Co;
     public int waitingTime = 5;
 
+    //sunrise
+    private float duration = 300f;
+    public float timePassed = 0f;
+
     private void Awake()
     {
         gem = FindObjectOfType(typeof(GlobalEventManager)) as GlobalEventManager;
@@ -58,7 +62,7 @@ public class GuardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        GuardWakeUp();
     }
 
     public void CheckIfTargetIsDead(GameObject target, List<object> parameters)
@@ -215,4 +219,14 @@ public class GuardController : MonoBehaviour
     //used in sub classes to turn on/off waiting/reloading
     public void SetWaitCoOn(bool value) {waitCoOn = value;}
 
+    //used for increasing guard viewDistance in regards to sunrise
+    private void GuardWakeUp()
+    {
+        viewDistance += (timePassed * 10);
+
+        if (timePassed < 1)
+        {
+            timePassed += Time.deltaTime / duration;
+        }
+    }
 }
