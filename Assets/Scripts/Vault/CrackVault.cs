@@ -16,7 +16,8 @@ public class CrackVault : MonoBehaviour
     public List<GameObject> nearbyPlayers;
     private string status = "closed";
     private float loading = 0f;
-
+    private float unlockCounter = 0;
+    private float openCounter = 0;
     private Quaternion openRotation;
 
     private float finalRotation;
@@ -24,6 +25,11 @@ public class CrackVault : MonoBehaviour
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
 
     private GlobalEventManager gem;
+
+    //Sounds
+    public AudioClip unlockVault;
+    public AudioClip openVault;
+    private AudioSource vaultAudio;
 
     private void Awake()
     {
@@ -39,6 +45,7 @@ public class CrackVault : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        vaultAudio = GetComponent<AudioSource>();
         gem.StartListening("BeginUnlocking", BeginCracking);
         gem.StartListening("StopUnlocking", StopCracking);
         finalRotation = transform.rotation.y - 90f;
@@ -100,8 +107,14 @@ public class CrackVault : MonoBehaviour
 
     private void Open()
     {
+        if(openCounter == 0)
+        {
+            vaultAudio.PlayOneShot(openVault, 0.5f);
+            openCounter++;
+        }
         if(transform.position.y  > -2.1)
         {
+            
             transform.Translate(0, -openSpeed * Time.deltaTime, 0);
         }
         else if(unloaded)
@@ -125,7 +138,11 @@ public class CrackVault : MonoBehaviour
         {
             throw new Exception("Illegal argument: parameter wrong type");
         }
-
+        if(unlockCounter == 0)
+        {
+            vaultAudio.PlayOneShot(unlockVault, 0.5f);
+            unlockCounter++;
+        }
         isCracking = true;
         loadSpeed = (float)parameters[0];
     }
@@ -135,8 +152,9 @@ public class CrackVault : MonoBehaviour
         {
             return;
         }
-
+        vaultAudio.Stop();
         isCracking = false;
+        unlockCounter = 0;
     }
 
     public void OnCollisionEnter(Collision other)
