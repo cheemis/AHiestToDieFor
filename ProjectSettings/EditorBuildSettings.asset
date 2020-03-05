@@ -6,21 +6,27 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LOADING Tutorial/TempTitleScreen.unity
-    guid: d61ee15ad1acc41e0b9b3da16b057f29
-  - enabled: 1
-    path: Assets/Scenes/LOADING Tutorial/LoadingScreen.unity
-    guid: df94ec5ba0c624ce9ad402c08711eafe
+    path: Assets/Scenes/TitleScreen.unity
+    guid: b4c2b9df9fde8498da3572c96ed8de98
   - enabled: 1
     path: Assets/Scenes/WinScreen.unity
     guid: 7e7a40bae505ec04986da1dc23136738
   - enabled: 1
-    path: Assets/Scenes/Level One.unity
-    guid: 0e32c396949c6164c90df37143258fda
-  - enabled: 1
     path: Assets/Scenes/Level Two/Level Two.unity
     guid: 760abc3994fe04632b45640a7297108b
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/LOADING Tutorial/TempTitleScreen.unity
+    guid: d61ee15ad1acc41e0b9b3da16b057f29
+  - enabled: 0
+    path: Assets/Scenes/LOADING Tutorial/LoadingScreen.unity
+    guid: df94ec5ba0c624ce9ad402c08711eafe
+  - enabled: 0
+    path: Assets/Scenes/Level One.unity
+    guid: 0e32c396949c6164c90df37143258fda
+  - enabled: 0
     path: Assets/Scenes/LevelSelect/LevelSelect.unity
     guid: 48001d1efe6dbc647be024be050bfeef
+  - enabled: 0
+    path: Assets/Scenes/Intro_level (NEW)/Intro_level (NEW).unity
+    guid: 500f00f87108c433a8ade686513e2e14
   m_configObjects: {}

@@ -1052,7 +1052,7 @@ MonoBehaviour:
   numRotations: 2
   views:
   - {x: 1, y: 0, z: 0}
-  - {x: 0, y: 0, z: -1}
+  - {x: 0, y: 0, z: 1}
 --- !u!95 &2545908303305138046
 Animator:
   serializedVersion: 3
