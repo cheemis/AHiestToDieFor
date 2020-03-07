@@ -22,6 +22,7 @@ public class SpawnManager : MonoBehaviour
         {
             throw new Exception("Could not find dependency");
         }
+        robbersSpawnQueue = new Queue<GameObject>(TEST_SPAWN_ROBBERS); 
     }
     private void Start()
     {
