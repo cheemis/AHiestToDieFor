@@ -17,7 +17,7 @@ public class GuardController : MonoBehaviour
     public GameObject viewPoint;
 
     //guard view info
-    public float viewDistance = 20;
+    public float viewDistance = 5;
     public float fov = 60;
     private Vector3 lastPointSeen;
 
@@ -36,6 +36,7 @@ public class GuardController : MonoBehaviour
     //sunrise
     private float duration = 300f;
     public float timePassed = 0f;
+    public GameObject flashlight;
 
     private void Awake()
     {
@@ -220,13 +221,21 @@ public class GuardController : MonoBehaviour
     public void SetWaitCoOn(bool value) {waitCoOn = value;}
 
     //used for increasing guard viewDistance in regards to sunrise
-    private void GuardWakeUp()
+    public void GuardWakeUp()
     {
-        viewDistance += (timePassed * 10);
-
         if (timePassed < 1)
         {
+            viewDistance = Mathf.Min(7.5f, viewDistance += ((2.5f * timePassed) / (40 * duration)));
+
+            print(viewDistance);
+
+            Vector3 lTemp = flashlight.transform.localScale;
+            lTemp.z += ((750f * timePassed) / duration);
+            flashlight.transform.localScale = lTemp;
+
             timePassed += Time.deltaTime / duration;
+
+
         }
     }
 }

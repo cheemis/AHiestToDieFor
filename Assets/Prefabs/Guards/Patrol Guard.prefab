@@ -1482,6 +1482,8 @@ MonoBehaviour:
   bullet: {fileID: 8713152422425978879, guid: 19bfe792421c54cccad1a4231cfbf549, type: 3}
   gunPoint: {fileID: 8050648632941092619}
   waitingTime: 5
+  timePassed: 0
+  flashlight: {fileID: 4428493662720755349}
   patrolPoints:
   - {x: 31, y: 1.083333, z: 29}
   - {x: 24, y: 1.083333, z: 14}
@@ -1692,3 +1694,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d01385ba91ac644eba4200fc5f6f6a3f, type: 3}
+--- !u!1 &4428493662720755349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: d01385ba91ac644eba4200fc5f6f6a3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5644354569921453980}
+  m_PrefabAsset: {fileID: 0}

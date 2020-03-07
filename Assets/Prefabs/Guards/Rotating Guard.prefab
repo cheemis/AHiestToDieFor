@@ -1046,6 +1046,8 @@ MonoBehaviour:
   bullet: {fileID: 8713152422425978879, guid: 19bfe792421c54cccad1a4231cfbf549, type: 3}
   gunPoint: {fileID: 8107595442645694354}
   waitingTime: 1
+  timePassed: 0
+  flashlight: {fileID: 7406768382559518977}
   numRotations: 2
   views:
   - {x: 1, y: 0, z: 0}
@@ -1594,6 +1596,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d01385ba91ac644eba4200fc5f6f6a3f, type: 3}
+--- !u!1 &7406768382559518977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: d01385ba91ac644eba4200fc5f6f6a3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1579582110635743240}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7190502134741460140
 PrefabInstance:
   m_ObjectHideFlags: 0
