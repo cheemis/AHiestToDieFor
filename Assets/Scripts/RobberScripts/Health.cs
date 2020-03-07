@@ -47,6 +47,10 @@ public class Health : MonoBehaviour
             animator.SetBool("isDead", true);
             gameObject.tag = "Corpse";
             gem.TriggerEvent("Death", gameObject);
+            // triggers event in a lot of places,
+            // GameManager, SelecedManager, CorpseLeaving, MoneyBag, Movement, Unlocking
+            // basically all the places that need to be stopped or removed from a list when someone dies
+            // and the money being dropped ofc
         }
     }
 }

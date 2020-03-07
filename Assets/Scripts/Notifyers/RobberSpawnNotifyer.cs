@@ -22,6 +22,7 @@ public class RobberSpawnNotifyer : MonoBehaviour
         if (other.transform.CompareTag("Player"))
         {
             gem.TriggerEvent("RobberEnteredSpawnArea", other.gameObject);
+            // triggers event in SelectedManager
         }
     }
 }

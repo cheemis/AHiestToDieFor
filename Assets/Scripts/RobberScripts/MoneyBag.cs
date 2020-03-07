@@ -12,6 +12,11 @@ public class MoneyBag : MonoBehaviour
 
     public GameObject backpack;
     public GameObject backpackPrefab;
+
+    //Sounds
+    public AudioClip stealMoney;
+    private AudioSource playerAudio;
+
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -27,6 +32,7 @@ public class MoneyBag : MonoBehaviour
 
     private void Start()
     {
+        playerAudio = GetComponent<AudioSource>();
         gem.StartListening("AddMoneyToRobber", AddMoney);
         gem.StartListening("KeyCardStolen", KeyCardStolen);
         gem.StartListening("Death", DropMoney);
@@ -54,6 +60,7 @@ public class MoneyBag : MonoBehaviour
         script.amount = money;
         money = 0;
         gem.TriggerEvent("UpdateMoney", gameObject);
+        // triggers event in GameManager
     }
     private void AddMoney(GameObject target, List<object> parameters)
     {
@@ -69,9 +76,10 @@ public class MoneyBag : MonoBehaviour
         {
             throw new Exception("Illegal argument: parameter wrong type");
         }
-
+        playerAudio.PlayOneShot(stealMoney, 0.5f);
         money += (float) parameters[0];
         gem.TriggerEvent("UpdateMoney", gameObject);
+        // triggers event in GameManager
     }
 
     private void KeyCardStolen(GameObject target, List<object> parameters)

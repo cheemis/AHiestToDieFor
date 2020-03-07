@@ -6,42 +6,47 @@ public class WeightedPlate : MonoBehaviour
 {
     public float distanceDown = .5f;
 
-    public GameObject door;
+    //keeps track if multiple robbers inside button collider
+    private float numRobbersInside = 0;
 
-    public float doorDistanceX = 0;
-    public float doorDistanceY = 0;
-    public float doorDistanceZ = 0;
+    //We will call door scripts
+    public GameObject door;
+    public Door doorScript;
+
+    //Sounds
+    public AudioClip OnPlate;
+    private AudioSource plateAudio;
 
     private Vector3 movePlate;
-    private Vector3 moveDoor;
     // Start is called before the first frame update
     void Start()
     {
-
+        plateAudio = GetComponent<AudioSource>();
+        doorScript = door.GetComponent<Door>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     //Move plate back up upon leaving and close the door
     private void OnTriggerExit(Collider other)
     {
-        movePlate = new Vector3(0, distanceDown, 0);
-        moveDoor = new Vector3(doorDistanceX, doorDistanceY, doorDistanceZ);
-
-        this.gameObject.transform.Translate(movePlate);
-        door.transform.Translate(moveDoor);
+        if (numRobbersInside == 1)
+        {
+            movePlate = new Vector3(0, distanceDown, 0);
+            doorScript.closeDoor();
+            this.gameObject.transform.Translate(movePlate);
+        }
+        numRobbersInside--;
     }
 
     //Move plate down upon entering and open the door
     private void OnTriggerEnter(Collider other)
     {
-        movePlate = new Vector3(0, -distanceDown, 0);
-        moveDoor = new Vector3(-doorDistanceX, -doorDistanceY, -doorDistanceZ);
-
-        this.gameObject.transform.Translate(movePlate);
-        door.transform.Translate(moveDoor);
+        if (numRobbersInside == 0)
+        {
+            plateAudio.PlayOneShot(OnPlate, 0.5f);
+            movePlate = new Vector3(0, -distanceDown, 0);
+            doorScript.openDoor();
+            this.gameObject.transform.Translate(movePlate);
+        }
+        numRobbersInside++;
     }
 }
