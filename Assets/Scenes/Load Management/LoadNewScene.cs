@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class LoadNewScene : MonoBehaviour
 {
-
-    public static int scene;
-
+    private Animator fading;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("LoadNextLevel");
+        fading = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -20,10 +18,17 @@ public class LoadNewScene : MonoBehaviour
         
     }
 
+    public void LoadLevel()
+    {
+        fading.SetBool("Fade", true);
+        StartCoroutine("LoadNextLevel");
+    }
+
     IEnumerator LoadNextLevel()
     {
+
         yield return new WaitForSeconds(3);
-        SceneManager.LoadSceneAsync(scene);
+        SceneManager.LoadSceneAsync(StaticMoney.GetLastScene());
     }
 
 }
