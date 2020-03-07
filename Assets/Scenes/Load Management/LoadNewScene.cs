@@ -26,7 +26,6 @@ public class LoadNewScene : MonoBehaviour
 
     IEnumerator LoadNextLevel()
     {
-
         yield return new WaitForSeconds(3);
         SceneManager.LoadSceneAsync(StaticMoney.GetLastScene());
     }
