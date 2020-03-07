@@ -38,20 +38,14 @@ public class SelectedManager : MonoBehaviour
         deathAudio = GetComponent<AudioSource>();
         gem.StartListening("NotifyLocationChanged", CheckIfCameraNeedsToUpdate);
         gem.StartListening("RightClick", MoveSelectedRobbers);
-        gem.StartListening("LeftClick", SelectRobbers);
         gem.StartListening("Space", SwitchRobber);
-        gem.StartListening("E", AttemptUnlock);
-
         gem.StartListening("RobberEnteredSpawnArea", TrackRobber);
         gem.StartListening("Death", RemoveRobber);
     }
     private void OnDestroy()
     {
         gem.StopListening("RightClick", MoveSelectedRobbers);
-        gem.StopListening("LeftClick", SelectRobbers);
         gem.StopListening("Space", SwitchRobber);
-        gem.StopListening("E", AttemptUnlock);
-
         gem.StopListening("RobberEnteredSpawnArea", TrackRobber);
         gem.StopListening("Death", RemoveRobber);
     }
@@ -98,20 +92,12 @@ public class SelectedManager : MonoBehaviour
             // notifies Movement component script
         }
     }
-    private void SelectRobbers(GameObject target, List<object> parameters)
-    {
-        if (parameters.Count == 0)
-        {
-            throw new Exception("Missing parameter: Could not find list of robbers");
-        }
-        if (parameters[0].GetType() != typeof(List<GameObject>))
-        {
-            throw new Exception("Illegal argument: parameter wrong type: " + parameters[0].GetType().ToString());
-        }
-        Select((List<GameObject>) parameters[0]);
-    }
     private void SwitchRobber(GameObject target, List<object> parameters)
     {
+        if (robbers.Count == 0)
+        {
+            throw new Exception("Missing robbers in list: Cannot switch between robbers when none exist");
+        }
         if (selectedRobbers.Count == 0)
         {
             Select(new List<GameObject> { robbers[0] });
@@ -130,13 +116,6 @@ public class SelectedManager : MonoBehaviour
                 break;
             }
         }
-    }
-    private void AttemptUnlock(GameObject target, List<object> parameters)
-    {
-        //foreach(Selected robber in selectedRobbers)
-        //{
-        //    gem.TriggerEvent("Unlock", robber.go);
-        //}
     }
     private void Select(List<GameObject> robbers)
     {
