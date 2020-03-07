@@ -26,6 +26,7 @@ public class MoneyNotifyer : MonoBehaviour
         {
             Debug.Log("Touched money!: " + collision.transform.name);
             gem.TriggerEvent("AddMoneyToRobber", collision.gameObject, new List<object> { amount });
+            // triggers event in MoneyBag
             Destroy(gameObject);
         }
     }

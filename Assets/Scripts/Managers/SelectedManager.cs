@@ -79,6 +79,7 @@ public class SelectedManager : MonoBehaviour
         if (selectedRobbers.Any(sel => sel.go == target))
         {
             gem.TriggerEvent("UpdateCamera", target);
+            // notifies CameraManager
         }
     }
     private void MoveSelectedRobbers(GameObject target, List<object> parameters)
@@ -94,6 +95,7 @@ public class SelectedManager : MonoBehaviour
         foreach(Selected robber in selectedRobbers)
         {
             gem.TriggerEvent("Move", robber.go, parameters);
+            // notifies Movement component script
         }
     }
     private void SelectRobbers(GameObject target, List<object> parameters)
@@ -152,6 +154,7 @@ public class SelectedManager : MonoBehaviour
         if (selectedRobbers.Count != 0)
         {
             gem.TriggerEvent("UpdateCamera", robbers[0]);
+            // notifies CameraManager
         }
     }
 
