@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        
         gem.StartListening("UpdateMoney", UpdateMoney);
         gem.StartListening("EscapeWithMoney", Escape);
         gem.StartListening("RobberEnteredSpawnArea", TrackRobber);
@@ -86,12 +87,19 @@ public class GameManager : MonoBehaviour
         {
             if (GetAccumulatedStolenMoney() >= winAmount)
             {
+                //Store money, robbers, and next level
+                StaticMoney.AddMoney(GetAccumulatedStolenMoney());
+                StaticMoney.SetRobbersAlive(robbers.Count);
+                StaticMoney.SetLastScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+
+
                 //LoadNewScene.scene = SceneManager.GetActiveScene().buildIndex + 1;
                 //print(LoadNewScene.scene);
 
                 //load next scene unless no more levels, then load title screen
                 //if(LoadNewScene.scene <= 3) {SceneManager.LoadScene(LoadNewScene.scene);}
-                //else {SceneManager.LoadScene(0);}
+                ///else {SceneManager.LoadScene(0);}
             }
         }
     }
