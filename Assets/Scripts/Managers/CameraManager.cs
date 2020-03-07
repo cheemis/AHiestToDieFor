@@ -109,5 +109,6 @@ public class CameraManager : MonoBehaviour
         GameObject robber = (GameObject)parameters[0];
         robberToRoomMap[robber] = target;
         gem.TriggerEvent("NotifyLocationChanged", robber);
+        // notifies SelectedManager
     }
 }

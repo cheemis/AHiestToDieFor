@@ -49,7 +49,7 @@ public class Unlocking : MonoBehaviour
             return;
         }
         gem.TriggerEvent("BeginUnlocking", gameObject, new List<object> { unlockingSpeed });
-        Debug.Log("gem.TriggerEvent(\"BeginUnlocking\", gameObject, new List<object> { unlockingSpeed });");
+        // triggers event in CrackVault
     }
     public void StopUnlocking(GameObject target, List<object> parameters)
     {
