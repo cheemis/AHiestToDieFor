@@ -60,6 +60,7 @@ public class MoneyBag : MonoBehaviour
         script.amount = money;
         money = 0;
         gem.TriggerEvent("UpdateMoney", gameObject);
+        // triggers event in GameManager
     }
     private void AddMoney(GameObject target, List<object> parameters)
     {
@@ -78,6 +79,7 @@ public class MoneyBag : MonoBehaviour
         playerAudio.PlayOneShot(stealMoney, 0.5f);
         money += (float) parameters[0];
         gem.TriggerEvent("UpdateMoney", gameObject);
+        // triggers event in GameManager
     }
 
     private void KeyCardStolen(GameObject target, List<object> parameters)
