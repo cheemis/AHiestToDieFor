@@ -24,6 +24,7 @@ public class CameraNotifyer : MonoBehaviour
         {
             Debug.Log("Registered OnTriggerEnter!: " + other.transform.name);
             gem.TriggerEvent("RobberEnteredRoom", gameObject, new List<object> { other.gameObject });
+            // triggers event in CameraManager
         }
 
     }

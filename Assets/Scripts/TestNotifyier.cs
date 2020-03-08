@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 using System;
 
-public class MoneyNotifyer : MonoBehaviour
+public class TestNotifyier : MonoBehaviour
 {
     private GlobalEventManager gem;
-
-    public float amount;
-
+    public List<GameObject> TEST_SPAWN_ROBBERS;
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -20,14 +19,15 @@ public class MoneyNotifyer : MonoBehaviour
             throw new Exception("Could not find dependency");
         }
     }
-    private void OnCollisionEnter(Collision collision)
+
+    private void Start()
     {
-        if (collision.transform.CompareTag("Player"))
-        {
-            Debug.Log("Touched money!: " + collision.transform.name);
-            gem.TriggerEvent("AddMoneyToRobber", collision.gameObject, new List<object> { amount });
-            // triggers event in MoneyBag
-            Destroy(gameObject);
-        }
+        StartCoroutine(SpawnRobbers());
+    }
+
+    private IEnumerator SpawnRobbers()
+    {
+        yield return new WaitForSeconds(1);
+        gem.TriggerEvent("RobbersSelected", gameObject, new List<object> { new Queue<GameObject>(TEST_SPAWN_ROBBERS) });
     }
 }

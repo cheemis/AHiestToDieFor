@@ -23,11 +23,7 @@ public class InputManager : MonoBehaviour
         if (Input.GetKeyDown("space"))
         {
             gem.TriggerEvent("Space", gameObject);
-        }
-        if (Input.GetKeyDown("e"))
-        {
-            gem.TriggerEvent("E", gameObject);
-            Debug.Log("gem.TriggerEvent(\"E\", gameObject);");
+            // triggers event in SelectedManager
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -38,6 +34,7 @@ public class InputManager : MonoBehaviour
                 .Select(hit => hit.transform.gameObject)
                 .ToList();
             gem.TriggerEvent("LeftClick", gameObject, new List<object> { robbers });
+            // triggers event in SelectedManager
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -50,6 +47,7 @@ public class InputManager : MonoBehaviour
             {
                 Vector3 location = hit.point;
                 gem.TriggerEvent("RightClick", gameObject, new List<object> { location });
+                // triggers event in SelectedManager
             }
         }
     }
