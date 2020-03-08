@@ -11,8 +11,9 @@ public class Results : MonoBehaviour
     public float money = 100;
     public int robbersAlive = 4;
 
-    private int countingMoney = 0;
+    private float countingMoney = 0;
     private int countingRobbers = 0;
+    private float addingAmount = 10;
 
     private float total = 0;
 
@@ -99,7 +100,7 @@ public class Results : MonoBehaviour
 
     private void CountTotal()
     {
-        countingMoney += 10;
+        countingMoney += addingAmount;
 
         if(countingMoney > total)
         {
@@ -113,6 +114,8 @@ public class Results : MonoBehaviour
         }
 
         text.text = moneyText + countingMoney;
+
+        addingAmount += 1;
     }
 
 
