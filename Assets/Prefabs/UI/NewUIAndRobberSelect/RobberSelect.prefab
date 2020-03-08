@@ -589,8 +589,8 @@ MonoBehaviour:
   robberPrefabs:
   - {fileID: 1351998621824102338, guid: 39858caeaed235e4ab7df5b91bbc865b, type: 3}
   - {fileID: 1351998621824102338, guid: 6a64da11299b1604ea522ab50edadfac, type: 3}
-  - {fileID: 1351998621824102338, guid: 39858caeaed235e4ab7df5b91bbc865b, type: 3}
-  - {fileID: 1351998621824102338, guid: 39858caeaed235e4ab7df5b91bbc865b, type: 3}
+  - {fileID: 1850083589726519116, guid: aa8da02f3f96e414e8323359a7036106, type: 3}
+  - {fileID: 8348570752869221637, guid: 78c794195db0c994487d2e11424f7388, type: 3}
   robberList:
   - {fileID: 21300000, guid: 31c54de63289b2f4ba65c15d7ff69459, type: 3}
   - {fileID: 21300000, guid: 13fef9436f5a87a4785c3d1140e28100, type: 3}
