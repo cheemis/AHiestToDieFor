@@ -16,7 +16,8 @@ public class SelectedManager : MonoBehaviour
     public AudioClip dying;
     private AudioSource deathAudio;
 
-    public GameObject selectedRing;
+    public GameObject selectedRingPrefab;
+    private GameObject selectedRing;
 
     private void Awake()
     {
@@ -43,6 +44,10 @@ public class SelectedManager : MonoBehaviour
         gem.StartListening("Space", SwitchRobber);
         gem.StartListening("RobberEnteredSpawnArea", TrackRobber);
         gem.StartListening("Death", RemoveRobber);
+
+        selectedRing = Instantiate(selectedRingPrefab,
+                                   new Vector3(100, 0, 100),
+                                   selectedRingPrefab.transform.rotation);
     }
     private void OnDestroy()
     {
