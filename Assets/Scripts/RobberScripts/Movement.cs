@@ -46,6 +46,8 @@ public class Movement : MonoBehaviour
     }
     private void PreventFurtherMovement(GameObject target, List<object> parameters)
     {
+        agent.SetDestination(transform.position);
+
         if (target != gameObject)
         {
             return;
