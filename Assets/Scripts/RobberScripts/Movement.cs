@@ -50,6 +50,7 @@ public class Movement : MonoBehaviour
         {
             return;
         }
+        Destroy(agent);
         Destroy(this);
     }
     private void Move(GameObject target, List<object> parameters)
