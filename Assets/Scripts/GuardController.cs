@@ -33,6 +33,8 @@ public class GuardController : MonoBehaviour
     private Coroutine Co;
     public int waitingTime = 5;
 
+    private bool guessLocation = false;
+
     //Sounds
     public AudioClip sawPlayer;
     public AudioClip gunshots;
@@ -137,6 +139,8 @@ public class GuardController : MonoBehaviour
         //else, hunt down the last known location of the player
         else if(Vector3.Distance(lastPointSeen, transform.position) > .1)
         {
+            if(!waitCoOn && guessLocation) {StartCoroutine("GuessPlayer");}
+
             agent.SetDestination(lastPointSeen);
         }
         //if can't find player at last location, go back to idling
@@ -144,6 +148,7 @@ public class GuardController : MonoBehaviour
         {
             action = "idle";
             player = null;
+            guessLocation = true;
         }
     }
 
@@ -152,9 +157,11 @@ public class GuardController : MonoBehaviour
         //stop moving
         agent.SetDestination(transform.position);
 
+        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
         //see if facing the player
-        if(Quaternion.Angle(Quaternion.LookRotation(player.transform.position - transform.position), transform.rotation) > 8 &&
-           Vector3.Distance(player.transform.position, transform.position) < viewDistance + 5)
+        if(Quaternion.Angle(Quaternion.LookRotation(player.transform.position - transform.position), transform.rotation) > 4 &&
+            distanceToPlayer > 4 &&
+            distanceToPlayer < viewDistance + 5)
         {
             //look towards player
             Quaternion targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
@@ -208,6 +215,21 @@ public class GuardController : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
         guardAudio.PlayOneShot(gunshots, 0.5f);
+        waitCoOn = false;
+    }
+
+    IEnumerator GuessPlayer()
+    {
+        waitCoOn = true;
+        yield return new WaitForSeconds(2);
+        if(player)
+        {
+            lastPointSeen = player.transform.position;
+            action = "chase";
+            print("guessed");
+        }
+
+        guessLocation = false;
         waitCoOn = false;
     }
 
