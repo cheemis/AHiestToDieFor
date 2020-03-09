@@ -5084,6 +5084,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patrol Guard
       objectReference: {fileID: 0}
+    - target: {fileID: 8859566286901179215, guid: a342d38b7103e49ccbd9bdb9e24eeeae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a342d38b7103e49ccbd9bdb9e24eeeae, type: 3}
 --- !u!1001 &1650180370

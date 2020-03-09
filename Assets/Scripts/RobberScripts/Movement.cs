@@ -10,6 +10,8 @@ public class Movement : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
     public float speed;
+    public GameObject ring;
+
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -68,6 +70,8 @@ public class Movement : MonoBehaviour
 
         Vector3 location = (Vector3) parameters[0];// as Vector3;
 
+        Instantiate(ring, location, ring.transform.rotation);
+        
         agent.SetDestination(location);
         agent.speed = speed;
     }

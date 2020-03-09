@@ -46,6 +46,7 @@ public class Bullet : MonoBehaviour
         if(collided)
         {
             mr.enabled = false;
+            transform.Translate(Vector3.zero);
         }
     }
 

@@ -1455,6 +1455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  ring: {fileID: 1120753184680196933, guid: 3647f2fd9dc3f4b1498d5a9c021513fd, type: 3}
 --- !u!114 &6554631332922905043
 MonoBehaviour:
   m_ObjectHideFlags: 0
