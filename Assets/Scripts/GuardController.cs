@@ -27,6 +27,7 @@ public class GuardController : MonoBehaviour
     //Gun stuff
     public GameObject bullet;
     public GameObject gunPoint;
+    public float shootAngle = 3f;
 
     //coroutine stuff
     private bool waitCoOn = false;
@@ -158,18 +159,19 @@ public class GuardController : MonoBehaviour
         agent.SetDestination(transform.position);
 
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-        //see if facing the player
-        if(Quaternion.Angle(Quaternion.LookRotation(player.transform.position - transform.position), transform.rotation) > 4 &&
-            distanceToPlayer > 4 &&
-            distanceToPlayer < viewDistance + 5)
-        {
-            //look towards player
-            Quaternion targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
-            float strength = Mathf.Min(10 * Time.deltaTime, 1);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, strength);
-        }
+        // //see if facing the player
+        // if(Quaternion.Angle(Quaternion.LookRotation(player.transform.position - transform.position), transform.rotation) > shootAngle &&
+        //     distanceToPlayer > 5 &&
+        //     distanceToPlayer < viewDistance + 5)
+        // {
+        //     //look towards player
+        //     Quaternion targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
+        //     float strength = Mathf.Min(10 * Time.deltaTime, 1);
+        //     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, strength);
+        // }
+
         //attack player
-        else if(Vector3.Distance(player.transform.position, transform.position) < viewDistance + 5)
+        if(LookAtPlayer(distanceToPlayer))
         {
             //shoot at player
             if (!waitCoOn)
@@ -187,6 +189,23 @@ public class GuardController : MonoBehaviour
 
         //set the last known location of the player
         lastPointSeen = player.transform.position;
+    }
+
+    public bool LookAtPlayer(float distanceToPlayer)
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
+        float strength = Mathf.Min(30 * Time.deltaTime, 1);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, strength);
+        
+        //print(Quaternion.LookRotation(player.transform.position - transform.position) + " " + transform.rotation + "  " + (Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up).y - transform.rotation.y));
+
+        print((distanceToPlayer < 5) + " " +
+             (Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up).y - transform.rotation.y < shootAngle) + " " + 
+             (distanceToPlayer < viewDistance + 5));
+
+        return distanceToPlayer < 5 ||
+               (Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up).y - transform.rotation.y < shootAngle &&
+               distanceToPlayer < viewDistance + 5);
     }
 
     public void Idle()
