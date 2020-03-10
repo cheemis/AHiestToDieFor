@@ -6,12 +6,7 @@ using System;
 public class GlobalEventManager : MonoBehaviour
 {
 
-    private Dictionary<string, Action<GameObject, List<object>>> eventDictionary;
-
-    void Awake()
-    {
-        eventDictionary = new Dictionary<string, Action<GameObject, List<object>>>();
-    }
+    private Dictionary<string, Action<GameObject, List<object>>> eventDictionary = new Dictionary<string, Action<GameObject, List<object>>>();
 
     public void StartListening(string eventName, Action<GameObject, List<object>> listener)
     {
