@@ -8,7 +8,6 @@ public class WinScreenTrigger : MonoBehaviour
 {
     private GlobalEventManager gem;
 
-    public float amount;
     private List<GameObject> nearbyRobbers;
 
     private void Awake()

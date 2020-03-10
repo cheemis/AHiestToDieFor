@@ -11,6 +11,7 @@ TagManager:
   - Bullet
   - Vault
   - Corpse
+  - Sky
   - MapCamera
   layers:
   - Default

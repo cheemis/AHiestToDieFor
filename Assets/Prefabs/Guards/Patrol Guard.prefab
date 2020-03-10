@@ -1483,6 +1483,8 @@ MonoBehaviour:
   bullet: {fileID: 8713152422425978879, guid: 19bfe792421c54cccad1a4231cfbf549, type: 3}
   gunPoint: {fileID: 8050648632941092619}
   waitingTime: 5
+  timePassed: 0
+  flashlight: {fileID: 4428493662720755349}
   sawPlayer: {fileID: 8300000, guid: 0ad398f665bf60c46921c8973be5fddf, type: 3}
   gunshots: {fileID: 8300000, guid: b97ae4b64cb3c7a488d742fc1c49c0b6, type: 3}
   patrolPoints:
@@ -1791,3 +1793,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d01385ba91ac644eba4200fc5f6f6a3f, type: 3}
+--- !u!1 &4428493662720755349 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: d01385ba91ac644eba4200fc5f6f6a3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5644354569921453980}
+  m_PrefabAsset: {fileID: 0}

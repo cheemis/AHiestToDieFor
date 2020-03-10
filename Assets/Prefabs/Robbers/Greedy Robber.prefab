@@ -1466,7 +1466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 0
-  keyCard: {fileID: 0}
+  moneyMultiplier: 2
   backpack: {fileID: 71487823657584187}
   backpackPrefab: {fileID: 8202432182885978431, guid: 69a4dccee43f14fdd928d9c3091759a9,
     type: 3}
