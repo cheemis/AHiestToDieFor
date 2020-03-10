@@ -1047,6 +1047,7 @@ MonoBehaviour:
   fov: 120
   bullet: {fileID: 8713152422425978879, guid: 19bfe792421c54cccad1a4231cfbf549, type: 3}
   gunPoint: {fileID: 8107595442645694354}
+  shootAngle: 3
   waitingTime: 1
   timePassed: 0
   flashlight: {fileID: 7406768382559518977}
@@ -1183,9 +1184,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &5383677057358438866
 GameObject:
