@@ -277,8 +277,6 @@ public class GuardController : MonoBehaviour
         {
             viewDistance = Mathf.Min(7.5f, viewDistance += ((2.5f * timePassed) / (40 * duration)));
 
-            print(viewDistance);
-
             Vector3 lTemp = flashlight.transform.localScale;
             lTemp.z += ((750f * timePassed) / duration);
             flashlight.transform.localScale = lTemp;
