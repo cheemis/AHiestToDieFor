@@ -17,6 +17,10 @@ public class MoneyBag : MonoBehaviour
     public AudioClip stealMoney;
     private AudioSource playerAudio;
 
+    //money particle system
+    public GameObject moneyPS;
+    private ParticleSystem particleSystem;
+
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -35,6 +39,8 @@ public class MoneyBag : MonoBehaviour
         playerAudio = GetComponent<AudioSource>();
         gem.StartListening("AddMoneyToRobber", AddMoney);
         gem.StartListening("Death", DropMoney);
+
+        particleSystem = moneyPS.GetComponent<ParticleSystem>();
     }
     private void OnDestroy()
     {
@@ -75,7 +81,12 @@ public class MoneyBag : MonoBehaviour
             throw new Exception("Illegal argument: parameter wrong type");
         }
         playerAudio.PlayOneShot(stealMoney, 0.5f);
-        money += (float) parameters[0] * moneyMultiplier;
+
+         money += (float) parameters[0] * moneyMultiplier;
+
+        var emission = particleSystem.emission;
+        emission.rateOverDistance = Mathf.Min(money/10000, 2.5f);
+
         gem.TriggerEvent("UpdateMoney", gameObject);
         // triggers event in GameManager
     }
