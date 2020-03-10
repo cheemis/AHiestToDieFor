@@ -966,6 +966,7 @@ GameObject:
   - component: {fileID: 3441528795906635007}
   - component: {fileID: 2545908303305138046}
   - component: {fileID: 7112569229352712875}
+  - component: {fileID: -8387684762307076246}
   m_Layer: 0
   m_Name: Rotating Guard
   m_TagString: Untagged
@@ -1168,6 +1169,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &-8387684762307076246
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4941656147289730885}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5383677057358438866
 GameObject:
   m_ObjectHideFlags: 0
