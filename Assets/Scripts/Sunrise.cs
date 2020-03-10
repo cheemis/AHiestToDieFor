@@ -6,8 +6,7 @@ public class Sunrise : MonoBehaviour
 {
     private float duration = 300f;
     public float timePassed = 0f;
-    public Material mat;
-    public MeshRenderer meshr;
+    private MeshRenderer meshr;
 
     private Color night = new Color32(68, 1, 141, 255);
     private Color day = new Color32(253, 184, 93, 255);
