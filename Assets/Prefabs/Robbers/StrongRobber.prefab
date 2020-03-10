@@ -327,7 +327,7 @@ MonoBehaviour:
   backpackPrefab: {fileID: 8202432182885978431, guid: 69a4dccee43f14fdd928d9c3091759a9,
     type: 3}
   stealMoney: {fileID: 8300000, guid: cb4e86a6d4d4e144dab831b8121306bf, type: 3}
-  moneyPS: {fileID: 0}
+  moneyPS: {fileID: 467281121822977737}
 --- !u!114 &7870731888636250611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1775,6 +1775,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f62d6a767b34249b5c1d194d399952, type: 3}
+--- !u!1 &467281121822977737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6539922504665501688, guid: 91f62d6a767b34249b5c1d194d399952,
+    type: 3}
+  m_PrefabInstance: {fileID: 6682890404778123569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7026874219313925067
 PrefabInstance:
   m_ObjectHideFlags: 0
