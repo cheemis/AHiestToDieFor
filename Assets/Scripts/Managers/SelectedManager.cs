@@ -150,11 +150,6 @@ public class SelectedManager : MonoBehaviour
         public GameObject selectedRing;
         public Selected(GameObject go, GameObject selectedRing)
         {
-            // if (go.GetComponent<MeshRenderer>() == null)
-            // {
-            //     throw new Exception("Missing component: gameobject did not have MeshRenderer");
-            // }
-            // original = go.GetComponent<MeshRenderer>().material.color;
             this.go = go;
             this.selectedRing = selectedRing;
         }
