@@ -28,25 +28,31 @@ public class WeightedPlate : MonoBehaviour
     //Move plate back up upon leaving and close the door
     private void OnTriggerExit(Collider other)
     {
-        if (numRobbersInside == 1)
+        if (!other.CompareTag("Bullet"))
         {
-            movePlate = new Vector3(0, distanceDown, 0);
-            doorScript.closeDoor();
-            this.gameObject.transform.Translate(movePlate);
+            if (numRobbersInside == 1)
+            {
+                movePlate = new Vector3(0, distanceDown, 0);
+                doorScript.closeDoor();
+                this.gameObject.transform.Translate(movePlate);
+            }
+            numRobbersInside--;
         }
-        numRobbersInside--;
     }
 
     //Move plate down upon entering and open the door
     private void OnTriggerEnter(Collider other)
     {
-        if (numRobbersInside == 0)
+        if (!other.gameObject.CompareTag("Bullet"))
         {
-            plateAudio.PlayOneShot(OnPlate, 0.5f);
-            movePlate = new Vector3(0, -distanceDown, 0);
-            doorScript.openDoor();
-            this.gameObject.transform.Translate(movePlate);
+            if (numRobbersInside == 0)
+            {
+                plateAudio.PlayOneShot(OnPlate, 0.5f);
+                movePlate = new Vector3(0, -distanceDown, 0);
+                doorScript.openDoor();
+                this.gameObject.transform.Translate(movePlate);
+            }
+            numRobbersInside++;
         }
-        numRobbersInside++;
     }
 }
