@@ -57,6 +57,10 @@ public class Bullet : MonoBehaviour
             collided = true;
             gem.TriggerEvent("Shot", other.gameObject);
         }
+        else
+        {
+            collided = true;
+        }
     }
 
     void FixedUpdate()
