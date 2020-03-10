@@ -16,6 +16,9 @@ public class SelectedManager : MonoBehaviour
     public AudioClip dying;
     private AudioSource deathAudio;
 
+    public GameObject selectedRingPrefab;
+    private GameObject selectedRing;
+
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -41,6 +44,10 @@ public class SelectedManager : MonoBehaviour
         gem.StartListening("Space", SwitchRobber);
         gem.StartListening("RobberEnteredSpawnArea", TrackRobber);
         gem.StartListening("Death", RemoveRobber);
+
+        selectedRing = Instantiate(selectedRingPrefab,
+                                   new Vector3(100, 0, 100),
+                                   selectedRingPrefab.transform.rotation);
     }
     private void OnDestroy()
     {
@@ -119,16 +126,14 @@ public class SelectedManager : MonoBehaviour
     }
     private void Select(List<GameObject> robbers)
     {
-        foreach(Selected robber in selectedRobbers)
-        {
-            //robber.Reset();
-        }
         selectedRobbers = robbers
-            .Select(robber => new Selected(robber))
+            .Select(robber => new Selected(robber, selectedRing))
             .ToList();
+
+        if(selectedRobbers.Count == 0) {selectedRing.transform.parent = null; selectedRing.transform.position = new Vector3(100, 0, 100);}
         foreach(Selected robber in selectedRobbers)
         {
-            //obber.ApplyHighlight();
+            robber.ApplyHighlight();
         }
         if (selectedRobbers.Count != 0)
         {
@@ -142,23 +147,17 @@ public class SelectedManager : MonoBehaviour
         internal GameObject go;
         Color original;
 
-        public Selected(GameObject go)
+        public GameObject selectedRing;
+        public Selected(GameObject go, GameObject selectedRing)
         {
-            // if (go.GetComponent<MeshRenderer>() == null)
-            // {
-            //     throw new Exception("Missing component: gameobject did not have MeshRenderer");
-            // }
-            // original = go.GetComponent<MeshRenderer>().material.color;
             this.go = go;
+            this.selectedRing = selectedRing;
         }
 
         public void ApplyHighlight()
         {
-            go.GetComponent<MeshRenderer>().material.color = original + Constants.highlight;
-        }
-        public void Reset()
-        {
-            go.GetComponent<MeshRenderer>().material.color = original;
+            selectedRing.transform.SetParent(go.transform);
+            selectedRing.transform.position = go.transform.position;
         }
     }
 

@@ -12,6 +12,7 @@ TagManager:
   - Vault
   - Corpse
   - Sky
+  - MapCamera
   layers:
   - Default
   - TransparentFX

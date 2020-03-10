@@ -6,7 +6,6 @@ using System;
 public class SpawnManager : MonoBehaviour
 {
     public List<GameObject> spawnPoints;
-    public List<GameObject> TEST_SPAWN_ROBBERS;
 
     private GlobalEventManager gem;
     private Queue<GameObject> robbersSpawnQueue;
@@ -22,6 +21,7 @@ public class SpawnManager : MonoBehaviour
         {
             throw new Exception("Could not find dependency");
         }
+        robbersSpawnQueue = new Queue<GameObject>();
     }
     private void Start()
     {

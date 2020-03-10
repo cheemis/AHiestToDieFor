@@ -1363,7 +1363,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1351998621824102338}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1078246773}
@@ -1455,6 +1455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  ring: {fileID: 1120753184680196933, guid: 3647f2fd9dc3f4b1498d5a9c021513fd, type: 3}
 --- !u!114 &6554631332922905043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1513,7 +1514,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockingSpeed: 0.5
-  unlockVault: {fileID: 8300000, guid: e1fec80ab904ca645a7b5d9f10cdb22e, type: 3}
 --- !u!82 &2136262690308843226
 AudioSource:
   m_ObjectHideFlags: 0

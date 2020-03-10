@@ -27,6 +27,7 @@ public class GuardController : MonoBehaviour
     //Gun stuff
     public GameObject bullet;
     public GameObject gunPoint;
+    public float shootAngle = 3f;
 
     //coroutine stuff
     private bool waitCoOn = false;
@@ -37,6 +38,8 @@ public class GuardController : MonoBehaviour
     private float duration = 300f;
     public float timePassed = 0f;
     public GameObject flashlight;
+
+    private bool guessLocation = false;
 
     //Sounds
     public AudioClip sawPlayer;
@@ -143,6 +146,8 @@ public class GuardController : MonoBehaviour
         //else, hunt down the last known location of the player
         else if(Vector3.Distance(lastPointSeen, transform.position) > .1)
         {
+            if(!waitCoOn && guessLocation) {StartCoroutine("GuessPlayer");}
+
             agent.SetDestination(lastPointSeen);
         }
         //if can't find player at last location, go back to idling
@@ -150,6 +155,7 @@ public class GuardController : MonoBehaviour
         {
             action = "idle";
             player = null;
+            guessLocation = true;
         }
     }
 
@@ -158,17 +164,20 @@ public class GuardController : MonoBehaviour
         //stop moving
         agent.SetDestination(transform.position);
 
-        //see if facing the player
-        if(Quaternion.Angle(Quaternion.LookRotation(player.transform.position - transform.position), transform.rotation) > 8 &&
-           Vector3.Distance(player.transform.position, transform.position) < viewDistance + 5)
-        {
-            //look towards player
-            Quaternion targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
-            float strength = Mathf.Min(10 * Time.deltaTime, 1);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, strength);
-        }
+        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+        // //see if facing the player
+        // if(Quaternion.Angle(Quaternion.LookRotation(player.transform.position - transform.position), transform.rotation) > shootAngle &&
+        //     distanceToPlayer > 5 &&
+        //     distanceToPlayer < viewDistance + 5)
+        // {
+        //     //look towards player
+        //     Quaternion targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
+        //     float strength = Mathf.Min(10 * Time.deltaTime, 1);
+        //     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, strength);
+        // }
+
         //attack player
-        else if(Vector3.Distance(player.transform.position, transform.position) < viewDistance + 5)
+        if(LookAtPlayer(distanceToPlayer))
         {
             //shoot at player
             if (!waitCoOn)
@@ -186,6 +195,23 @@ public class GuardController : MonoBehaviour
 
         //set the last known location of the player
         lastPointSeen = player.transform.position;
+    }
+
+    public bool LookAtPlayer(float distanceToPlayer)
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
+        float strength = Mathf.Min(30 * Time.deltaTime, 1);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, strength);
+        
+        //print(Quaternion.LookRotation(player.transform.position - transform.position) + " " + transform.rotation + "  " + (Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up).y - transform.rotation.y));
+
+        print((distanceToPlayer < 5) + " " +
+             (Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up).y - transform.rotation.y < shootAngle) + " " + 
+             (distanceToPlayer < viewDistance + 5));
+
+        return distanceToPlayer < 5 ||
+               (Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up).y - transform.rotation.y < shootAngle &&
+               distanceToPlayer < viewDistance + 5);
     }
 
     public void Idle()
@@ -214,6 +240,21 @@ public class GuardController : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
         guardAudio.PlayOneShot(gunshots, 0.5f);
+        waitCoOn = false;
+    }
+
+    IEnumerator GuessPlayer()
+    {
+        waitCoOn = true;
+        yield return new WaitForSeconds(2);
+        if(player)
+        {
+            lastPointSeen = player.transform.position;
+            action = "chase";
+            print("guessed");
+        }
+
+        guessLocation = false;
         waitCoOn = false;
     }
 
