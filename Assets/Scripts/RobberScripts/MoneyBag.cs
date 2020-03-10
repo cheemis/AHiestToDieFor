@@ -17,6 +17,10 @@ public class MoneyBag : MonoBehaviour
     public AudioClip stealMoney;
     private AudioSource playerAudio;
 
+    //money particle system
+    public GameObject moneyPS;
+    private ParticleSystem particleSystem;
+
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -36,6 +40,8 @@ public class MoneyBag : MonoBehaviour
         gem.StartListening("AddMoneyToRobber", AddMoney);
         gem.StartListening("KeyCardStolen", KeyCardStolen);
         gem.StartListening("Death", DropMoney);
+
+        particleSystem = moneyPS.GetComponent<ParticleSystem>();
     }
     private void OnDestroy()
     {
@@ -78,6 +84,11 @@ public class MoneyBag : MonoBehaviour
         }
         playerAudio.PlayOneShot(stealMoney, 0.5f);
         money += (float) parameters[0];
+
+
+        var emission = particleSystem.emission;
+        emission.rateOverDistance = Mathf.Min(money/10000, 2.5f);
+
         gem.TriggerEvent("UpdateMoney", gameObject);
         // triggers event in GameManager
     }
