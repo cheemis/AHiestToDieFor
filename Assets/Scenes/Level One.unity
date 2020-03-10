@@ -707,6 +707,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2124863300836846139, guid: 6a64da11299b1604ea522ab50edadfac,
+        type: 3}
+      propertyPath: maxHealth
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6693840604286462412, guid: 6a64da11299b1604ea522ab50edadfac,
         type: 3}
       propertyPath: m_IsActive
@@ -1151,7 +1156,7 @@ RectTransform:
   m_Children:
   - {fileID: 1672185131}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1788,6 +1793,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dying: {fileID: 8300000, guid: ff9be24271a0d9645bd56e2feb5cf1db, type: 3}
+  selectedRingPrefab: {fileID: 7302853754278199426, guid: 1598a561e09d24fc882f26126e353057,
+    type: 3}
 --- !u!82 &639992150
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2510,6 +2517,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6554631332922905043, guid: 39858caeaed235e4ab7df5b91bbc865b,
+        type: 3}
+      propertyPath: maxHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6817563142504808205, guid: 39858caeaed235e4ab7df5b91bbc865b,
         type: 3}
@@ -3853,6 +3865,11 @@ PrefabInstance:
       propertyPath: viewDistance
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3441528795906635007, guid: eeb69cec2d66d4b5eb5fed26844111dc,
+        type: 3}
+      propertyPath: shootAngle
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4941656147289730885, guid: eeb69cec2d66d4b5eb5fed26844111dc,
         type: 3}
       propertyPath: m_Name
@@ -4309,7 +4326,7 @@ PrefabInstance:
     - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
         type: 3}
@@ -5165,6 +5182,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
+--- !u!1 &1655803948
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2293457871304332265}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1655803949}
+  m_Layer: 0
+  m_Name: spy_van (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1655803949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 2293457871304332265}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655803948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1665221859
 GameObject:
   m_ObjectHideFlags: 0
@@ -6054,7 +6101,7 @@ PrefabInstance:
     - target: {fileID: 2580658415800347680, guid: 917b8612fbf4cee4d9f07aaa43efb05a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2580658415800347680, guid: 917b8612fbf4cee4d9f07aaa43efb05a,
         type: 3}
@@ -6085,6 +6132,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WinTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580658415800347710, guid: 917b8612fbf4cee4d9f07aaa43efb05a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 917b8612fbf4cee4d9f07aaa43efb05a, type: 3}
