@@ -19,6 +19,10 @@ public class StaticMoney : MonoBehaviour
     public static void RemoveMoney(float money) {
         moneyCount -= money; 
     }
+    public static void SetMoney(float money)
+    {
+        moneyCount = money;
+    }
     public static void SetRobbersAlive(int robbers) {robbersAlive = robbers;}
     public static int GetLastScene() {return lastScene;}
     public static void SetLastScene(int scene) {lastScene = scene;}

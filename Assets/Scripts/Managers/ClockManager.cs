@@ -30,14 +30,13 @@ public class ClockManager : MonoBehaviour
         {
             throw new Exception("Could not find dependency");
         }
-    }
-    private void Start()
-    {
         gem.StartListening("StartGame", StartGame);
+        gem.StartListening("LostGame", Destroy);
     }
     private void OnDestroy()
     {
         gem.StopListening("StartGame", StartGame);
+        gem.StopListening("LostGame", Destroy);
     }
     private void StartGame(GameObject target, List<object> parameters)
     {
@@ -68,5 +67,9 @@ public class ClockManager : MonoBehaviour
     public void runGame()
     {
         gameIsRunning = true;
+    }
+    private void Destroy(GameObject target, List<object> parameters)
+    {
+        Destroy(gameObject);
     }
 }

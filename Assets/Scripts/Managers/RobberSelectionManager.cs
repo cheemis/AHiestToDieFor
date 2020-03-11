@@ -64,10 +64,8 @@ public class RobberSelectionManager : MonoBehaviour
             if (selectedRobbers[slotNum] != null)
             {
                 StaticMoney.AddMoney(GetRobberCost(selectedRobbers[slotNum]));
-                Debug.Log(StaticMoney.GetMoneyCount());
             }
             StaticMoney.RemoveMoney(GetNewRobberCost(robberPrefabs[robberNum]));
-            Debug.Log(StaticMoney.GetMoneyCount());
             gem.TriggerEvent("SetSelectionMoney", gameObject, new List<object> { StaticMoney.GetMoneyCount() });
             button = buttonList[slotNum];
             button.image.sprite = robberList[robberNum];
