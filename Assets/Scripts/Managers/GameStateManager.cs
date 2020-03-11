@@ -14,6 +14,7 @@ public class GameStateManager : MonoBehaviour
     private GlobalEventManager gem;
 
     private float moneyCache;
+    private bool isGameOver;
 
     private void Awake()
     {
@@ -36,7 +37,7 @@ public class GameStateManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isGameOver)
         {
             if (Time.timeScale == 1)
             {
@@ -60,6 +61,7 @@ public class GameStateManager : MonoBehaviour
     }
     private void LoseGame(GameObject target, List<object> parameters)
     {
+        isGameOver = true;
         StaticMoney.SetMoney(moneyCache);
         Time.timeScale = 0;
         gameOver.gameObject.SetActive(true);
