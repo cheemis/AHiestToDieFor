@@ -74,6 +74,8 @@ public class SelectedManager : MonoBehaviour
         deathAudio.PlayOneShot(dying, 0.5f);
         robbers.Remove(target);
         selectedRobbers = selectedRobbers.Where(sel => sel.go != target).ToList();
+
+        ResetRing();
     }
     private void CheckIfCameraNeedsToUpdate(GameObject target, List<object> parameters)
     {
@@ -130,7 +132,7 @@ public class SelectedManager : MonoBehaviour
             .Select(robber => new Selected(robber, selectedRing))
             .ToList();
 
-        if(selectedRobbers.Count == 0) {selectedRing.transform.parent = null; selectedRing.transform.position = new Vector3(100, 0, 100);}
+        if(selectedRobbers.Count == 0) {ResetRing();}
         foreach(Selected robber in selectedRobbers)
         {
             robber.ApplyHighlight();
@@ -142,6 +144,8 @@ public class SelectedManager : MonoBehaviour
         }
     }
 
+    private void ResetRing() {selectedRing.transform.parent = null; selectedRing.transform.position = new Vector3(100, 0, 100);}
+
     private class Selected
     {
         internal GameObject go;
@@ -150,11 +154,6 @@ public class SelectedManager : MonoBehaviour
         public GameObject selectedRing;
         public Selected(GameObject go, GameObject selectedRing)
         {
-            // if (go.GetComponent<MeshRenderer>() == null)
-            // {
-            //     throw new Exception("Missing component: gameobject did not have MeshRenderer");
-            // }
-            // original = go.GetComponent<MeshRenderer>().material.color;
             this.go = go;
             this.selectedRing = selectedRing;
         }

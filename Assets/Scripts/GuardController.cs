@@ -17,7 +17,7 @@ public class GuardController : MonoBehaviour
     public GameObject viewPoint;
 
     //guard view info
-    public float viewDistance = 20;
+    public float viewDistance = 5;
     public float fov = 60;
     private Vector3 lastPointSeen;
 
@@ -34,12 +34,18 @@ public class GuardController : MonoBehaviour
     private Coroutine Co;
     public int waitingTime = 5;
 
+    //sunrise
+    private float duration = 300f;
+    public float timePassed = 0f;
+    public GameObject flashlight;
+
     private bool guessLocation = false;
 
     //Sounds
     public AudioClip sawPlayer;
     public AudioClip gunshots;
     private AudioSource guardAudio;
+
     private void Awake()
     {
         gem = FindObjectOfType(typeof(GlobalEventManager)) as GlobalEventManager;
@@ -66,7 +72,7 @@ public class GuardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        GuardWakeUp();
     }
 
     public void CheckIfTargetIsDead(GameObject target, List<object> parameters)
@@ -264,4 +270,20 @@ public class GuardController : MonoBehaviour
     //used in sub classes to turn on/off waiting/reloading
     public void SetWaitCoOn(bool value) {waitCoOn = value;}
 
+    //used for increasing guard viewDistance in regards to sunrise
+    public void GuardWakeUp()
+    {
+        if (timePassed < 1)
+        {
+            viewDistance = Mathf.Min(7.5f, viewDistance += ((2.5f * timePassed) / (40 * duration)));
+
+            Vector3 lTemp = flashlight.transform.localScale;
+            lTemp.z += ((750f * timePassed) / duration);
+            flashlight.transform.localScale = lTemp;
+
+            timePassed += Time.deltaTime / duration;
+
+
+        }
+    }
 }

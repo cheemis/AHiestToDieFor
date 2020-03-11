@@ -26,6 +26,8 @@ public class RotatingGuard : GuardController
     // Update is called once per frame
     void Update()
     {
+        GuardWakeUp();
+
         //Visualize raycast in Scene play. Doesn't affect gameplay
         //Debug.DrawRay(viewPoint.transform.position,(GameObject.FindWithTag("Player").transform.position - viewPoint.transform.position), Color.white, 0.0f, true);
 

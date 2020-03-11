@@ -11,6 +11,8 @@ public class SpawnManager : MonoBehaviour
     private Queue<GameObject> robbersSpawnQueue;
 
     private int currentSpawnPoints = 0;
+    private int totalRobberCount;
+    private int deaths;
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -43,27 +45,22 @@ public class SpawnManager : MonoBehaviour
         {
             throw new Exception("Illegal argument: parameter wrong type: " + parameters[0].GetType().ToString());
         }
-        robbersSpawnQueue = (Queue<GameObject>) parameters[0];
-        if (robbersSpawnQueue.Count < 2)
+        if ((parameters[0] as Queue<GameObject>).Count > 4)
         {
-            // TODO, lose game instantly
-            gem.TriggerEvent("LostGame", gameObject);
-            throw new Exception("Invalid parameters: No robbers in robber list");
+            throw new Exception("Illegal argument: too many robbers in queue: " + (parameters[0] as Queue<GameObject>).Count);
         }
+        robbersSpawnQueue = (Queue<GameObject>) parameters[0];
+        totalRobberCount = ((Queue<GameObject>) parameters[0]).Count;
         InstantiateRobbers(Constants.MAX_ROBBERS_OUT_SIMULTANEOUSLY);
     }
     private void InstantiateRobbers(int amount)
     {
-        if (robbersSpawnQueue.Count == 0)
+        int n = amount;
+        if (n > robbersSpawnQueue.Count)
         {
-            gem.TriggerEvent("LostGame", gameObject);
-            return;
+            n = robbersSpawnQueue.Count;
         }
-        if (amount > robbersSpawnQueue.Count)
-        {
-            throw new Exception("Illegal argument: trying to instantiate more robbers than exist in the spawn queue");
-        }
-        for (int i = 0; i < amount; i++)
+        for (int i = 0; i < n; i++)
         {
             Instantiate(robbersSpawnQueue.Dequeue(), spawnPoints[currentSpawnPoints % spawnPoints.Count].transform.position, spawnPoints[currentSpawnPoints % spawnPoints.Count].transform.rotation);
             currentSpawnPoints++;
@@ -71,6 +68,16 @@ public class SpawnManager : MonoBehaviour
     }
     private void SpawnNextRobber(GameObject target, List<object> parameters)
     {
+        deaths++;
+        if (deaths == totalRobberCount)
+        {
+            StartCoroutine(LoseGame());
+        }
         InstantiateRobbers(1);
+    }
+    private IEnumerator LoseGame()
+    {
+        yield return new WaitForSeconds(1);
+        gem.TriggerEvent("LostGame", gameObject);
     }
 }
