@@ -263,6 +263,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dying: {fileID: 8300000, guid: ff9be24271a0d9645bd56e2feb5cf1db, type: 3}
+  selectedRingPrefab: {fileID: 7302853754278199426, guid: 1598a561e09d24fc882f26126e353057,
+    type: 3}
 --- !u!82 &3555776118237171613
 AudioSource:
   m_ObjectHideFlags: 0
