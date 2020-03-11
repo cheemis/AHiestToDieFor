@@ -24,6 +24,8 @@ public class Results : MonoBehaviour
 
     private string moneyText;
 
+    private bool resetTotal = false;
+
     public TMP_Text text;
 
     // Start is called before the first frame update
@@ -31,9 +33,11 @@ public class Results : MonoBehaviour
     {
         text = GetComponent<TMP_Text>();
 
-        //money = StaticMoney.GetMoneyCount();
+        money = StaticMoney.GetMoneyCount();
 
-        //robbersAlive = StaticMoney.GetRobbersAlive();
+        robbersAlive = StaticMoney.GetRobbersAlive();
+
+        total = StaticMoney.GetTotalMoneyCount();
     }
 
     // Update is called once per frame
@@ -49,6 +53,7 @@ public class Results : MonoBehaviour
         }
         else if(!doneCountingTotal)
         {
+            if(!resetTotal) {addingAmount = 0; resetTotal = true;}
             CountTotal();
         }
     }
@@ -56,7 +61,7 @@ public class Results : MonoBehaviour
     private void CountMoney()
     {
         //this method counts up the money
-        countingMoney += 10;
+        countingMoney += 10 + addingAmount;
 
         if(countingMoney > money)
         {
@@ -69,6 +74,8 @@ public class Results : MonoBehaviour
         }
 
         text.text = "" + countingMoney;
+
+        addingAmount += 1;
     }
 
     private void CountRobbers()

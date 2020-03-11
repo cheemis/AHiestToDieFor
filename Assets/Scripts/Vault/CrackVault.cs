@@ -48,7 +48,6 @@ public class CrackVault : MonoBehaviour
         vaultAudio = GetComponent<AudioSource>();
         gem.StartListening("BeginUnlocking", BeginCracking);
         gem.StartListening("StopUnlocking", StopCracking);
-        finalRotation = transform.rotation.y - 90f;
     }
     public void OnDestroy()
     {
