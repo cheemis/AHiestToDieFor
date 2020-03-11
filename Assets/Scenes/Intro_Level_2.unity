@@ -2428,6 +2428,21 @@ PrefabInstance:
       propertyPath: patrolPoints.Array.data[1].z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3376627165451170453, guid: a342d38b7103e49ccbd9bdb9e24eeeae,
+        type: 3}
+      propertyPath: patrolPoints.Array.data[0].z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376627165451170453, guid: a342d38b7103e49ccbd9bdb9e24eeeae,
+        type: 3}
+      propertyPath: patrolPoints.Array.data[0].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3376627165451170453, guid: a342d38b7103e49ccbd9bdb9e24eeeae,
+        type: 3}
+      propertyPath: patrolPoints.Array.data[0].x
+      value: -2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8859566286901177524, guid: a342d38b7103e49ccbd9bdb9e24eeeae,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3760,7 +3775,7 @@ PrefabInstance:
     - target: {fileID: 3441528795906635007, guid: eeb69cec2d66d4b5eb5fed26844111dc,
         type: 3}
       propertyPath: numRotations
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4941656147289730885, guid: eeb69cec2d66d4b5eb5fed26844111dc,
         type: 3}
