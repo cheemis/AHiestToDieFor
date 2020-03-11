@@ -14,6 +14,9 @@ public class MainMenu : MonoBehaviour
     public Camera mainCamera;
     private Animator camAnim;
 
+    public GameObject blackFade;
+    private Animator fadeAnim;
+
     private Vector3 mainMenuCamPos = new Vector3();
     private Vector3 creditsCamPos = new Vector3();
 
@@ -21,6 +24,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         camAnim = mainCamera.GetComponent<Animator>();
+        fadeAnim = blackFade.GetComponent<Animator>();
     }
 
     public void StartGame()
@@ -32,33 +36,39 @@ public class MainMenu : MonoBehaviour
 
     public void HowToPlay()
     {
+        camAnim.SetBool("Controls", false);
+        
+        StartCoroutine("FadeBack");
+
         //hides menu and displays "how to play"
-        mainMenuItems.SetActive(false);
-        howToPlayItems.SetActive(true);
+        StartCoroutine("ToControls");
     }
 
     public void BackToMenu()
     {
         //displays the main menu and hides both the credits and the "how to play"
-        camAnim.SetBool("MainMenu", true);
 
-        howToPlayItems.SetActive(false);
-        mainMenuItems.SetActive(true);
+        if(!camAnim.GetBool("MainMenu"))
+        {
+            camAnim.SetBool("MainMenu", true);
+            howToPlayItems.SetActive(false);
+            mainMenuItems.SetActive(true);
 
-        creditItems.SetActive(false);
-        StopCoroutine("CreditsRoll");
-
-        
-
-        rules.SetActive(true);
-        ControlsAndGoals.SetActive(false);
+            creditItems.SetActive(false);
+            StopCoroutine("CreditsRoll");
+        }
+        else if(!camAnim.GetBool("Controls"))
+        {
+            camAnim.SetBool("Controls", true);
+            StartCoroutine("FadeBack");
+            StartCoroutine("ToMainMenu");
+        }
     }
 
     public void Credits()
     {
         //hides the menu and displays the credits
         camAnim.SetBool("MainMenu", false);
-
         mainMenuItems.SetActive(false);
         creditItems.SetActive(true);
 
@@ -76,5 +86,28 @@ public class MainMenu : MonoBehaviour
     {
         yield return new WaitForSeconds(creditsTime);
         BackToMenu();
+    }
+
+    IEnumerator ToControls()
+    {
+        mainMenuItems.SetActive(false);
+        yield return new WaitForSeconds(3f);
+        howToPlayItems.SetActive(true);
+    }
+
+    IEnumerator ToMainMenu()
+    {
+        howToPlayItems.SetActive(false);
+        rules.SetActive(true);
+        ControlsAndGoals.SetActive(false);
+        yield return new WaitForSeconds(3f);
+        mainMenuItems.SetActive(true);
+    }
+
+    IEnumerator FadeBack()
+    {
+        fadeAnim.SetBool("Fade",true);
+        yield return new WaitForSeconds(1.6f);
+        fadeAnim.SetBool("Fade",false);
     }
 }
