@@ -407,6 +407,11 @@ PrefabInstance:
 
         [PLACE HOLDER]'
       objectReference: {fileID: 0}
+    - target: {fileID: 7440247495081072616, guid: cd35c95d565564505855cee8a7a8aefb,
+        type: 3}
+      propertyPath: m_Name
+      value: Title Name
+      objectReference: {fileID: 0}
     - target: {fileID: 7440247495607106894, guid: cd35c95d565564505855cee8a7a8aefb,
         type: 3}
       propertyPath: m_IsActive
