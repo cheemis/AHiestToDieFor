@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI moneyText;
 
     public float winAmount;
-    private int deaths;
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -75,11 +74,6 @@ public class GameManager : MonoBehaviour
         if (!robbers.Contains(target))
         {
             throw new Exception("Missing robber: Tried to remove robber that didn't exist");
-        }
-        deaths++;
-        if (deaths == 4)
-        {
-            gem.TriggerEvent("LostGame", gameObject);
         }
         robbers.Remove(target);
     }

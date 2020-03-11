@@ -17,10 +17,15 @@ public class ShowMoneyTextScript : MonoBehaviour
         {
             throw new Exception("Could not find dependency");
         }
-        gem.StartListening("StartGame", HideText);
+        gem.StartListening("StartGame", ShowText);
+        gem.StartListening("LostGame", HideText);
+    }
+    private void ShowText(GameObject target, List<object> parameters)
+    {
+        GetComponent<TextMeshProUGUI>().enabled = true;
     }
     private void HideText(GameObject target, List<object> parameters)
     {
-        GetComponent<TextMeshProUGUI>().enabled = true;
+        GetComponent<TextMeshProUGUI>().enabled = false;
     }
 }

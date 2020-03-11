@@ -28,6 +28,13 @@ public class SelectionMoneyManager : MonoBehaviour
         UpdateMoneyText();
         gem.StartListening("SetSelectionMoney", UpdateMoney);
         gem.StartListening("StartGame", HideText);
+        gem.StartListening("LostGame", Destroy);
+    }
+    private void OnDestroy()
+    {
+        gem.StopListening("SetSelectionMoney", UpdateMoney);
+        gem.StopListening("StartGame", HideText);
+        gem.StopListening("LostGame", Destroy);
     }
     private void UpdateMoney(GameObject target, List<object> parameters)
     {
@@ -49,5 +56,9 @@ public class SelectionMoneyManager : MonoBehaviour
     private void HideText(GameObject target, List<object> parameters)
     {
         text.enabled = false;
+    }
+    private void Destroy(GameObject target, List<object> parameters)
+    {
+        Destroy(gameObject);
     }
 }
