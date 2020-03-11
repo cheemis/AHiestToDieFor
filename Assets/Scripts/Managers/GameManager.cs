@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
             {
                 //Store money, robbers, and next level
                 StaticMoney.SetMoney(GetAccumulatedStolenMoney());
-                StaticMoney.set
+                //StaticMoney.set
                 StaticMoney.SetRobbersAlive(robbers.Count);
                 StaticMoney.SetLastScene(SceneManager.GetActiveScene().buildIndex + 1);
 
