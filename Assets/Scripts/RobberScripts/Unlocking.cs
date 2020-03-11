@@ -7,7 +7,8 @@ public class Unlocking : MonoBehaviour
 {
     private GlobalEventManager gem;
 
-    public float unlockingSpeed;
+    [SerializeField]
+    private float unlockingSpeed;
 
     private void Awake()
     {
@@ -23,43 +24,53 @@ public class Unlocking : MonoBehaviour
 
     private void Update()
     {
-        BeginUnlocking(gameObject, new List<object>());
-    }
-
-    void Start()
-    {
-        gem.StartListening("Unlock", BeginUnlocking);
-        gem.StartListening("Move", StopUnlocking);
-        gem.StartListening("Shot", StopUnlocking);
-        gem.StartListening("Death", StopUnlocking);
-    }
-
-    public void OnDestroy()
-    {
-        gem.StopListening("Unlock", BeginUnlocking);
-        gem.StopListening("StopUnlocking", BeginUnlocking);
-        gem.StopListening("Move", StopUnlocking);
-        gem.StopListening("Shot", StopUnlocking);
-        gem.StopListening("Death", StopUnlocking);
         
     }
 
-    public void BeginUnlocking(GameObject target, List<object> parameters)
-    {
-        if (target != gameObject)
-        {
-            return;
-        }
-        gem.TriggerEvent("BeginUnlocking", gameObject, new List<object> { unlockingSpeed });
-        // triggers event in CrackVault
-    }
-    public void StopUnlocking(GameObject target, List<object> parameters)
-    {
-        if (target != gameObject)
-        {
-            return;
-        }
+    // void OnCollisionStay(Collision other)
+    // {
+    //     if(other.gameObject.tag == "Vault")
+    //     {
+    //         BeginUnlocking(gameObject, new List<object>());
+    //     }
+    // }
 
-        gem.TriggerEvent("StopUnlocking", gameObject);
-    }
+    // void Start()
+    // {
+    //     gem.StartListening("Unlock", BeginUnlocking);
+    //     gem.StartListening("Move", StopUnlocking);
+    //     gem.StartListening("Shot", StopUnlocking);
+    //     gem.StartListening("Death", StopUnlocking);
+    // }
+
+    // public void OnDestroy()
+    // {
+    //     gem.StopListening("Unlock", BeginUnlocking);
+    //     gem.StopListening("StopUnlocking", BeginUnlocking);
+    //     gem.StopListening("Move", StopUnlocking);
+    //     gem.StopListening("Shot", StopUnlocking);
+    //     gem.StopListening("Death", StopUnlocking);
+        
+    // }
+
+    // public void BeginUnlocking(GameObject target, List<object> parameters)
+    // {
+    //     if (target != gameObject)
+    //     {
+    //         return;
+    //     }
+    //     gem.TriggerEvent("BeginUnlocking", gameObject, new List<object> { unlockingSpeed });
+    //     // triggers event in CrackVault
+    // }
+    // public void StopUnlocking(GameObject target, List<object> parameters)
+    // {
+    //     if (target != gameObject)
+    //     {
+    //         return;
+    //     }
+
+    //     gem.TriggerEvent("StopUnlocking", gameObject);
+    // }
+
+    public float GetUnlockingSpeed() {return unlockingSpeed;}
 }

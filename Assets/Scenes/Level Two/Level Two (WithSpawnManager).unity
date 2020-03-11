@@ -32680,6 +32680,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rotating Guard (Area 2 Door)
       objectReference: {fileID: 0}
+    - target: {fileID: 4941656147289730885, guid: eeb69cec2d66d4b5eb5fed26844111dc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4941656147289731262, guid: eeb69cec2d66d4b5eb5fed26844111dc,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -45,7 +45,7 @@ public class WinScreenTrigger : MonoBehaviour
             {
                 nearbyRobbers.Add(other.gameObject);
             }
-            Debug.Log("EscapeWithMoney");
+            //Debug.Log("EscapeWithMoney");
             
             //goes to EscapeWithMoney() in game mananger SCript (bottom)
             gem.TriggerEvent("EscapeWithMoney", other.gameObject, nearbyRobbers.Select(robber => (object)robber).ToList());

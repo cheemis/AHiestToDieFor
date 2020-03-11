@@ -105,13 +105,12 @@ public class GameManager : MonoBehaviour
             if (GetAccumulatedStolenMoney() >= winAmount)
             {
                 //Store money, robbers, and next level
-                StaticMoney.AddMoney(GetAccumulatedStolenMoney());
+                StaticMoney.SetMoney(GetAccumulatedStolenMoney());
+                StaticMoney.set
                 StaticMoney.SetRobbersAlive(robbers.Count);
                 StaticMoney.SetLastScene(SceneManager.GetActiveScene().buildIndex + 1);
 
-
-
-                //LoadNewScene.scene = SceneManager.GetActiveScene().buildIndex + 1;
+                SceneManager.LoadScene(1);
                 //print(LoadNewScene.scene);
 
                 //load next scene unless no more levels, then load title screen
