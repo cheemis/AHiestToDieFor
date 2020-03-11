@@ -205,9 +205,9 @@ public class GuardController : MonoBehaviour
         
         //print(Quaternion.LookRotation(player.transform.position - transform.position) + " " + transform.rotation + "  " + (Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up).y - transform.rotation.y));
 
-        print((distanceToPlayer < 5) + " " +
-             (Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up).y - transform.rotation.y < shootAngle) + " " + 
-             (distanceToPlayer < viewDistance + 5));
+        //print((distanceToPlayer < 5) + " " +
+        //     (Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up).y - transform.rotation.y < shootAngle) + " " + 
+        //     (distanceToPlayer < viewDistance + 5));
 
         return distanceToPlayer < 5 ||
                (Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up).y - transform.rotation.y < shootAngle &&

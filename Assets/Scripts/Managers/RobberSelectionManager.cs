@@ -108,13 +108,6 @@ public class RobberSelectionManager : MonoBehaviour
         List<GameObject> filteredSelection = selectedRobbers
             .Where(robber => robber != null)
             .ToList();
-        foreach (GameObject robberPrefab in filteredSelection)
-        {
-            if (robberPrefab != null)
-            {
-                Debug.Log(robberPrefab.name);
-            }
-        }
         gem.TriggerEvent("AttemptStartGame", gameObject, new List<object> { filteredSelection });
     }
 
