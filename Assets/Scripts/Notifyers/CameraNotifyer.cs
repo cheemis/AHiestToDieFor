@@ -22,8 +22,10 @@ public class CameraNotifyer : MonoBehaviour
     {
         if (other.transform.CompareTag("Player"))
         {
-            Debug.Log("Registered OnTriggerEnter!: " + other.transform.name);
+            //Debug.Log("Registered OnTriggerEnter!: " + other.transform.name);
+            
             gem.TriggerEvent("RobberEnteredRoom", gameObject, new List<object> { other.gameObject });
+            // triggers event in CameraManager
         }
 
     }

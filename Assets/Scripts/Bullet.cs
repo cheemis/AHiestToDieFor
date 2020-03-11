@@ -46,6 +46,7 @@ public class Bullet : MonoBehaviour
         if(collided)
         {
             mr.enabled = false;
+            transform.Translate(Vector3.zero);
         }
     }
 
@@ -55,6 +56,10 @@ public class Bullet : MonoBehaviour
         {
             collided = true;
             gem.TriggerEvent("Shot", other.gameObject);
+        }
+        else
+        {
+            collided = true;
         }
     }
 

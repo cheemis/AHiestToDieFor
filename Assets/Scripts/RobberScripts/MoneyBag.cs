@@ -8,10 +8,19 @@ public class MoneyBag : MonoBehaviour
     private GlobalEventManager gem;
 
     public float money;
-    public GameObject keyCard;
+    public float moneyMultiplier;
 
     public GameObject backpack;
     public GameObject backpackPrefab;
+
+    //Sounds
+    public AudioClip stealMoney;
+    private AudioSource playerAudio;
+
+    //money particle system
+    public GameObject moneyPS;
+    private ParticleSystem particleSystem;
+
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -27,14 +36,15 @@ public class MoneyBag : MonoBehaviour
 
     private void Start()
     {
+        playerAudio = GetComponent<AudioSource>();
         gem.StartListening("AddMoneyToRobber", AddMoney);
-        gem.StartListening("KeyCardStolen", KeyCardStolen);
         gem.StartListening("Death", DropMoney);
+
+        particleSystem = moneyPS.GetComponent<ParticleSystem>();
     }
     private void OnDestroy()
     {
         gem.StopListening("AddMoneyToRobber", AddMoney);
-        gem.StopListening("KeyCardStolen", KeyCardStolen);
         gem.StopListening("Death", DropMoney);
     }
 
@@ -54,6 +64,7 @@ public class MoneyBag : MonoBehaviour
         script.amount = money;
         money = 0;
         gem.TriggerEvent("UpdateMoney", gameObject);
+        // triggers event in GameManager
     }
     private void AddMoney(GameObject target, List<object> parameters)
     {
@@ -69,26 +80,14 @@ public class MoneyBag : MonoBehaviour
         {
             throw new Exception("Illegal argument: parameter wrong type");
         }
+        playerAudio.PlayOneShot(stealMoney, 0.5f);
 
-        money += (float) parameters[0];
+         money += (float) parameters[0] * moneyMultiplier;
+
+        var emission = particleSystem.emission;
+        emission.rateOverDistance = Mathf.Min(money/10000, 2.5f);
+
         gem.TriggerEvent("UpdateMoney", gameObject);
-    }
-
-    private void KeyCardStolen(GameObject target, List<object> parameters)
-    {
-        if (target != gameObject)
-        {
-            return;
-        }
-        if (parameters.Count == 0)
-        {
-            throw new Exception("Missing parameter: Could not find keycard to add");
-        }
-        if (parameters[0].GetType() != typeof(GameObject))
-        {
-            throw new Exception("Illegal argument: parameter wrong type");
-        }
-
-        keyCard = (GameObject)parameters[0];
+        // triggers event in GameManager
     }
 }

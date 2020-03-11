@@ -11,6 +11,14 @@ public class SelectedManager : MonoBehaviour
     private List<Selected> selectedRobbers;
 
     private List<GameObject> robbers;
+
+    //Sounds
+    public AudioClip dying;
+    private AudioSource deathAudio;
+
+    public GameObject selectedRingPrefab;
+    private GameObject selectedRing;
+
     private void Awake()
     {
         List<MonoBehaviour> deps = new List<MonoBehaviour>
@@ -30,22 +38,21 @@ public class SelectedManager : MonoBehaviour
     }
     private void Start()
     {
+        deathAudio = GetComponent<AudioSource>();
         gem.StartListening("NotifyLocationChanged", CheckIfCameraNeedsToUpdate);
         gem.StartListening("RightClick", MoveSelectedRobbers);
-        gem.StartListening("LeftClick", SelectRobbers);
         gem.StartListening("Space", SwitchRobber);
-        gem.StartListening("E", AttemptUnlock);
-
         gem.StartListening("RobberEnteredSpawnArea", TrackRobber);
         gem.StartListening("Death", RemoveRobber);
+
+        selectedRing = Instantiate(selectedRingPrefab,
+                                   new Vector3(100, 0, 100),
+                                   selectedRingPrefab.transform.rotation);
     }
     private void OnDestroy()
     {
         gem.StopListening("RightClick", MoveSelectedRobbers);
-        gem.StopListening("LeftClick", SelectRobbers);
         gem.StopListening("Space", SwitchRobber);
-        gem.StopListening("E", AttemptUnlock);
-
         gem.StopListening("RobberEnteredSpawnArea", TrackRobber);
         gem.StopListening("Death", RemoveRobber);
     }
@@ -64,14 +71,18 @@ public class SelectedManager : MonoBehaviour
         {
             throw new Exception("Missing robber: Tried to remove robber that didn't exist");
         }
+        deathAudio.PlayOneShot(dying, 0.5f);
         robbers.Remove(target);
         selectedRobbers = selectedRobbers.Where(sel => sel.go != target).ToList();
+
+        ResetRing();
     }
     private void CheckIfCameraNeedsToUpdate(GameObject target, List<object> parameters)
     {
         if (selectedRobbers.Any(sel => sel.go == target))
         {
             gem.TriggerEvent("UpdateCamera", target);
+            // notifies CameraManager
         }
     }
     private void MoveSelectedRobbers(GameObject target, List<object> parameters)
@@ -87,22 +98,15 @@ public class SelectedManager : MonoBehaviour
         foreach(Selected robber in selectedRobbers)
         {
             gem.TriggerEvent("Move", robber.go, parameters);
+            // notifies Movement component script
         }
-    }
-    private void SelectRobbers(GameObject target, List<object> parameters)
-    {
-        if (parameters.Count == 0)
-        {
-            throw new Exception("Missing parameter: Could not find list of robbers");
-        }
-        if (parameters[0].GetType() != typeof(List<GameObject>))
-        {
-            throw new Exception("Illegal argument: parameter wrong type: " + parameters[0].GetType().ToString());
-        }
-        Select((List<GameObject>) parameters[0]);
     }
     private void SwitchRobber(GameObject target, List<object> parameters)
     {
+        if (robbers.Count == 0)
+        {
+            throw new Exception("Missing robbers in list: Cannot switch between robbers when none exist");
+        }
         if (selectedRobbers.Count == 0)
         {
             Select(new List<GameObject> { robbers[0] });
@@ -122,55 +126,42 @@ public class SelectedManager : MonoBehaviour
             }
         }
     }
-    private void AttemptUnlock(GameObject target, List<object> parameters)
-    {
-        foreach(Selected robber in selectedRobbers)
-        {
-            gem.TriggerEvent("Unlock", robber.go);
-            Debug.Log("gem.TriggerEvent(\"Unlock\", robber.go);");
-        }
-    }
     private void Select(List<GameObject> robbers)
     {
-        foreach(Selected robber in selectedRobbers)
-        {
-            //robber.Reset();
-        }
         selectedRobbers = robbers
-            .Select(robber => new Selected(robber))
+            .Select(robber => new Selected(robber, selectedRing))
             .ToList();
+
+        if(selectedRobbers.Count == 0) {ResetRing();}
         foreach(Selected robber in selectedRobbers)
         {
-            //obber.ApplyHighlight();
+            robber.ApplyHighlight();
         }
         if (selectedRobbers.Count != 0)
         {
             gem.TriggerEvent("UpdateCamera", robbers[0]);
+            // notifies CameraManager
         }
     }
+
+    private void ResetRing() {selectedRing.transform.parent = null; selectedRing.transform.position = new Vector3(100, 0, 100);}
 
     private class Selected
     {
         internal GameObject go;
         Color original;
 
-        public Selected(GameObject go)
+        public GameObject selectedRing;
+        public Selected(GameObject go, GameObject selectedRing)
         {
-            // if (go.GetComponent<MeshRenderer>() == null)
-            // {
-            //     throw new Exception("Missing component: gameobject did not have MeshRenderer");
-            // }
-            // original = go.GetComponent<MeshRenderer>().material.color;
             this.go = go;
+            this.selectedRing = selectedRing;
         }
 
         public void ApplyHighlight()
         {
-            go.GetComponent<MeshRenderer>().material.color = original + Constants.highlight;
-        }
-        public void Reset()
-        {
-            go.GetComponent<MeshRenderer>().material.color = original;
+            selectedRing.transform.SetParent(go.transform);
+            selectedRing.transform.position = go.transform.position;
         }
     }
 

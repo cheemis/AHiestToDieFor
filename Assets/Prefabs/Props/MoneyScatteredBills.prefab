@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7570264874280900733}
-  m_Layer: 0
-  m_Name: loosemoney
+  m_Layer: 2
+  m_Name: MoneyScatteredBills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,6 +44,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: d888a7bb041bb494487f5744a7f5de0f, type: 3}
       propertyPath: m_Name
       value: 100dol
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d888a7bb041bb494487f5744a7f5de0f, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d888a7bb041bb494487f5744a7f5de0f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -120,6 +124,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 100dol (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d888a7bb041bb494487f5744a7f5de0f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d888a7bb041bb494487f5744a7f5de0f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.125
@@ -195,6 +203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 100dol (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d888a7bb041bb494487f5744a7f5de0f, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d888a7bb041bb494487f5744a7f5de0f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.623
@@ -269,6 +281,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: d888a7bb041bb494487f5744a7f5de0f, type: 3}
       propertyPath: m_Name
       value: 100dol (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d888a7bb041bb494487f5744a7f5de0f, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d888a7bb041bb494487f5744a7f5de0f, type: 3}
       propertyPath: m_LocalPosition.x

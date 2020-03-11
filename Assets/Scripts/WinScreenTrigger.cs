@@ -8,7 +8,6 @@ public class WinScreenTrigger : MonoBehaviour
 {
     private GlobalEventManager gem;
 
-    public float amount;
     private List<GameObject> nearbyRobbers;
 
     private void Awake()
@@ -46,8 +45,11 @@ public class WinScreenTrigger : MonoBehaviour
             {
                 nearbyRobbers.Add(other.gameObject);
             }
-            Debug.Log("EscapeWithMoney");
+            //Debug.Log("EscapeWithMoney");
+            
+            //goes to EscapeWithMoney() in game mananger SCript (bottom)
             gem.TriggerEvent("EscapeWithMoney", other.gameObject, nearbyRobbers.Select(robber => (object)robber).ToList());
+            // triggers event in GameManager
         }
     }
     private void OnTriggerExit(Collider other)

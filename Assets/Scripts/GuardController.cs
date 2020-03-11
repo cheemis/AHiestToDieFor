@@ -17,7 +17,7 @@ public class GuardController : MonoBehaviour
     public GameObject viewPoint;
 
     //guard view info
-    public float viewDistance = 20;
+    public float viewDistance = 5;
     public float fov = 60;
     private Vector3 lastPointSeen;
 
@@ -27,11 +27,24 @@ public class GuardController : MonoBehaviour
     //Gun stuff
     public GameObject bullet;
     public GameObject gunPoint;
+    public float shootAngle = 3f;
 
     //coroutine stuff
     private bool waitCoOn = false;
     private Coroutine Co;
     public int waitingTime = 5;
+
+    //sunrise
+    private float duration = 300f;
+    public float timePassed = 0f;
+    public GameObject flashlight;
+
+    private bool guessLocation = false;
+
+    //Sounds
+    public AudioClip sawPlayer;
+    public AudioClip gunshots;
+    private AudioSource guardAudio;
 
     private void Awake()
     {
@@ -40,6 +53,7 @@ public class GuardController : MonoBehaviour
         // Start is called before the first frame update
     protected void Start()
     {
+        guardAudio = GetComponent<AudioSource>();
         gem.StartListening("Death", CheckIfTargetIsDead);
         animator = GetComponent<Animator>();
     }
@@ -58,7 +72,7 @@ public class GuardController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        GuardWakeUp();
     }
 
     public void CheckIfTargetIsDead(GameObject target, List<object> parameters)
@@ -101,6 +115,7 @@ public class GuardController : MonoBehaviour
             //see if the raycast hits something
             if (Physics.Raycast(viewPoint.transform.position, (player.transform.position - viewPoint.transform.position), out hit2) && hit2.transform.CompareTag("Player"))
             {
+                guardAudio.PlayOneShot(sawPlayer, 0.5f);
                 //if the object is tagged the player
                 //replace with chase the player
                 action = "attack";
@@ -124,12 +139,15 @@ public class GuardController : MonoBehaviour
            hit.transform.CompareTag("Player") &&
            Vector3.Distance(hit.transform.position, transform.position) < viewDistance)
         {
+            guardAudio.PlayOneShot(sawPlayer, 0.5f);
             //switch to attack mode in update
             action = "attack";
         }
         //else, hunt down the last known location of the player
         else if(Vector3.Distance(lastPointSeen, transform.position) > .1)
         {
+            if(!waitCoOn && guessLocation) {StartCoroutine("GuessPlayer");}
+
             agent.SetDestination(lastPointSeen);
         }
         //if can't find player at last location, go back to idling
@@ -137,6 +155,7 @@ public class GuardController : MonoBehaviour
         {
             action = "idle";
             player = null;
+            guessLocation = true;
         }
     }
 
@@ -145,17 +164,20 @@ public class GuardController : MonoBehaviour
         //stop moving
         agent.SetDestination(transform.position);
 
-        //see if facing the player
-        if(Quaternion.Angle(Quaternion.LookRotation(player.transform.position - transform.position), transform.rotation) > 8 &&
-           Vector3.Distance(player.transform.position, transform.position) < viewDistance + 5)
-        {
-            //look towards player
-            Quaternion targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
-            float strength = Mathf.Min(10 * Time.deltaTime, 1);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, strength);
-        }
+        float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
+        // //see if facing the player
+        // if(Quaternion.Angle(Quaternion.LookRotation(player.transform.position - transform.position), transform.rotation) > shootAngle &&
+        //     distanceToPlayer > 5 &&
+        //     distanceToPlayer < viewDistance + 5)
+        // {
+        //     //look towards player
+        //     Quaternion targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
+        //     float strength = Mathf.Min(10 * Time.deltaTime, 1);
+        //     transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, strength);
+        // }
+
         //attack player
-        else if(Vector3.Distance(player.transform.position, transform.position) < viewDistance + 5)
+        if(LookAtPlayer(distanceToPlayer))
         {
             //shoot at player
             if (!waitCoOn)
@@ -173,6 +195,23 @@ public class GuardController : MonoBehaviour
 
         //set the last known location of the player
         lastPointSeen = player.transform.position;
+    }
+
+    public bool LookAtPlayer(float distanceToPlayer)
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(player.transform.position - transform.position);
+        float strength = Mathf.Min(30 * Time.deltaTime, 1);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, strength);
+        
+        //print(Quaternion.LookRotation(player.transform.position - transform.position) + " " + transform.rotation + "  " + (Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up).y - transform.rotation.y));
+
+        //print((distanceToPlayer < 5) + " " +
+        //     (Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up).y - transform.rotation.y < shootAngle) + " " + 
+        //     (distanceToPlayer < viewDistance + 5));
+
+        return distanceToPlayer < 5 ||
+               (Quaternion.LookRotation(player.transform.position - transform.position, Vector3.up).y - transform.rotation.y < shootAngle &&
+               distanceToPlayer < viewDistance + 5);
     }
 
     public void Idle()
@@ -200,6 +239,22 @@ public class GuardController : MonoBehaviour
         waitCoOn = true;
         yield return new WaitForSeconds(.5f);
         Instantiate(bullet, gunPoint.transform.position, gunPoint.transform.rotation);
+        guardAudio.PlayOneShot(gunshots, 0.5f);
+        waitCoOn = false;
+    }
+
+    IEnumerator GuessPlayer()
+    {
+        waitCoOn = true;
+        yield return new WaitForSeconds(2);
+        if(player)
+        {
+            lastPointSeen = player.transform.position;
+            action = "chase";
+            print("guessed");
+        }
+
+        guessLocation = false;
         waitCoOn = false;
     }
 
@@ -215,4 +270,20 @@ public class GuardController : MonoBehaviour
     //used in sub classes to turn on/off waiting/reloading
     public void SetWaitCoOn(bool value) {waitCoOn = value;}
 
+    //used for increasing guard viewDistance in regards to sunrise
+    public void GuardWakeUp()
+    {
+        if (timePassed < 1)
+        {
+            viewDistance = Mathf.Min(7.5f, viewDistance += ((2.5f * timePassed) / (40 * duration)));
+
+            Vector3 lTemp = flashlight.transform.localScale;
+            lTemp.z += ((750f * timePassed) / duration);
+            flashlight.transform.localScale = lTemp;
+
+            timePassed += Time.deltaTime / duration;
+
+
+        }
+    }
 }
