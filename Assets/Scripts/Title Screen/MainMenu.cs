@@ -25,8 +25,6 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        print(1);
-        
         //SceneManager.LoadScene(1);
 
         SceneManager.LoadSceneAsync(2);

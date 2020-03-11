@@ -11,7 +11,6 @@ public class RobberSelectionManager : MonoBehaviour
     public Sprite[] robberList;
     public Button[] buttonList;
 
-
     private GameObject[] selectedRobbers;
     private float[] robberBaseCosts;
     private Button button;

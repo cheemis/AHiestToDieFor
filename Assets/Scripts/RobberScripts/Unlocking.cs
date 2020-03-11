@@ -37,9 +37,11 @@ public class Unlocking : MonoBehaviour
     public void OnDestroy()
     {
         gem.StopListening("Unlock", BeginUnlocking);
+        gem.StopListening("StopUnlocking", BeginUnlocking);
         gem.StopListening("Move", StopUnlocking);
         gem.StopListening("Shot", StopUnlocking);
         gem.StopListening("Death", StopUnlocking);
+        
     }
 
     public void BeginUnlocking(GameObject target, List<object> parameters)

@@ -13,7 +13,6 @@ public class GameStateManager : MonoBehaviour
     public Button restartButton;
     private GlobalEventManager gem;
 
-    private float moneyCache;
     private bool isGameOver;
 
     private void Awake()
@@ -26,7 +25,6 @@ public class GameStateManager : MonoBehaviour
         {
             throw new Exception("Could not find dependency");
         }
-        moneyCache = StaticMoney.GetMoneyCount();
         gem.StartListening("LostGame", LoseGame);
     }
 
@@ -57,12 +55,13 @@ public class GameStateManager : MonoBehaviour
     public void RestartLevel()
     {
         Time.timeScale = 1;
+        StaticMoney.ResetMoney();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     private void LoseGame(GameObject target, List<object> parameters)
     {
         isGameOver = true;
-        StaticMoney.SetMoney(moneyCache);
+        StaticMoney.ResetMoney();
         Time.timeScale = 0;
         gameOver.gameObject.SetActive(true);
         pauseScreen.gameObject.SetActive(false);
