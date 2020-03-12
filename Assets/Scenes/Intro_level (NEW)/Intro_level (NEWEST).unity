@@ -374,6 +374,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1882115695860771642, guid: 695095084df96ba44b2893a07ee815c1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1882115695908418498, guid: 695095084df96ba44b2893a07ee815c1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4002,7 +4007,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043986632}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.7, y: 0.25, z: -6.7}
+  m_LocalPosition: {x: 1.7, y: 0.25, z: -11}
   m_LocalScale: {x: 3, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 1068644278}
@@ -4035,8 +4040,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5, z: 1.5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.4999996, y: 3.8956428, z: 1.4999996}
+  m_Center: {x: 0, y: 1.1978211, z: 0}
 --- !u!23 &2043986636
 MeshRenderer:
   m_ObjectHideFlags: 0
