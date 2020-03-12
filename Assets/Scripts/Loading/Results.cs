@@ -13,9 +13,13 @@ public class Results : MonoBehaviour
 
     private float countingMoney = 0;
     private int countingRobbers = 0;
-    private float addingAmount = 10;
+    private float addingAmount = 0.5f;
+    private float speedup = 0;
+    private float speedupAmount = 0.1f;
 
     private float total = 0;
+    private float stolenMoney = 0;
+    private float refundedMoney = 0;
 
     private bool doneCountingMoney = false;
     private bool doneCountingRobbers = false;
@@ -33,9 +37,13 @@ public class Results : MonoBehaviour
     {
         text = GetComponent<TMP_Text>();
 
+        robbersAlive = StaticMoney.GetRobbersAlive();
+
         money = StaticMoney.GetMoneyCount();
 
-        robbersAlive = StaticMoney.GetRobbersAlive();
+        stolenMoney = StaticMoney.GetStolenMoney();
+
+        refundedMoney = StaticMoney.GetRefundedMoney();
 
         total = StaticMoney.GetTotalMoneyCount();
     }
@@ -61,13 +69,17 @@ public class Results : MonoBehaviour
     private void CountMoney()
     {
         //this method counts up the money
-        countingMoney += 10 + addingAmount;
+        countingMoney += (int) (addingAmount + speedup);
 
-        if(countingMoney > money)
+        if(countingMoney > stolenMoney)
         {
+            speedup = 0;
+
             doneCountingMoney = true;
 
-            countingMoney = (int)money;
+            countingMoney = (int) stolenMoney;
+
+            text.text = "" + countingMoney;
 
             //stores text values for money collected
             moneyText = text.text + "\n\n";
@@ -75,7 +87,7 @@ public class Results : MonoBehaviour
 
         text.text = "" + countingMoney;
 
-        addingAmount += 1;
+        speedup += speedupAmount;
     }
 
     private void CountRobbers()
@@ -99,7 +111,7 @@ public class Results : MonoBehaviour
             moneyText = text.text + "\n\n";
 
             //stores total money the player earned
-            total = money + (robbersAlive * 1000);
+            total = money + stolenMoney + refundedMoney;
 
             StartCoroutine("WaitTotal");
         }
@@ -107,22 +119,25 @@ public class Results : MonoBehaviour
 
     private void CountTotal()
     {
-        countingMoney += addingAmount;
+        countingMoney += (int) (addingAmount + speedup);
 
         if(countingMoney > total)
         {
             doneCountingMoney = true;
 
-            countingMoney = (int)total;
+            countingMoney = (int) total;
 
             doneCountingTotal = true;
+
+            // sets money to total money to prepare for next map
+            StaticMoney.SetMoney(StaticMoney.GetTotalMoney());
 
             button.SetActive(true);
         }
 
         text.text = moneyText + countingMoney;
 
-        addingAmount += 1;
+        speedup += speedupAmount;
     }
 
 

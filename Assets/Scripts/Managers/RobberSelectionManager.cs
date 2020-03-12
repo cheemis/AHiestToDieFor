@@ -52,6 +52,7 @@ public class RobberSelectionManager : MonoBehaviour
         // if the player has enough money to buy anything to begin with
         if (robberNum > -1 && slotNum > -1)
         {
+            button = buttonList[slotNum];
             if (CheckIfEnoughMoney(robberNum, slotNum) == false)
             {
                 robberNum = -1;
@@ -66,7 +67,6 @@ public class RobberSelectionManager : MonoBehaviour
             }
             StaticMoney.RemoveMoney(GetNewRobberCost(robberPrefabs[robberNum]));
             gem.TriggerEvent("SetSelectionMoney", gameObject, new List<object> { StaticMoney.GetMoneyCount() });
-            button = buttonList[slotNum];
             button.image.sprite = robberList[robberNum];
             selectedRobbers[slotNum] = robberPrefabs[robberNum];
             button.transform.GetChild(1).gameObject.SetActive(false);
@@ -180,14 +180,4 @@ public class RobberSelectionManager : MonoBehaviour
         float baseCost = robberBaseCosts[index];
         return baseCost + baseCost * 0.25f * numberOfRobbers;
     }
-    private class Purchase {
-        public GameObject robberPrefab;
-        public float cost;
-
-        public Purchase(GameObject robberPrefab, float cost)
-        {
-            this.robberPrefab = robberPrefab;
-            this.cost = cost;
-        }
-   }
 }
