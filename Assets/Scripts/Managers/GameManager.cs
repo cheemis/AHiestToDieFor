@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private GlobalEventManager gem;
 
     private List<GameObject> robbers;
+    private List<GameObject> allRobbers;
 
     public TextMeshProUGUI moneyText;
 
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
         {
             throw new Exception("Illegal argument: parameter wrong type: " + parameters[0].GetType().ToString());
         }
+        allRobbers = (List<GameObject>)parameters[0];
 
         Queue<GameObject> robbers = new Queue<GameObject>((List<GameObject>) parameters[0]);
 
@@ -76,6 +78,9 @@ public class GameManager : MonoBehaviour
             throw new Exception("Missing robber: Tried to remove robber that didn't exist");
         }
         robbers.Remove(target);
+        // remove one robber from list that has same/similar name as the killed robber
+        
+        allRobbers.Remove(allRobbers.Where(robber => target.name.Contains(robber.name)).ToList()[0]);
     }
     private float GetAccumulatedStolenMoney()
     {
@@ -104,10 +109,34 @@ public class GameManager : MonoBehaviour
         {
             if (GetAccumulatedStolenMoney() >= winAmount)
             {
+                float money = StaticMoney.GetMoneyCount();
+                float stolenMoney = GetAccumulatedStolenMoney();
+                float refundedMoney = 0;
+                foreach(GameObject robber in allRobbers)
+                {
+                    if (robber.name.Contains("Fast"))
+                    {
+                        refundedMoney += Constants.BASE_FAST_ROBBER_COST;
+                    }
+                    if (robber.name.Contains("Strong"))
+                    {
+                        refundedMoney += Constants.BASE_STRONG_ROBBER_COST;
+                    }
+                    if (robber.name.Contains("Big"))
+                    {
+                        refundedMoney += Constants.BASE_BIG_ROBBER_COST;
+                    }
+                    if (robber.name.Contains("Greedy"))
+                    {
+                        refundedMoney += Constants.BASE_GREEDY_ROBBER_COST;
+                    }
+                }
                 //Store money, robbers, and next level
-                StaticMoney.SetMoney(GetAccumulatedStolenMoney());
-                //StaticMoney.set
-                StaticMoney.SetRobbersAlive(robbers.Count);
+                StaticMoney.SetMoney(money);
+                StaticMoney.SetStolenMoney(stolenMoney);
+                StaticMoney.SetRefundedMoney(refundedMoney);
+                StaticMoney.SetTotalMoney(money + stolenMoney + refundedMoney);
+                StaticMoney.SetRobbersAlive(allRobbers.Count);
                 StaticMoney.SetLastScene(SceneManager.GetActiveScene().buildIndex + 1);
 
                 SceneManager.LoadScene(1);
@@ -119,5 +148,4 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
 }
