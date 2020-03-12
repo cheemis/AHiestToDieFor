@@ -1725,7 +1725,7 @@ PrefabInstance:
         a robber is selected, use RIGHT CLICK on the ground to move a\n\t robber
         to that location!\n\nGoal:\n\t-Collect as much money as possible!\n\t-Don't
         get caught and killed by guards!\n\t-Escape with at least one robber left
-        alive!\n"
+        alive!\n\t-Make it back to the van with the remaining robbers!\n"
       objectReference: {fileID: 0}
     - target: {fileID: 1573735897699619811, guid: cd35c95d565564505855cee8a7a8aefb,
         type: 3}
@@ -1740,8 +1740,8 @@ PrefabInstance:
     - target: {fileID: 7440247494349573067, guid: cd35c95d565564505855cee8a7a8aefb,
         type: 3}
       propertyPath: m_text
-      value: "At the begging of a heist, you will choose what robbers to use in your
-        mission.\n\t-Each robber costs a certain ammount of money to make. Manage
+      value: "At the beginning of a heist, you will choose what robbers to use in
+        your mission.\n\t-Each robber costs a certain amount of money to make. Manage
         your\n\t resources carefully!\n\nRobber Types:\n\tFast Robber\n\t\t-Can walk
         faster than the other robbers\n\tStrong Robber\n\t\t-Can take multiple bullets
         before dying\n\tGreedy Robber\n\t\t-Opens the vault faster/steals more money\n\tBig
