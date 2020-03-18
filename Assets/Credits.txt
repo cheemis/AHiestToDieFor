@@ -57,14 +57,17 @@ Textures
 
 Props
 
-Money by sawcisson: https://sketchfab.com/3d-models/prop-space-money-c537bb60a93d48128bffe33fd182e1bc
+Money by sawcisson
+https://sketchfab.com/3d-models/prop-space-money-c537bb60a93d48128bffe33fd182e1bc
 
 Keycard by NinJOke: https://sketchfab.com/3d-models/key-card-559d847c11e74dcca5e569b2bbba33e6
 
-Vault door by mathis.zimko: https://sketchfab.com/3d-models/bank-vault-porte-bb7c6b72ffee43aeac54c6e6c19b32f0
+Vault door by mathis.zimko
+https://sketchfab.com/3d-models/bank-vault-porte-bb7c6b72ffee43aeac54c6e6c19b32f0
 
 
 
 Title Screen
 
-Street lampby petomavar: https://www.turbosquid.com/3d-models/street-lamp-max-free/359703
+ Street lamp by petomavar
+ https://www.turbosquid.com/3d-models/street-lamp-max-free/359703
