@@ -804,6 +804,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1882115695908418498}
     m_Modifications:
+    - target: {fileID: 284336826559455172, guid: f1fd8634a6705d947b81eb647f70d9d9,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+    - target: {fileID: 284336826559455172, guid: f1fd8634a6705d947b81eb647f70d9d9,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 284336826559455172, guid: f1fd8634a6705d947b81eb647f70d9d9,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 284336826559455172, guid: f1fd8634a6705d947b81eb647f70d9d9,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 284336826559455172, guid: f1fd8634a6705d947b81eb647f70d9d9,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 676437308350262911, guid: f1fd8634a6705d947b81eb647f70d9d9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1038,16 +1063,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353921747553695502, guid: cd66f60d2c1c4164796b986eb81a0fb4,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 6.8944798
-      objectReference: {fileID: 0}
-    - target: {fileID: 7353921747553695502, guid: cd66f60d2c1c4164796b986eb81a0fb4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 45.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd66f60d2c1c4164796b986eb81a0fb4, type: 3}
