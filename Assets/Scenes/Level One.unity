@@ -261,12 +261,12 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.16
+      value: -5.07
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6
+      value: 2.24
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
@@ -725,7 +725,7 @@ GameObject:
   - component: {fileID: 26502452}
   - component: {fileID: 26502451}
   - component: {fileID: 26502450}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2006,7 +2006,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285778
+      value: 37.600002
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -2016,7 +2016,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.550714
+      value: 19.363985
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -2063,11 +2063,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoneyStack (8)
       objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
 --- !u!1 &98115723 stripped
@@ -2087,7 +2082,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6694297, y: 1.3073993, z: 0.30743524}
+  m_Size: {x: 1.8, y: 1.3073993, z: 0.30743524}
   m_Center: {x: -0.029095966, y: -0.15369949, z: 0.041461077}
 --- !u!1001 &99618770
 PrefabInstance:
@@ -2099,7 +2094,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285774
+      value: 37.6
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -2109,7 +2104,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.906733
+      value: 23.720003
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -2156,11 +2151,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoneyStack (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
 --- !u!1 &149272857 stripped
@@ -2199,7 +2189,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6694297, y: 1.3073993, z: 0.30743524}
+  m_Size: {x: 1.8, y: 1.3073993, z: 0.30743524}
   m_Center: {x: -0.029095966, y: -0.15369949, z: 0.041461077}
 --- !u!1 &179461075
 GameObject:
@@ -2213,7 +2203,7 @@ GameObject:
   - component: {fileID: 179461079}
   - component: {fileID: 179461078}
   - component: {fileID: 179461077}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3000,7 +2990,7 @@ GameObject:
   - component: {fileID: 206999529}
   - component: {fileID: 206999528}
   - component: {fileID: 206999527}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3137,7 +3127,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d313862fd24c440718a1363156eb70aa, type: 2}
+  - {fileID: 2100000, guid: 499b1ce904e2940d38af6892befe131f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3174,7 +3164,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231145065}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.5, y: 1, z: -5}
+  m_LocalPosition: {x: 18.5, y: 1.19, z: -5}
   m_LocalScale: {x: 3, y: 2, z: 30}
   m_Children: []
   m_Father: {fileID: 1928599326}
@@ -3250,7 +3240,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d313862fd24c440718a1363156eb70aa, type: 2}
+  - {fileID: 2100000, guid: 499b1ce904e2940d38af6892befe131f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3314,7 +3304,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6694297, y: 1.3073993, z: 0.30743524}
+  m_Size: {x: 1.8, y: 1.3073993, z: 0.30743524}
   m_Center: {x: -0.029095966, y: -0.15369949, z: 0.041461077}
 --- !u!1001 &294816656
 PrefabInstance:
@@ -3521,7 +3511,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d313862fd24c440718a1363156eb70aa, type: 2}
+  - {fileID: 2100000, guid: 499b1ce904e2940d38af6892befe131f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3606,7 +3596,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330908306}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 38, y: 0, z: 27}
+  m_LocalPosition: {x: 38.03, y: 0, z: 27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1879385982}
@@ -3734,7 +3724,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285778
+      value: 37.600002
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -3744,7 +3734,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.266733
+      value: 21.080004
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -3790,11 +3780,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MoneyStack (10)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
@@ -3931,7 +3916,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d313862fd24c440718a1363156eb70aa, type: 2}
+  - {fileID: 2100000, guid: 499b1ce904e2940d38af6892befe131f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3984,7 +3969,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 407895013}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1791993496}
@@ -4067,7 +4052,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d313862fd24c440718a1363156eb70aa, type: 2}
+  - {fileID: 2100000, guid: 499b1ce904e2940d38af6892befe131f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4106,7 +4091,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285774
+      value: 37.6
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -4116,7 +4101,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.44275
+      value: 20.256021
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -4162,11 +4147,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MoneyStack (15)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
@@ -4926,7 +4906,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6
+      value: 2.21
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
@@ -5429,7 +5409,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d313862fd24c440718a1363156eb70aa, type: 2}
+  - {fileID: 2100000, guid: 499b1ce904e2940d38af6892befe131f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5482,7 +5462,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285774
+      value: 37.6
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -5492,7 +5472,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.726732
+      value: 18.540003
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -5539,11 +5519,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoneyStack (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
 --- !u!1001 &688054905
@@ -5556,7 +5531,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285778
+      value: 37.600002
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -5566,7 +5541,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.730715
+      value: 24.543985
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -5612,11 +5587,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MoneyStack (18)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
@@ -6045,7 +6015,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6
+      value: 2.21
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
@@ -6509,7 +6479,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6694297, y: 1.3073993, z: 0.30743524}
+  m_Size: {x: 1.8, y: 1.3073993, z: 0.30743524}
   m_Center: {x: -0.029095966, y: -0.15369949, z: 0.041461077}
 --- !u!4 &752953997 stripped
 Transform:
@@ -6527,7 +6497,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285774
+      value: 37.6
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -6537,7 +6507,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.190714
+      value: 22.003984
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -6583,11 +6553,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MoneyStack (17)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
@@ -6655,7 +6620,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d313862fd24c440718a1363156eb70aa, type: 2}
+  - {fileID: 2100000, guid: 499b1ce904e2940d38af6892befe131f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7386,7 +7351,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6694297, y: 1.3073993, z: 0.30743524}
+  m_Size: {x: 1.8, y: 1.3073993, z: 0.30743524}
   m_Center: {x: -0.029095966, y: -0.15369949, z: 0.041461077}
 --- !u!1001 &892482065
 PrefabInstance:
@@ -7398,7 +7363,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285778
+      value: 37.600002
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -7408,7 +7373,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.730715
+      value: 24.543985
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -7455,11 +7420,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoneyStack (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
 --- !u!1 &892774072 stripped
@@ -7479,7 +7439,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6694297, y: 1.3073993, z: 0.30743524}
+  m_Size: {x: 1.8, y: 1.3073993, z: 0.30743524}
   m_Center: {x: -0.029095966, y: -0.15369949, z: 0.041461077}
 --- !u!1 &923953241
 GameObject:
@@ -7591,7 +7551,7 @@ GameObject:
   - component: {fileID: 933273403}
   - component: {fileID: 933273402}
   - component: {fileID: 933273401}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7922,7 +7882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015553897}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.5, y: 1, z: 13.46}
+  m_LocalPosition: {x: 18.63, y: 1, z: 13.46}
   m_LocalScale: {x: 1, y: 2, z: 7}
   m_Children: []
   m_Father: {fileID: 351989202}
@@ -8024,7 +7984,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d313862fd24c440718a1363156eb70aa, type: 2}
+  - {fileID: 2100000, guid: 499b1ce904e2940d38af6892befe131f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8063,7 +8023,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285778
+      value: 37.600002
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -8073,7 +8033,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.014696
+      value: 22.827967
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -8119,11 +8079,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MoneyStack (14)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
@@ -8274,7 +8229,7 @@ GameObject:
   - component: {fileID: 1201876117}
   - component: {fileID: 1201876116}
   - component: {fileID: 1201876115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8535,7 +8490,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6
+      value: 2.24
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
@@ -8992,7 +8947,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285778
+      value: 37.600002
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -9002,7 +8957,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 18.550714
+      value: 19.363985
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -9049,11 +9004,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoneyStack (13)
       objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
 --- !u!1001 &1275573969
@@ -9066,7 +9016,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285778
+      value: 37.600002
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -9076,7 +9026,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.014696
+      value: 22.827967
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -9123,11 +9073,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoneyStack (6)
       objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
 --- !u!1001 &1277696135
@@ -9140,7 +9085,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285778
+      value: 37.600002
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -9150,7 +9095,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.266733
+      value: 21.080004
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -9196,11 +9141,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MoneyStack (11)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
@@ -9414,7 +9354,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6694297, y: 1.3073993, z: 0.30743524}
+  m_Size: {x: 1.8, y: 1.3073993, z: 0.30743524}
   m_Center: {x: -0.029095966, y: -0.15369949, z: 0.041461077}
 --- !u!4 &1368686788 stripped
 Transform:
@@ -9532,7 +9472,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285774
+      value: 37.6
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -9542,7 +9482,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.44275
+      value: 20.256021
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -9588,11 +9528,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MoneyStack (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
@@ -9741,7 +9676,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6
+      value: 2.24
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
@@ -10200,7 +10135,7 @@ GameObject:
   - component: {fileID: 1417586792}
   - component: {fileID: 1417586791}
   - component: {fileID: 1417586790}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10340,17 +10275,17 @@ PrefabInstance:
     - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 37.860283
+      value: 40.25
       objectReference: {fileID: 0}
     - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.02
+      value: 2.57
       objectReference: {fileID: 0}
     - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 44.428936
+      value: 46.71
       objectReference: {fileID: 0}
     - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
         type: 3}
@@ -10392,6 +10327,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4, type: 3}
 --- !u!1 &1539763345
@@ -10421,7 +10371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539763345}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 11.5, y: 1, z: 18.5}
+  m_LocalPosition: {x: 11.57, y: 1, z: 18.5}
   m_LocalScale: {x: 3, y: 2, z: 17}
   m_Children: []
   m_Father: {fileID: 1982793266}
@@ -10458,7 +10408,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d313862fd24c440718a1363156eb70aa, type: 2}
+  - {fileID: 2100000, guid: 499b1ce904e2940d38af6892befe131f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11180,7 +11130,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285774
+      value: 37.6
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -11190,7 +11140,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 17.726732
+      value: 18.54
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -11236,11 +11186,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MoneyStack (16)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
@@ -11510,7 +11455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1713799614}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -11.5, y: 1, z: 18.5}
+  m_LocalPosition: {x: -11.48, y: 1, z: 18.5}
   m_LocalScale: {x: 3, y: 2, z: 17}
   m_Children: []
   m_Father: {fileID: 1982793266}
@@ -11547,7 +11492,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d313862fd24c440718a1363156eb70aa, type: 2}
+  - {fileID: 2100000, guid: 499b1ce904e2940d38af6892befe131f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11634,7 +11579,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285774
+      value: 37.6
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -11644,7 +11589,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.906733
+      value: 23.720003
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -11690,11 +11635,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MoneyStack (12)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
@@ -11859,7 +11799,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d313862fd24c440718a1363156eb70aa, type: 2}
+  - {fileID: 2100000, guid: 499b1ce904e2940d38af6892befe131f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11989,7 +11929,7 @@ GameObject:
   - component: {fileID: 1860499211}
   - component: {fileID: 1860499210}
   - component: {fileID: 1860499209}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12082,7 +12022,7 @@ GameObject:
   - component: {fileID: 1862115221}
   - component: {fileID: 1862115220}
   - component: {fileID: 1862115219}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12175,7 +12115,7 @@ GameObject:
   - component: {fileID: 1879385985}
   - component: {fileID: 1879385984}
   - component: {fileID: 1879385983}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VaultFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12953,7 +12893,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d313862fd24c440718a1363156eb70aa, type: 2}
+  - {fileID: 2100000, guid: 499b1ce904e2940d38af6892befe131f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13063,7 +13003,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 36.285774
+      value: 37.6
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -13073,7 +13013,7 @@ PrefabInstance:
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.190714
+      value: 22.003984
       objectReference: {fileID: 0}
     - target: {fileID: 1293039679830043426, guid: 19697c515cdce61458356266b9566447,
         type: 3}
@@ -13119,11 +13059,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MoneyStack (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5815609715444572637, guid: 19697c515cdce61458356266b9566447,
-        type: 3}
-      propertyPath: amount
-      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19697c515cdce61458356266b9566447, type: 3}
@@ -13876,7 +13811,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.6
+      value: 2.21
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
@@ -14461,6 +14396,108 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f28b62cd6cd55854888c40699b0a9eb6, type: 3}
+--- !u!1 &470236971086799680 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 470236971901100870, guid: f28b62cd6cd55854888c40699b0a9eb6,
+    type: 3}
+  m_PrefabInstance: {fileID: 470236971086799679}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &470236971086799681
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470236971086799680}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 43c11fcf3ce964418814442881e50756, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.4
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &3555776118742945483
 PrefabInstance:
   m_ObjectHideFlags: 0

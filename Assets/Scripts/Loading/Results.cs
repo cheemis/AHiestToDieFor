@@ -15,7 +15,7 @@ public class Results : MonoBehaviour
     private int countingRobbers = 0;
     private float addingAmount = 0.5f;
     private float speedup = 0;
-    private float speedupAmount = 0.1f;
+    private float speedupAmount = 9.9f;
 
     private float total = 0;
     private float stolenMoney = 0;
@@ -102,6 +102,8 @@ public class Results : MonoBehaviour
         }
         else
         {
+            if(robbersAlive == 0) {text.text = moneyText + 0;}
+
             doneCountingRobbers = true;
 
             //resets for counting total

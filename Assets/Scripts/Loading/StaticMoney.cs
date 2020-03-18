@@ -15,7 +15,7 @@ public class StaticMoney : MonoBehaviour
 
     private static int robbersAlive = 0;
 
-    private static int lastScene = 0;
+    private static int lastScene = 4;
 
     public static float GetMoneyCount() { return money; }
     public static float GetStolenMoney() { return stolenMoney; }
