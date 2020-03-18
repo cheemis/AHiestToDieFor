@@ -120,10 +120,6 @@ public class OpenVault : MonoBehaviour
                 print("opened");
             }
         }
-        else
-        {
-            print(isCracking + " " + (playerUnlocking != null));
-        }
     }
 
     private void Open()

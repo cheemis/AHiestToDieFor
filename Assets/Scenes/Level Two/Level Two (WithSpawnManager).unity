@@ -1288,7 +1288,7 @@ PrefabInstance:
     - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1745233714710311670, guid: 28fbd9e334cc842d9bf819ceb7e3e1c4,
         type: 3}
@@ -4097,7 +4097,7 @@ PrefabInstance:
     - target: {fileID: 470236970519766723, guid: f28b62cd6cd55854888c40699b0a9eb6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 470236970519766723, guid: f28b62cd6cd55854888c40699b0a9eb6,
         type: 3}
@@ -5642,7 +5642,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.4
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -32398,7 +32398,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.76
+      value: -8.970509
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 39947720432454009a54b2f7180e9acc,
         type: 3}
