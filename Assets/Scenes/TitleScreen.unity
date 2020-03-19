@@ -1732,6 +1732,11 @@ PrefabInstance:
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - target: {fileID: 7440247494131298820, guid: cd35c95d565564505855cee8a7a8aefb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7440247494349573065, guid: cd35c95d565564505855cee8a7a8aefb,
         type: 3}
       propertyPath: m_IsActive
@@ -1785,21 +1790,61 @@ PrefabInstance:
     - target: {fileID: 7440247494830562520, guid: cd35c95d565564505855cee8a7a8aefb,
         type: 3}
       propertyPath: m_text
-      value: "A Game By Cheemis (and me alone)\n\nModels\n\nLow Poly Man by Robin
-        Butler\nhttps://sketchfab.com/3d-models/proportional-low-poly-man-free-download-0bfd0e2b49a348a4b64b20cc8196e3b3\n\nMoney
-        by sawcisson\r\nhttps://sketchfab.com/3d-models/prop-space-money-c537bb60a93d48128bffe33fd182e1bc\r\n\nTable
+      value: "A Game By:\nCheemis, Chowder, Kuserab, theforgot3n1, 2manypips, & Wetninjas\n\n\n\nModels\n\nLow
+        Poly Man by Robin Butler\nhttps://sketchfab.com/3d-models/proportional-low-poly-man-free-download-0bfd0e2b49a348a4b64b20cc8196e3b3\n\nBackpack
+        by Google\nhttps://poly.google.com/view/cJFKpOZzl8s\n\nGun by Google\nhttps://poly.google.com/view/aLbeOSoOpXN\n\nMoney
+        by sawcisson\nhttps://sketchfab.com/3d-models/prop-space-money-c537bb60a93d48128bffe33fd182e1bc\n\nTable
         Contemporaine by charles.cla\nhttps://sketchfab.com/3d-models/table-contemporaine-fe7b26ff21dc42b09289e042efae7143\n\nStreet
-        lamp by petomavar\r https://www.turbosquid.com/3d-models/street-lamp-max-free/359703\n\nVault
-        door by mathis.zimko\r\nhttps://sketchfab.com/3d-models/bank-vault-porte-bb7c6b72ffee43aeac54c6e6c19b32f0\r\n\nLow
+        lamp by petomavar\n https://www.turbosquid.com/3d-models/street-lamp-max-free/359703\n\nVault
+        door by mathis.zimko\nhttps://sketchfab.com/3d-models/bank-vault-porte-bb7c6b72ffee43aeac54c6e6c19b32f0\n\nLow
         Poly Desk by Google\nhttps://poly.google.com/view/fnTN9aw1q25\n\nLow poly
         Tree by Google\nhttps://poly.google.com/view/6pwiq7hSrHr\n\nLow Poly Working
-        Desk by Niko Hokkanen\nhttps://poly.google.com/view/c406LNgto0n\n\nLow Poly
-        Vending Machine by \nhttps://poly.google.com/view/0CX6wj64Swu\n\nLow Poly
-        Couch by Danny Bittman\nhttps://poly.google.com/view/7Q_Ab2HLll1\n\nLow Poly
-        bookshelf by Jerad Bitner\nhttps://poly.google.com/view/8G2I4M-QVEf\n\n\n\n\n[PLACE
-        HOLDER]\n[PLACE HOLDER]\n\n[PLACE HOLDER]\n[PLACE HOLDER]\n\n[PLACE HOLDER]\n[PLACE
-        HOLDER]\n\n[PLACE HOLDER]\n[PLACE HOLDER]\n\n[PLACE HOLDER]\n[PLACE HOLDER]\n\n[PLACE
-        HOLDER]\n[PLACE HOLDER]\n\n[PLACE HOLDER]\n[PLACE HOLDER]"
+        Desk by Niko Hokkanen\nhttps://poly.google.com/view/c406LNgto0n\n\nPlant
+        - Flower Pot by Alex \u201CSAFFY\u201D Safayan\nhttps://poly.google.com/view/bVepm2yfJTh\n\nLow
+        Poly Vending Machine by \nhttps://poly.google.com/view/0CX6wj64Swu\n\nLow
+        Poly Couch by Danny Bittman\nhttps://poly.google.com/view/7Q_Ab2HLll1\n\nLow
+        Poly bookshelf by Jerad Bitner\nhttps://poly.google.com/view/8G2I4M-QVEf\n\nCharging
+        Bull by Zafio\nhttps://sketchfab.com/3d-models/charging-bull-3nXiIkAd3IlHVNc4hqw4VmaX3tK\n\nTable
+        by charles.cla: https://sketchfab.com/3d-models/table-contemporaine-fe7b26ff21dc42b09289e042efae7143\n\nBlank
+        Boi Cap by uncle808us\nhttps://sketchfab.com/3d-models/blank-boi-cap-942c79805fe74491b82aac14f80959f6\n\nSelection
+        ring by Cheemis\n\nLight cone by Cheemis\n\n\n\nAnimations\n\nAll animations
+        for robbers, scientist, & guards by Mixamo.com\nhttps://www.mixamo.com\n\n\n\nTextures\n\nConcrete
+        Material by Nobiax / Yughues\nhttps://assetstore.unity.com/packages/2d/textures-materials/concrete/yughues-free-concrete-materials-12951\n\nFloor
+        Tiles by TextMesh Pro\n\nGuard texture By Cheemis\n\nRobbers textures by
+        Cheemis\n\nScientist texture by Cheemis\n\nBackpack texture by Cheemis\n\nBubbles
+        by Cheemis\n\n\n\nShaders\n\nDouble-sided shaders by Ciconia Studio\nhttps://assetstore.unity.com/packages/vfx/shaders/double-sided-shaders-23087\n\n\n\nSounds
+        & Music\n\nHeist by Th3MusicStuff\nhttps://youtu.be/YJjfIA0j2IA\n\nWood cabin
+        front door close. Version 2 by Zapsplat\nhttps://www.zapsplat.com/music/wood-cabin-front-door-close-version-2/\n\nScience
+        fiction door, open or close by Zapsplat\nhttps://www.zapsplat.com/music/science-fiction-door-open-or-close/\n\nFabric
+        garment bag pick up. Version 2 by Zapsplat\nhttps://www.zapsplat.com/music/fabric-garment-bag-pick-up-version-2/\n\nGun,
+        Tikka T3 Battue 308 hunting rifle, gunshot weak 1 by Zapsplat\nhttps://www.zapsplat.com/music/gun-tikka-t3-battue-308-hunting-rifle-gunshot-weak-1/\n\nMale,
+        man says huh as if questioning something by Zapsplat\nhttps://www.zapsplat.com/music/male-man-says-huh-as-if-questioning-something/\n\nHeavy
+        male scream out of deep pain by Zapsplat\nhttps://www.zapsplat.com/music/heavy-male-scream-out-of-deep-pain-5/"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440247494830562520, guid: cd35c95d565564505855cee8a7a8aefb,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440247494830562520, guid: cd35c95d565564505855cee8a7a8aefb,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 3019
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440247494830562520, guid: cd35c95d565564505855cee8a7a8aefb,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 288
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440247494830562520, guid: cd35c95d565564505855cee8a7a8aefb,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 366
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440247494830562520, guid: cd35c95d565564505855cee8a7a8aefb,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 145
       objectReference: {fileID: 0}
     - target: {fileID: 7440247495081072616, guid: cd35c95d565564505855cee8a7a8aefb,
         type: 3}
@@ -1815,6 +1860,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7440247495645810894, guid: cd35c95d565564505855cee8a7a8aefb,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7440247495645810896, guid: cd35c95d565564505855cee8a7a8aefb,
         type: 3}
@@ -1929,7 +1979,7 @@ PrefabInstance:
     - target: {fileID: 7440247495645810897, guid: cd35c95d565564505855cee8a7a8aefb,
         type: 3}
       propertyPath: creditsTime
-      value: 34
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 7440247495645810897, guid: cd35c95d565564505855cee8a7a8aefb,
         type: 3}

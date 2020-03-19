@@ -1461,7 +1461,7 @@ PrefabInstance:
     - target: {fileID: 3555776117658860198, guid: 87eb94775e5577140959c74605d4698e,
         type: 3}
       propertyPath: winAmount
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3555776117951042400, guid: 87eb94775e5577140959c74605d4698e,
         type: 3}
