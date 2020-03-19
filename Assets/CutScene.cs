@@ -10,6 +10,8 @@ public class CutScene : MonoBehaviour
     public GameObject secondScene;
     public GameObject thirdScene;
 
+    private bool pressed = false;
+
     private Vector3 nextPoint = Vector3.zero;
 
     // Start is called before the first frame update
@@ -45,6 +47,10 @@ public class CutScene : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneManager.LoadSceneAsync(3);
+        if(!pressed)
+        {
+            pressed = true;
+            SceneManager.LoadSceneAsync(3);
+        }
     }
 }

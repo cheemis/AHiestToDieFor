@@ -3124,6 +3124,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: plant (3)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: df64a7fd6edbe4ac0acd4f304089abd3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823342335230688899, guid: df64a7fd6edbe4ac0acd4f304089abd3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df64a7fd6edbe4ac0acd4f304089abd3, type: 3}
 --- !u!4 &136422201 stripped
@@ -5414,6 +5424,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: plant (6)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: df64a7fd6edbe4ac0acd4f304089abd3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823342335230688899, guid: df64a7fd6edbe4ac0acd4f304089abd3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df64a7fd6edbe4ac0acd4f304089abd3, type: 3}
 --- !u!4 &219054655 stripped
@@ -6351,6 +6371,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: plant (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: df64a7fd6edbe4ac0acd4f304089abd3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823342335230688899, guid: df64a7fd6edbe4ac0acd4f304089abd3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df64a7fd6edbe4ac0acd4f304089abd3, type: 3}
@@ -9881,7 +9911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332184493}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 86.6, y: 0.25, z: 21.9}
+  m_LocalPosition: {x: 86.6, y: 0.25, z: 23.02}
   m_LocalScale: {x: 3, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 918301885}
@@ -10010,7 +10040,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Size: {x: 1.5, y: 4, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &332184498
 MeshRenderer:
@@ -10214,6 +10244,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: plant (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: df64a7fd6edbe4ac0acd4f304089abd3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823342335230688899, guid: df64a7fd6edbe4ac0acd4f304089abd3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df64a7fd6edbe4ac0acd4f304089abd3, type: 3}
@@ -23850,6 +23890,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: plant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: df64a7fd6edbe4ac0acd4f304089abd3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823342335230688899, guid: df64a7fd6edbe4ac0acd4f304089abd3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df64a7fd6edbe4ac0acd4f304089abd3, type: 3}
@@ -42954,6 +43004,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: plant
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: df64a7fd6edbe4ac0acd4f304089abd3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823342335230688899, guid: df64a7fd6edbe4ac0acd4f304089abd3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df64a7fd6edbe4ac0acd4f304089abd3, type: 3}
 --- !u!4 &1648964843 stripped
@@ -44932,6 +44992,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: plant (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: df64a7fd6edbe4ac0acd4f304089abd3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823342335230688899, guid: df64a7fd6edbe4ac0acd4f304089abd3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df64a7fd6edbe4ac0acd4f304089abd3, type: 3}
@@ -48488,7 +48558,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Size: {x: 1.5, y: 4, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2048203273
 MeshRenderer:
@@ -48922,6 +48992,11 @@ PrefabInstance:
       propertyPath: moneyText
       value: 
       objectReference: {fileID: 910696318}
+    - target: {fileID: 3555776117658860198, guid: 87eb94775e5577140959c74605d4698e,
+        type: 3}
+      propertyPath: winAmount
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3555776117951042400, guid: 87eb94775e5577140959c74605d4698e,
         type: 3}
       propertyPath: m_LocalPosition.x
